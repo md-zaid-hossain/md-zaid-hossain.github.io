@@ -4,6 +4,7 @@
   media/_avif/<path>.avif          AVIF copy of every picture and thumb (about half the size of WebP)
 GitHub Actions runs this before every build and commits the new copies, so pictures added later
 (Pages CMS, GitHub Desktop or Claude) get them too. Run by hand:  python3 build/web_copies.py"""
+import gc
 import os
 import sys
 
@@ -57,7 +58,16 @@ def make_all(verbose=True):
                 out = os.path.join(MEDIA, frame0_rel(rel))
                 if not os.path.exists(out):     # sprite is 9 x 8 frames; frame 0 is the top-left one
                     os.makedirs(os.path.dirname(out), exist_ok=True)
-                    _rgb(im).crop((0, 0, w // 9, h // 8)).save(out, "WEBP", quality=85, method=5)
+                    # cut the frame first, then convert: only 600 x 480 px in memory, not the whole 5400 x 3840 sprite
+                    # (run #9 on 21 Nov stopped here with "can't allocate picture frame"); one retry after freeing memory
+                    for attempt in (1, 2):
+                        try:
+                            _rgb(im.crop((0, 0, w // 9, h // 8))).save(out, "WEBP", quality=85, method=5)
+                            break
+                        except MemoryError:
+                            if attempt == 2:
+                                raise
+                            gc.collect()
                     made += 1
     for rel in list(rel_files()) + [r for r in rel_files("_thumbs") if not r.endswith("-frame0.webp")]:
         out = os.path.join(MEDIA, avif_rel(rel))
