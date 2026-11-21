@@ -9,7 +9,7 @@ permissions: { contents: write, pages: write, id-token: write }
 concurrency: { group: pages, cancel-in-progress: false }
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # pinned: on 26.04 Playwright cannot install its system fonts (21 Nov 2026)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -36,7 +36,7 @@ jobs:
         with: { path: dist }
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # pinned: on 26.04 Playwright cannot install its system fonts (21 Nov 2026)
     environment: { name: github-pages, url: "${{ steps.d.outputs.page_url }}" }
     steps:
       - id: d
