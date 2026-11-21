@@ -1,7 +1,7 @@
 """Layout check on the built site with Playwright (Chromium): every page at phone, tablet and desktop widths
 in a dark and a light theme. Fails on horizontal scrolling and on page errors.
   python3 checks/widths.py dist"""
-import functools, glob, http.server, os, sys, threading
+import functools, glob, http.server, os, re, sys, threading
 from playwright.sync_api import sync_playwright
 
 DIST = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else "dist")
@@ -26,6 +26,11 @@ with sync_playwright() as pw:
     b = pw.chromium.launch()
     for mode in ("dark", "light"):
         ctx = b.new_context(viewport={"width": 1440, "height": 900})
+        # files the pages load from the CDN branches are answered from dist/ (same files), so the check does not
+        # depend on the CDN having fetched a brand-new commit yet
+        ctx.route(re.compile(r"https://cdn\.jsdelivr\.net/gh/[^@]+@[0-9a-f]+/(.*)"),
+                  lambda route: route.fulfill(path=os.path.join(DIST, re.match(r"https://cdn\.jsdelivr\.net/gh/[^@]+@[0-9a-f]+/([^?#]*)", route.request.url).group(1)))
+                  if os.path.exists(os.path.join(DIST, re.match(r"https://cdn\.jsdelivr\.net/gh/[^@]+@[0-9a-f]+/([^?#]*)", route.request.url).group(1))) else route.abort())
         ctx.add_init_script(f"try{{localStorage.setItem('zh-mode','{mode}')}}catch(e){{}}")
         page = ctx.new_page()
         errors = []

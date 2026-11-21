@@ -14,7 +14,7 @@ The website = **text** (`content/*.yml`) + **pictures, clips, 3D models and the 
 
 ## প্রতিবার শুরুতে · Every time, first
 
-নিজের কম্পিউটারে কিছু বদলানোর আগে `git pull` দিন (GitHub Desktop-এ **Fetch origin** → **Pull**)। GitHub Actions প্রতিটা publish-এ ছবির ছোট copy বানিয়ে repo-তে রাখে, তাই আপনার copy পিছিয়ে থাকে। · Before changing anything on your computer, run `git pull` (GitHub Desktop: Fetch origin → Pull). GitHub Actions adds picture copies to the repo on every publish.
+নিজের কম্পিউটারে কিছু বদলানোর আগে `git pull` দিন (GitHub Desktop-এ **Fetch origin** → **Pull**), যাতে Pages CMS বা Claude-এর বদল আপনার কাছে আসে। · Before changing anything on your computer, run `git pull` (GitHub Desktop: Fetch origin → Pull) so changes made in Pages CMS or by Claude reach you.
 
 ## সবার আগে · First, always (privacy)
 

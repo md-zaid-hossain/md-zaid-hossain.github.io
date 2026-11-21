@@ -612,6 +612,8 @@ def external_css(html):
     if not m:
         return html
     css = m.group(1)
+    if CDN_ON:   # the CSS file sits next to its fonts on the CDN: link them relatively
+        css = css.replace("url(/assets/fonts/", "url(../fonts/")
     name = hashlib.sha1(css.encode()).hexdigest()[:12] + ".css"
     for folder in (os.path.join(BUILD, "assets", "css"), os.path.join(DIST, "assets", "css")):
         os.makedirs(folder, exist_ok=True)
@@ -631,30 +633,36 @@ def speculation(html):
 
 
 # GitHub Pages is very slow from Bangladesh (about 20 KB/s on 21 Nov 2026), while jsDelivr answers from Dhaka
-# (about 500 KB/s). So on GitHub Actions the pictures, clips, fonts, CSS and site.js are served by jsDelivr straight
-# from this repository; the pages themselves stay on github.io. Download links (<a href>) stay on github.io so the
-# file keeps its name. The commit is not known yet when the build runs (the workflow first commits the new picture
-# copies and CSS files), so the build writes @__SHA__ and the workflow puts the real commit in. A local build keeps
-# every path local.
-SHA = "__SHA__" if (os.environ.get("GITHUB_ACTIONS") or "--cdn" in sys.argv) else ""
-CDN = f"https://cdn.jsdelivr.net/gh/{os.environ.get('GITHUB_REPOSITORY', 'md-zaid-hossain/md-zaid-hossain.github.io')}@{SHA}" if SHA else ""
+# (about 500 KB/s). jsDelivr serves a GitHub repository only while the files at that commit stay under 50 MB,
+# so on GitHub Actions every picture and clip the pages use is spread over CDN_BINS small branches (cdn-0 ...
+# cdn-5, each about 20 MB), and fonts, CSS and site.js go on cdn-a, by build/cdn_publish.py; the pages point at
+# those branches. The build writes @__CDN<k>__; cdn_publish.py puts each branch's commit in. The pages stay on github.io, and so do
+# download links (<a href>), so a file keeps its name. A local build keeps every path local.
+CDN_ON = bool(os.environ.get("GITHUB_ACTIONS") or "--cdn" in sys.argv)
+CDN_REPO = os.environ.get("GITHUB_REPOSITORY", "md-zaid-hossain/md-zaid-hossain.github.io")
+CDN_BINS = 6
 CDN_MAX = 20_000_000    # jsDelivr serves files up to 20 MB
+CDN_USED = set()        # every path sent to the CDN (cdn_publish.py reads dist/cdn-files.json)
+
+
+def cdn_bin(path):
+    """which cdn branch holds a file: fonts, CSS and site.js together on cdn-a (the CSS points at its fonts with
+    relative links), pictures and clips spread over cdn-0 ... cdn-5"""
+    if path.startswith("/assets/"):
+        return "a"
+    return str(int(hashlib.sha1(path.encode()).hexdigest(), 16) % CDN_BINS)
 
 
 def via_cdn(html):
-    if not CDN:
+    if not CDN_ON:
         return html
-
-    def same_in_repo(rel):
-        a, b = os.path.join(REPO, rel), os.path.join(DIST, rel)
-        return os.path.exists(a) and os.path.exists(b) and os.path.getsize(a) == os.path.getsize(b) and os.path.getsize(a) < CDN_MAX
 
     def swap(m):
         path = m.group(0)
-        if path.startswith("/media/") and same_in_repo(path.lstrip("/")):
-            return CDN + path
-        if path.startswith("/assets/") and os.path.exists(os.path.join(BUILD, path.lstrip("/"))):
-            return CDN + "/build" + path
+        f = os.path.join(DIST, path.lstrip("/"))
+        if os.path.exists(f) and os.path.getsize(f) < CDN_MAX:
+            CDN_USED.add(path)
+            return f"https://cdn.jsdelivr.net/gh/{CDN_REPO}@__CDN{cdn_bin(path)}__{path}"
         return path
     pat = re.compile(r"(?<=[\"'(\s,])/(?:media|assets)/[\w./%-]+\.(?:webp|jpe?g|png|gif|svg|avif|mp4|webm|woff2|js|css)\b")
     links = []   # keep <a href> download links on github.io: cut them out, swap the rest, put them back
@@ -709,14 +717,8 @@ def main():
     for f in os.listdir(css_dir):
         if f not in CSS_KEEP:
             os.remove(os.path.join(css_dir, f))
-    new_thumbs = [os.path.relpath(os.path.join(a, f), os.path.join(DIST, "media")) for a, _, fs in os.walk(os.path.join(DIST, "media", "_thumbs")) for f in fs
-                  if not os.path.exists(os.path.join(REPO, "media", os.path.relpath(os.path.join(a, f), os.path.join(DIST, "media"))))]
-    if new_thumbs:
-        print(f"  {len(new_thumbs)} small copies are not in media/_thumbs yet (run: python3 build/build.py --keep-thumbs, then commit)")
-        if "--keep-thumbs" in sys.argv:
-            for r in new_thumbs:
-                os.makedirs(os.path.dirname(os.path.join(REPO, "media", r)), exist_ok=True)
-                shutil.copy2(os.path.join(DIST, "media", r), os.path.join(REPO, "media", r))
+    if CDN_ON:
+        json.dump(sorted(CDN_USED), open(os.path.join(DIST, "cdn-files.json"), "w"), indent=0)
     routes = [r for r in pages if r != "/404.html"]
     day = BUILT.date().isoformat()
     open(os.path.join(DIST, "sitemap.xml"), "w").write(

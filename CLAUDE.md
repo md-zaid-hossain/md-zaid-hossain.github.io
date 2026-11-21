@@ -19,12 +19,14 @@ The pages are the approved design (Claude Design canvas v221), reproduced exactl
 - Each page is rendered in all 6 themes and merged: theme-only CSS is scoped to `:root[data-theme="…"]`; theme-only
   attribute values (backdrop photos, hero gear, footer factory colours) are swapped by `build/assets/site.js` (`window.ZH_SWAP`).
   Without JavaScript the page shows the dark red theme.
-- Speed: GitHub Pages is very slow from Bangladesh (about 20 KB/s), so on GitHub Actions the pictures, clips, fonts,
-  page CSS and site.js are served by jsDelivr from this repo (`via_cdn` in build.py); the pages stay on github.io.
-  `build/web_copies.py` makes 800 px copies (`media/_thumbs/`), AVIF copies (`media/_avif/`) and the first frame of
-  each 3D sprite; the workflow runs it and commits the new copies and `build/assets/css/` itself, so always
-  `git pull` before changing anything. Pictures load lazily, grids use the 800 px copy, browsers that take AVIF get it.
-  Check after any change to this: layout must match pixel for pixel with pictures blocked (see mockup-source tools).
+- Speed: GitHub Pages is very slow from Bangladesh (about 20 KB/s), so on GitHub Actions every picture, clip, font,
+  CSS file and site.js the pages load is served by jsDelivr. jsDelivr serves a commit only under 50 MB, so
+  `build/cdn_publish.py` puts those files on small branches (cdn-0 ... cdn-5 about 20 MB each by a hash of the path,
+  cdn-a for fonts, CSS and site.js) and fills their commits into the pages (`@__CDN<k>__` in the build). Never commit to
+  the cdn-* branches by hand. `build/web_copies.py` makes the 800 px copies, AVIF copies and the first frame of each 3D
+  sprite; they are not kept on main (gitignored). Pictures load lazily, grids use the 800 px copy, AVIF where the browser
+  takes it, CSS sits in content-named files. Check after any change to this: layout must match pixel for pixel with
+  pictures blocked (see mockup-source tools), and `checks/widths.py` answers CDN requests from dist/.
 - `media/blob_to_media.json` maps the canvas picture ids still written in the builders (`/_blob/<id>`) to `media/` paths. Keep it.
 - Text that lives in builder code, not in content/: the Home page summaries (hero, research list in `res_list.py`,
   experience list `exp_list.py`, education chart `edu_gantt.py`, skills `skill_cards.py`), the Projects page brief, the EV page (`build_ev.py`).

@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+# made by build/web_copies.py and build/build.py on every build (served from the cdn-* branches)
+media/_avif/
+media/_thumbs/
+build/assets/css/
