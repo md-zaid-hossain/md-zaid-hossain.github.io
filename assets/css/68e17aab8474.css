@@ -1305,14 +1305,16 @@ body{margin:0;background:var(--bg)}
 .hcy #hf-2:checked~.pgs .pg2 i{transform:scaleX(1)}
 .hcy #hf-2:checked~.pgs .pg2 span{color:var(--acc-t)}
 .hcy #hf-2:checked~.pgs .pgauto{opacity:1}
-@keyframes hHand{from{transform:rotate(238.5deg)}to{transform:rotate(598.5deg)}}
-@keyframes mHand{from{transform:rotate(324.0deg)}to{transform:rotate(684.0deg)}}
+@keyframes hHand{from{transform:rotate(239.2deg)}to{transform:rotate(599.2deg)}}
+@keyframes mHand{from{transform:rotate(342.0deg)}to{transform:rotate(702.0deg)}}
 @keyframes sHand{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.dial g{animation:none!important}}
 html{scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{margin:0}
 .zh{height:auto!important;min-height:100vh;overflow:visible!important;overflow-x:clip!important}
 .zh .scr{position:relative!important;inset:auto!important;overflow:visible!important}
+/* the photo backdrop is a wallpaper locked to the screen (Zaid, 17 Nov): one screen tall, it never scrolls */
+.zh .fixbg{position:fixed!important;inset:0 0 auto 0!important;height:100vh;height:100lvh}
 .thv{display:contents}
 .zp{display:contents}
 .zp>source{display:none}

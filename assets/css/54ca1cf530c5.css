@@ -1891,6 +1891,8 @@ html{scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{margin:0}
 .zh{height:auto!important;min-height:100vh;overflow:visible!important;overflow-x:clip!important}
 .zh .scr{position:relative!important;inset:auto!important;overflow:visible!important}
+/* the photo backdrop is a wallpaper locked to the screen (Zaid, 17 Nov): one screen tall, it never scrolls */
+.zh .fixbg{position:fixed!important;inset:0 0 auto 0!important;height:100vh;height:100lvh}
 .thv{display:contents}
 .zp{display:contents}
 .zp>source{display:none}
