@@ -1,0 +1,7 @@
+# Project page /projects/ev-charging-station/ · MZH-P-003 · featured
+'no': 3
+slug: ev-charging-station
+own_layout: true
+title: Multi-purpose EV charging station for urban streets
+chain_title: EV Charging Station
+note: This page has its own layout (featured competition entry); its text lives in build/site_src/build_ev.py. Ask Claude to change it.

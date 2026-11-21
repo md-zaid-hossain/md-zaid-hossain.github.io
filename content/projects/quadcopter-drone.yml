@@ -1,0 +1,87 @@
+# Project page /projects/quadcopter-drone/ · part no. MZH-P-011
+# key: used by the build, keep it
+'no': 11
+slug: quadcopter-drone
+key: quadcopter
+title: Quadcopter drone
+crumb: QUADCOPTER DRONE
+tags:
+- PERSONAL
+- SOLIDWORKS · KEYSHOT
+- NOV 2022
+lead: 'A small quadcopter modelled in SOLIDWORKS: a two-plate spider frame with truss arms, four motors and propellers, the battery pack, a distribution
+  board and the electronics between the plates, held with standard screws and nuts. Animated in a motion study in 2022 and rendered in KeyShot
+  in 2025.'
+card:
+  category: PERSONAL
+  filter: self
+  title: Quadcopter Drone
+  text: Frame, arms, motors and propellers assembled and rendered.
+  tools:
+  - SOLIDWORKS
+  - KeyShot
+  image: media/cards/quadcopter.webp
+hero:
+  turntable: media/proj_quadcopter/turntable.webp
+  glb: GLB 0.2 MB
+  render: media/proj_quadcopter/hero.webp
+  render_alt: Quadcopter drone with white propellers and a mint battery pack, KeyShot render
+  model: media/proj_quadcopter/drone.glb
+spec:
+- label: TYPE
+  value: Personal project <em>· practice in assemblies</em>
+- label: DATE
+  value: Nov 2022 <em>· modelled</em> · Mar 2025 <em>· rendered</em>
+- label: SOFTWARE
+  value: SOLIDWORKS · KeyShot
+- label: PARTS
+  value: 13 modelled <em>· plus standard M2 and M3 screws, M3 and M4 nuts</em>
+- label: OUTPUT
+  value: Parts, assembly, motion study, STEP, KeyShot render
+stats:
+- value: '13'
+  label: parts I modelled
+- value: '4'
+  label: motors and propellers
+- value: 77 s
+  label: motion study recording
+- value: 0.2 MB
+  label: web 3D model
+sections:
+- kind: clip
+  tag: MOTION STUDY
+  title: Around the drone in SOLIDWORKS
+  text: A SOLIDWORKS motion study takes the camera around the drone and in close to the frame, the electronics between the plates and a motor
+    mount. The clip is 24 seconds from a 77-second recording.
+  video: media/proj_quadcopter/motion-study.mp4
+  poster: media/proj_quadcopter/motion-study-poster.jpg
+  cap: SOLIDWORKS · MOTION STUDY · 24 S
+- kind: photos
+  tag: IN SOLIDWORKS
+  title: The assembly in SOLIDWORKS
+  gid: pq-sw
+  photos:
+  - image: media/proj_quadcopter/sw-assembly.webp
+    caption: The full assembly
+  - image: media/proj_quadcopter/sw-detail.webp
+    caption: 'Close views: the electronics stack and a motor mount'
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: MAIN ASSY
+    value: Quadcopter Drone.SLDASM
+  - label: PARTS
+    value: 'Drone01 to Drone13: spider base and tops, board, spinner, spacer, connector, pillar, fan, motor, battery, two electrical units'
+  - label: STANDARD
+    value: ASME pan head screws M2, M3 · hex nuts M3, M4
+  - label: EXCHANGE
+    value: STEP · whole assembly · 5.2 MB
+  - label: WEB MODEL
+    value: GLB · 0.2 MB
+  - label: RENDER
+    value: KeyShot · 1 still · scene .bip
+  - label: RECORDING
+    value: Motion study · 77 s · Nov 2022
+  - label: VIDEO
+    value: Edited showcase video · Mar 2025

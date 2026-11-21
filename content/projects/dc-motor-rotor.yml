@@ -1,0 +1,103 @@
+# Project page /projects/dc-motor-rotor/ · part no. MZH-P-009
+# key: used by the build, keep it
+'no': 9
+slug: dc-motor-rotor
+key: rotor
+title: Rotor of a DC motor
+crumb: DC MOTOR ROTOR
+tags:
+- PERSONAL
+- SOLIDWORKS · KEYSHOT
+- APR 2023
+lead: 'The armature of a small DC motor, modelled as one detailed part in SOLIDWORKS: the laminated core, the copper windings and the commutator
+  on its shaft. A month later it went into a full motor with housing, magnets, brush holders and a pinion, and both were rendered in KeyShot.'
+card:
+  category: PERSONAL
+  filter: self
+  title: Rotor of a DC Motor
+  text: Armature, commutator and windings modelled in detail and rendered.
+  tools:
+  - SOLIDWORKS
+  - KeyShot
+  image: media/cards/rotor.webp
+hero:
+  turntable: media/proj_rotor/turntable.webp
+  glb: GLB 0.3 MB
+  render: media/proj_rotor/rotor-2.webp
+  render_alt: Rotor of a DC motor on its shaft, KeyShot render
+  model: media/proj_rotor/rotor.glb
+spec:
+- label: TYPE
+  value: Personal project <em>· practice in detailed part modelling</em>
+- label: DATE
+  value: Apr 2023 <em>· rotor</em> · May 2023 <em>· motor assembly</em>
+- label: SOFTWARE
+  value: SOLIDWORKS · KeyShot
+- label: PARTS
+  value: Rotor as one part <em>· the motor has 9 parts</em>
+- label: LATER
+  value: Scaled down for the servo motor <em>· Aug 2023</em>
+- label: OUTPUT
+  value: Rotor part, motor assembly, STEP files, 11 KeyShot renders
+stats:
+- value: '1'
+  label: detailed rotor part
+- value: '9'
+  label: parts in the motor
+- value: '11'
+  label: KeyShot renders
+- value: 0.3 MB
+  label: web 3D model
+sections:
+- kind: photos
+  tag: RENDERS
+  title: The rotor
+  gid: pr-r
+  photos:
+  - image: media/proj_rotor/rotor-1.webp
+    caption: 'Close-up: windings over the laminated core'
+  - image: media/proj_rotor/rotor-2.webp
+    caption: The rotor on its shaft
+  - image: media/proj_rotor/rotor-3.webp
+    caption: The commutator end
+- kind: photos
+  tag: IN THE MOTOR
+  title: Inside a full DC motor
+  gid: pr-m
+  photos:
+  - image: media/proj_rotor/motor-1.webp
+    caption: The motor closed, with its pinion
+  - image: media/proj_rotor/motor-2.webp
+    caption: 'Housing removed: magnets around the rotor'
+  - image: media/proj_rotor/motor-3.webp
+    caption: Magnets, rotor and brush terminal
+  - image: media/proj_rotor/motor-4.webp
+    caption: End contact and the rotor
+  - image: media/proj_rotor/motor-5.webp
+    caption: Commutator end with the brush holder
+  - image: media/proj_rotor/motor-6.webp
+    caption: Rotor, bush and pinion
+  - image: media/proj_rotor/motor-7.webp
+    caption: The back of the motor
+  - image: media/proj_rotor/motor-8.webp
+    caption: Front view with the pinion
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: ROTOR
+    value: Part1 rotor.SLDPRT · 7.3 MB
+  - label: MOTOR ASSY
+    value: DC Motor Assem2.SLDASM
+  - label: PARTS
+    value: Housing · rotor · cover · end contact · magnet · spacer · two brush parts · spur gear
+  - label: EXCHANGE
+    value: STEP · rotor 10.3 MB · motor 15.6 MB
+  - label: WEB MODEL
+    value: GLB · 0.3 MB · rotor
+  - label: RENDERS
+    value: KeyShot · 3 rotor and 8 motor stills
+  - label: SCENES
+    value: KeyShot .bip for the rotor and the motor
+  - label: RECORDING
+    value: Screen recording of the work · May 2023

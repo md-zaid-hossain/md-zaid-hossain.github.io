@@ -1,0 +1,114 @@
+# Project page /projects/haas-vf2-cnc-milling/ · part no. MZH-P-008
+# key: used by the build, keep it
+'no': 8
+slug: haas-vf2-cnc-milling
+key: haas-vf2
+title: HAAS VF-2 CNC milling
+crumb: HAAS VF-2 CNC MILLING
+tags:
+- TRAINING · IEM, KUET
+- FUSION CAM · HAAS VF-2
+- SEP 2025
+lead: 'When the department installed a HAAS VF-2 milling machine, HAAS ran a five-day hands-on training. I modelled a test plate, planned its
+  toolpaths in Fusion CAM, posted the NC program for the VF-2 and cut the part in aluminium: the first design of mine to come off a CNC machine.
+  The CAM steps were the ones I had practised in simulation in the CAM sessional that January.'
+card:
+  category: TRAINING · KUET
+  filter: training
+  title: HAAS VF-2 CNC Milling
+  text: Machine model, toolpaths and NC program for a milling job, simulated before cutting.
+  tools:
+  - Fusion 360
+  - CAM
+  - NC code
+  image: media/cards/haas-vf2.webp
+hero:
+  render: media/proj_haas/hero-machine.webp
+  render_label: AT THE VF-2
+  render_alt: Zaid holding the finished part in front of the HAAS VF-2
+  still_cap: PHOTO · CUT IN ALUMINIUM
+  still:
+    label: THE PART
+    image: media/proj_haas/hero-part.webp
+    alt: The finished aluminium test plate with its pockets and drilled holes
+spec:
+- label: TYPE
+  value: Hands-on training <em>· five days, run by HAAS</em>
+- label: WHERE
+  value: Department of IEM, KUET
+- label: DATE
+  value: Sep 2025 <em>· CAM sessional practice Jan 2025</em>
+- label: MACHINE
+  value: HAAS VF-2 vertical machining centre <em>· BT40 tool holders, vise on the table</em>
+- label: SOFTWARE
+  value: Fusion 360 <em>· CAM, simulation, HAAS post processor</em>
+- label: TOOLS
+  value: 50 mm face mill, 4 mm bull nose and flat end mills, 8 mm drill
+stats:
+- value: '5'
+  label: days of training
+- value: '4'
+  label: cutting tools
+- value: '6'
+  label: toolpaths in the lab part
+- value: Aluminium
+  label: first CNC part
+sections:
+- kind: photos
+  tag: PLAN
+  title: From CAM to the machine
+  gid: ph-pl
+  photos:
+  - image: media/exp/exp-cnc-01-fusion-machine.webp
+    caption: HAAS VF-2 set up as the machine in Fusion CAM
+  - image: media/exp/exp-cnc-02-cam-simulation.webp
+    caption: 'Toolpath simulation: face, pockets, drills, adaptive clearing'
+  - image: media/exp/exp-cnc-03-nc-program.webp
+    caption: The posted NC program for the VF-2
+- kind: photos
+  tag: SET UP AND CUT
+  title: On the machine
+  gid: ph-ct
+  photos:
+  - image: media/exp/exp-cnc-04-vf2-vise.webp
+    caption: The VF-2 with the vise on the table
+  - image: media/exp/exp-cnc-05-bt40-holder.webp
+    caption: BT40 tool holder
+  - image: media/exp/exp-cnc-06-end-mill-collet.webp
+    caption: 4 mm end mill in its collet
+  - image: media/exp/exp-cnc-07-control-running.webp
+    caption: The program running on the HAAS control
+  - image: media/exp/exp-cnc-08-face-milling.webp
+    caption: Face milling the stock
+  - image: media/exp/exp-cnc-09-coolant-cut.webp
+    caption: Pocketing with flood coolant
+  - image: media/exp/exp-cnc-10-small-end-mill.webp
+    caption: Detail work with the small end mill
+  - image: media/exp/exp-cnc-10b-unclamp-part.webp
+    caption: Taking the cut part out of the vise
+- kind: clip
+  tag: CAM SESSIONAL · JAN 2025
+  title: 'Practice first: a toolpath simulation'
+  text: 'Lab 01 of the CAM and Robotics sessional (IPE 4228): a bracket machined in Fusion simulation with six toolpaths (three facing passes,
+    a 2D contour and two adaptive clearing passes) and three tools, a 30 mm face mill and 10 mm and 3 mm flat end mills, at 5000 rpm. The posted
+    program runs to 11,849 lines. The clip plays the 75 second recording at double speed.'
+  video: media/proj_haas/toolpath-sim.mp4
+  poster: media/proj_haas/toolpath-sim-poster.jpg
+  cap: FUSION CAM · SIMULATION · 2× SPEED
+  wide: true
+- kind: files
+  tag: FILES
+  title: What is in the folder
+  rows:
+  - label: FUSION
+    value: Experiment 01.00 v1 · f3d <em>· setup, toolpaths, simulation</em>
+  - label: NC PROGRAM
+    value: 01.eia · 11,849 lines
+  - label: RECORDING
+    value: Toolpath simulation · 1 min 21 s
+  - label: TRAINING PART
+    value: NC program 5001 for the VF-2 · 4 tools
+  - label: PHOTOS
+    value: 31 from the training, 11 on this page
+  - label: MACHINE
+    value: HAAS VF-2 · Department of IEM, KUET

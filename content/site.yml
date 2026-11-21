@@ -1,0 +1,23 @@
+# Site-wide settings. The phone number is never shown.
+name: Md. Zaid Hossain
+url: https://md-zaid-hossain.github.io
+email: mdzaideng@gmail.com
+location: Dhaka, Bangladesh
+role: Industrial Engineer · Operations Research & Optimization · Additive Manufacturing & CAD/CAM · Ergonomics & Worker Safety
+description: 'Portfolio of Md. Zaid Hossain, industrial engineer: operations research and optimization, additive manufacturing and CAD/CAM, ergonomics
+  and worker safety.'
+cv: media/cv/Md_Zaid_Hossain_CV.pdf
+share_image: media/site/share_image.jpg
+profiles:
+- label: GitHub
+  url: https://github.com/md-zaid-hossain
+- label: LinkedIn
+  url: https://www.linkedin.com/in/md-zaid-hossain
+- label: ResearchGate
+  url: https://www.researchgate.net/profile/Md-Zaid-Hossain
+- label: Google Scholar
+  url: https://scholar.google.com/citations?user=Fu6JmxIAAAAJ
+- label: ORCID
+  url: https://orcid.org/0009-0003-3301-3609
+- label: GrabCAD
+  url: https://grabcad.com/md.zaid.hossain-1

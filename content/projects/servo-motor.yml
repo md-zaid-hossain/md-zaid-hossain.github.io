@@ -1,0 +1,99 @@
+# Project page /projects/servo-motor/ · part no. MZH-P-012
+# key: used by the build, keep it
+'no': 12
+slug: servo-motor
+key: servo
+title: Servo motor
+crumb: SERVO MOTOR
+tags:
+- PERSONAL
+- SOLIDWORKS
+- AUG 2023
+lead: A micro servo modelled in SOLIDWORKS with a clear housing, so the gear train, the DC motor and the output horn can be seen together. The
+  gears are ISO spur gears with a 0.25 mm module, and the motor inside reuses my DC motor model, scaled down.
+card:
+  category: PERSONAL
+  filter: self
+  title: Servo Motor
+  text: Micro-servo with its internal gear train shown through a clear housing.
+  tools:
+  - SOLIDWORKS
+  image: media/cards/servo.webp
+hero:
+  turntable: media/proj_servo/turntable.webp
+  glb: GLB 0.6 MB
+  render: media/proj_servo/sw-1.webp
+  render_label: SOLIDWORKS
+  render_alt: Servo motor in SOLIDWORKS with a clear housing showing the gear train
+  model: media/proj_servo/servo.glb
+spec:
+- label: TYPE
+  value: Personal project <em>· gear trains and small mechanisms</em>
+- label: DATE
+  value: Aug 2023
+- label: SOFTWARE
+  value: SOLIDWORKS
+- label: GEARS
+  value: ISO spur gears, module 0.25 mm, 39 and 10 teeth <em>· plus one modelled gear</em>
+- label: PARTS
+  value: 3 housing covers, shaft, horn, screw, motor <em>· 3 gear sub-assemblies</em>
+- label: OUTPUT
+  value: Parts, assembly, STEP, 4 views, LinkedIn post
+stats:
+- value: 0.25 mm
+  label: gear module
+- value: '3'
+  label: gear sub-assemblies
+- value: 17 s
+  label: recording
+- value: 0.6 MB
+  label: web 3D model
+sections:
+- kind: clip
+  tag: IN MOTION
+  title: Through the clear housing
+  text: 'A 17-second recording of the assembly in SOLIDWORKS, seen through the clear housing: the horn on top, the gear stages under it and the
+    small DC motor at the bottom, all in one compact case.'
+  video: media/proj_servo/gear-train.mp4
+  poster: media/proj_servo/gear-train-poster.jpg
+  cap: SOLIDWORKS · AUG 2023 · 17 S
+- kind: photos
+  tag: IN SOLIDWORKS
+  title: Four views
+  gid: ps-sw
+  photos:
+  - image: media/proj_servo/sw-1.webp
+    caption: Horn, gear train and motor
+  - image: media/proj_servo/sw-2.webp
+    caption: Front view
+  - image: media/proj_servo/sw-3.webp
+    caption: Gear stages and motor from the side
+  - image: media/proj_servo/sw-4.webp
+    caption: The housing from below
+- kind: photos
+  tag: SHARED
+  title: The LinkedIn post
+  gid: ps-li
+  photos:
+  - image: media/proj_servo/post-cover.webp
+    caption: Cover image of my LinkedIn post on the servo motor
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: MAIN ASSY
+    value: Assem1.SLDASM
+  - label: SUB-ASSY
+    value: gear_sub1 · gear_sub2 · gear_sub3
+  - label: PARTS
+    value: Top, middle and bottom cover · shaft · gear4 · screw · horn · two more parts
+  - label: MOTOR
+    value: DC Motor as part · Rotor Scaling (from the DC motor model)
+  - label: STANDARD
+    value: ISO spur gears 0.25M · 39T and 10T
+  - label: EXCHANGE
+    value: STEP · whole assembly · 23 MB
+  - label: WEB MODEL
+    value: GLB · 0.6 MB
+  - label: VIDEO
+    value: Post video · Aug 2023 · edited version Mar 2025

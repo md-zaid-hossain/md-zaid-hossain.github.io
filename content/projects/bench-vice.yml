@@ -1,0 +1,105 @@
+# Project page /projects/bench-vice/ · part no. MZH-P-007
+# key: used by the build, keep it
+'no': 7
+slug: bench-vice
+key: vice
+title: 3D-printed bench vice
+crumb: 3D-PRINTED BENCH VICE
+tags:
+- ACADEMIC LAB · IPE 4226
+- SOLIDWORKS · CREALITY SLICER
+- JAN 2025
+lead: 'A working vice for accurate alignment, made for the Tool Engineering sessional by our group B1: a body with a fixed jaw, a sliding jaw
+  driven by a printed lead screw, and a handle. Modelled and drawn in SOLIDWORKS, sliced in Creality Slicer and printed in PLA on the lab''s Creality
+  CR-10 Smart.'
+card:
+  category: 3D PRINTING
+  filter: additive
+  title: 3D-Printed Bench Vice
+  text: Working vice with a printed lead screw and sliding jaw. Sliced in Creality Slicer and printed on a Creality CR-10 Smart.
+  tools:
+  - SOLIDWORKS
+  - Creality Slicer
+  - FDM
+  image: media/cards/vice.webp
+hero:
+  turntable: media/proj_vice/turntable.webp
+  glb: GLB 0.2 MB
+  render: media/proj_vice/hero.webp
+  render_label: PRINT
+  render_alt: The printed vice, white body with a green sliding jaw and screw
+  model: media/proj_vice/vice.glb
+spec:
+- label: TYPE
+  value: Academic lab <em>· group B1</em>
+- label: COURSE
+  value: IPE 4226 Tool Engineering Sessional, lab 03 <em>· KUET</em>
+- label: DATE
+  value: Jan 2025
+- label: SOFTWARE
+  value: SOLIDWORKS · Creality Slicer 4.8
+- label: PRINT
+  value: Creality CR-10 Smart <em>· PLA, 0.3 mm layers, about 13 h and 84 m of filament</em>
+- label: DRAWINGS
+  value: 'Three sheets: assembly, body, screw and jaw details'
+stats:
+- value: '7'
+  label: components
+- value: '3'
+  label: drawing sheets
+- value: 13 h
+  label: print time
+- value: 0.2 MB
+  label: web 3D model
+sections:
+- kind: photos
+  tag: THE PRINT
+  title: The printed vice
+  gid: pv-pr
+  photos:
+  - image: media/proj_vice/print-1.webp
+    caption: Body, sliding jaw and screw
+  - image: media/proj_vice/print-2.webp
+    caption: The jaw closed on the screw
+  - image: media/proj_vice/print-3.webp
+    caption: From above, with the handle
+  - image: media/proj_vice/print-4.webp
+    caption: On the desk, side view
+- kind: photos
+  tag: IN SOLIDWORKS
+  title: The assembly
+  gid: pv-sw
+  photos:
+  - image: media/proj_vice/sw-1.webp
+    caption: Body, jaw, screw and handle
+  - image: media/proj_vice/sw-2.webp
+    caption: From the handle side
+  - image: media/proj_vice/sw-3.webp
+    caption: Top view
+- kind: photos
+  tag: DRAWINGS
+  title: Three drawing sheets
+  gid: pv-dr
+  photos:
+  - image: media/proj_vice/drw-1.webp
+    caption: 'Sheet 1: assembly with the parts list'
+  - image: media/proj_vice/drw-2.webp
+    caption: 'Sheet 2: the body'
+  - image: media/proj_vice/drw-3.webp
+    caption: 'Sheet 3: screw, jaw and small parts'
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: MAIN ASSY
+    value: Assemble, vice for accurate alignment · SLDASM
+  - label: PARTS
+    value: Part2 × 2 · Part3 · Part6 · Part7 · Part9 · Part10
+  - label: DRAWINGS
+    value: Sheet01 to Sheet03 · SLDDRW and PDF
+  - label: EXCHANGE
+    value: STEP · 2.9 MB · STL for each part
+  - label: G-CODE
+    value: Creality Slicer · one print job
+  - label: WEB MODEL
+    value: GLB · 0.2 MB

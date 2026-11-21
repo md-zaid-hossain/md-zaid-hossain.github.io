@@ -1,0 +1,97 @@
+# Project page /projects/3-2-1-pin-locator/ · part no. MZH-P-006
+# key: used by the build, keep it
+'no': 6
+slug: 3-2-1-pin-locator
+key: pin-locator
+title: 3-2-1 pin locator
+crumb: 3-2-1 PIN LOCATOR
+tags:
+- ACADEMIC LAB · IPE 4226
+- SOLIDWORKS · CURA
+- DEC 2024
+lead: A fixture that locates a cube workpiece against three faces, following the 3-2-1 locating principle, with pins on three axes. Modelled and
+  drawn on A3 sheets in SOLIDWORKS for the Tool Engineering sessional by our group B1, then sliced in Cura and printed on the lab's Ultimaker
+  3 Extended.
+card:
+  category: ACADEMIC LAB · IPE 4226
+  filter: academic
+  title: 3-2-1 Pin Locator
+  text: Fixture for exact workpiece location, modelled, drawn and 3D printed in the Tool Engineering lab.
+  tools:
+  - SOLIDWORKS
+  - Drawing
+  - 3D print
+  image: media/cards/pin-locator.webp
+hero:
+  turntable: media/proj_pinlocator/turntable.webp
+  glb: GLB 0.02 MB
+  render: media/proj_pinlocator/hero.webp
+  render_label: PRINT
+  render_alt: The printed 3-2-1 pin locator with its pins, on its drawing
+  model: media/proj_pinlocator/pin.glb
+spec:
+- label: TYPE
+  value: Academic lab <em>· group B1</em>
+- label: COURSE
+  value: IPE 4226 Tool Engineering Sessional, lab 01 <em>· KUET</em>
+- label: DATE
+  value: Dec 2024
+- label: SOFTWARE
+  value: SOLIDWORKS · Cura 5.3
+- label: PRINTER
+  value: Ultimaker 3 Extended <em>· 0.4 mm nozzle</em>
+- label: PRINT TIME
+  value: Locator body 4 h 26 min
+stats:
+- value: '3'
+  label: locating axes
+- value: '2'
+  label: A3 drawings
+- value: 4 h 26 min
+  label: print of the body
+- value: 0.02 MB
+  label: web 3D model
+sections:
+- kind: photos
+  tag: THE PRINT
+  title: Printed fixture and workpiece
+  gid: pl-pr
+  photos:
+  - image: media/proj_pinlocator/print-1.webp
+    caption: The fixture with the workpiece and pins in place
+  - image: media/proj_pinlocator/print-2.webp
+    caption: Fixture, workpiece and the three pins apart
+- kind: photos
+  tag: DRAWINGS
+  title: A3 drawing sheets
+  gid: pl-dr
+  photos:
+  - image: media/proj_pinlocator/drw-1.webp
+    caption: Assembly sheet with the parts list
+  - image: media/proj_pinlocator/drw-2.webp
+    caption: Detail sheet with all dimensions
+- kind: photos
+  tag: MODEL AND SLICING
+  title: From model to printer
+  gid: pl-sl
+  photos:
+  - image: media/proj_pinlocator/sw.webp
+    caption: Four views of the assembly in SOLIDWORKS
+  - image: media/proj_pinlocator/slice.webp
+    caption: Sliced for printing, with supports
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: MAIN ASSY
+    value: Ass 3 2 1 Pin Locator.SLDASM
+  - label: PARTS
+    value: PIN locator body · WP workpiece · Axis pin
+  - label: DRAWINGS
+    value: A3 assembly and A3 detail sheets · SLDDRW and PDF
+  - label: EXCHANGE
+    value: STEP · STL for each part
+  - label: G-CODE
+    value: Ultimaker 3 Extended · body and workpiece
+  - label: WEB MODEL
+    value: GLB · 0.02 MB

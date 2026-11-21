@@ -1,0 +1,72 @@
+# Project page /projects/bicycle/ · part no. MZH-P-014
+# key: used by the build, keep it
+'no': 14
+slug: bicycle
+key: bicycle
+title: Bicycle
+crumb: BICYCLE
+tags:
+- PERSONAL
+- SOLIDWORKS
+- OCT 2021
+lead: 'A BMX-style bicycle assembled in SOLIDWORKS from nine parts: frame, steering with the handlebar, two spoked wheels with tyres, sprocket,
+  chain, pedal and seat. Started in October 2021; the STEP file was exported in 2025.'
+card:
+  category: PERSONAL
+  filter: self
+  title: Bicycle
+  text: 'BMX-style bicycle assembly: frame, wheels, drive train and controls.'
+  tools:
+  - SOLIDWORKS
+  image: media/cards/bicycle.webp
+hero:
+  turntable: media/proj_bicycle/turntable.webp
+  glb: GLB 0.7 MB
+  render: media/proj_bicycle/hero.webp
+  render_label: SOLIDWORKS
+  render_alt: BMX-style bicycle in SOLIDWORKS with purple tyres and seat
+  model: media/proj_bicycle/bike.glb
+spec:
+- label: TYPE
+  value: Personal project <em>· practice in assemblies</em>
+- label: DATE
+  value: Oct 2021 <em>· first parts</em> · Mar 2025 <em>· STEP export</em>
+- label: SOFTWARE
+  value: SOLIDWORKS
+- label: PARTS
+  value: 9 <em>· steering, frame, two tyres, sprocket, seat, pedal, chain, pin</em>
+- label: OUTPUT
+  value: Parts, assembly, STEP, 3 views
+stats:
+- value: '9'
+  label: parts I modelled
+- value: '2'
+  label: spoked wheels
+- value: 30 MB
+  label: STEP assembly
+- value: 0.7 MB
+  label: web 3D model
+sections:
+- kind: photos
+  tag: IN SOLIDWORKS
+  title: Three views
+  gid: pb-sw
+  photos:
+  - image: media/proj_bicycle/sw-1.webp
+    caption: The full bicycle
+  - image: media/proj_bicycle/sw-2.webp
+    caption: Rear wheel, pedal and frame
+  - image: media/proj_bicycle/sw-3.webp
+    caption: Handlebar, seat and pedal from the front
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: MAIN ASSY
+    value: Bicycle.SLDASM
+  - label: PARTS
+    value: Steering · frame · tyre · front tyre · sprocket · seat · paddle · inner chain · pin
+  - label: EXCHANGE
+    value: STEP · whole assembly · 30 MB
+  - label: WEB MODEL
+    value: GLB · 0.7 MB

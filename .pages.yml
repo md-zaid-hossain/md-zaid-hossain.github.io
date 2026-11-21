@@ -1,0 +1,789 @@
+# Pages CMS (https://pagescms.org): the browser editor for this site.
+# Open app.pagescms.org, sign in with GitHub, pick this repository: these forms appear.
+# Saving commits the change; GitHub Actions then rebuilds and publishes the site in about 2 minutes.
+# Made by tools/make_pages_yml.py from content/*.yml (every key has a field, hidden ones are ids the build needs).
+# Education and routines are not in the editor: their shape is too nested for forms. Change them through Claude or by hand.
+media:
+  input: media
+  output: media
+content:
+- name: projects
+  label: Projects
+  type: collection
+  path: content/projects
+  format: yaml
+  filename: '{fields.slug}.yml'
+  view:
+    fields:
+    - title
+    - 'no'
+    sort:
+    - 'no'
+  fields:
+  - name: 'no'
+    label: Part number
+    type: number
+    required: true
+  - name: slug
+    label: Web address (projects/<this>/), small letters and dashes
+    type: string
+    required: true
+  - name: key
+    label: Key
+    hidden: true
+    type: string
+  - name: title
+    label: Title
+    type: string
+  - name: crumb
+    label: Breadcrumb (CAPITALS)
+    type: string
+  - name: tags
+    label: Tags
+    type: string
+    list: true
+  - name: lead
+    label: Intro
+    type: text
+  - name: card
+    label: Card
+    type: object
+    fields:
+    - name: category
+      label: Category
+      type: string
+    - name: filter
+      label: Filter
+      type: string
+    - name: title
+      label: Title
+      type: string
+    - name: text
+      label: Text
+      type: text
+    - name: tools
+      label: Tools
+      type: string
+      list: true
+    - name: image
+      label: Picture
+      type: image
+  - name: hero
+    label: Hero
+    type: object
+    fields:
+    - name: turntable
+      label: Turntable sprite (9 x 8 frames)
+      type: image
+    - name: glb
+      label: Glb
+      hidden: true
+      type: string
+    - name: render
+      label: Render
+      type: image
+    - name: render_label
+      label: Render label
+      type: string
+    - name: render_alt
+      label: Render alt
+      type: string
+    - name: model
+      label: 3D model (GLB)
+      type: file
+    - name: still_cap
+      label: Still cap
+      type: string
+    - name: still
+      label: Still
+      type: object
+      fields:
+      - name: label
+        label: Label
+        type: string
+      - name: image
+        label: Picture
+        type: image
+      - name: alt
+        label: Alt
+        type: string
+  - name: spec
+    label: Spec
+    type: object
+    fields:
+    - name: label
+      label: Label
+      type: string
+    - name: value
+      label: Value
+      type: string
+    list: true
+  - name: stats
+    label: Stats
+    type: object
+    fields:
+    - name: value
+      label: Value
+      type: string
+    - name: label
+      label: Label
+      type: string
+    list: true
+  - name: sections
+    label: Sections
+    type: object
+    fields:
+    - name: kind
+      label: Kind
+      hidden: true
+      type: string
+    - name: tag
+      label: Label (CAPITALS)
+      type: string
+    - name: title
+      label: Title
+      type: string
+    - name: gid
+      label: Gid
+      hidden: true
+      type: string
+    - name: photos
+      label: Photos
+      type: object
+      fields:
+      - name: image
+        label: Picture
+        type: image
+      - name: caption
+        label: Caption
+        type: string
+      list: true
+    - name: rows
+      label: Rows
+      type: object
+      fields:
+      - name: label
+        label: Label
+        type: string
+      - name: value
+        label: Value
+        type: string
+      list: true
+    - name: text
+      label: Text
+      type: text
+    - name: video
+      label: Video
+      type: file
+    - name: poster
+      label: Poster
+      type: image
+    - name: cap
+      label: Caption
+      type: string
+    - name: wide
+      label: Wide
+      hidden: true
+      type: boolean
+    - name: note
+      label: Note
+      type: text
+    - name: steps
+      label: Steps
+      type: string
+      list: true
+    list: true
+  - name: own_layout
+    label: Own layout
+    hidden: true
+    type: boolean
+  - name: chain_title
+    label: Chain title
+    hidden: true
+    type: string
+  - name: note
+    label: Note
+    type: text
+- name: gallery
+  label: Gallery
+  type: file
+  path: content/gallery.yml
+  format: yaml
+  fields:
+  - name: chapters
+    label: Chapters
+    type: object
+    fields:
+    - name: chapter
+      label: Chapter
+      hidden: true
+      type: string
+    - name: label
+      label: Label
+      type: string
+    - name: subtitle
+      label: Subtitle
+      type: string
+    - name: albums
+      label: Albums
+      type: object
+      fields:
+      - name: key
+        label: Key
+        hidden: true
+        type: string
+      - name: code
+        label: Code
+        type: string
+      - name: title
+        label: Title
+        type: string
+      - name: place
+        label: Place
+        type: string
+      - name: date
+        label: Date (e.g. FEB 2023)
+        type: string
+      - name: story
+        label: Story
+        type: text
+      - name: credit
+        label: Photo credit (third-party photos)
+        type: string
+      - name: photos
+        label: Photos
+        type: object
+        fields:
+        - name: image
+          label: Picture
+          type: image
+        - name: caption
+          label: Caption
+          type: string
+        - name: focus
+          label: Crop focus (e.g. 50% 45%)
+          type: string
+        - name: id
+          label: Id
+          hidden: true
+          type: string
+        list: true
+      - name: ratio
+        label: Ratio
+        hidden: true
+        type: string
+      - name: featured
+        label: Featured
+        hidden: true
+        type: number
+      - name: rest_label
+        label: Rest label
+        type: string
+      - name: rest_caption
+        label: Rest caption
+        type: string
+      list: true
+    list: true
+  - name: other_images
+    label: Other images
+    hidden: true
+    type: object
+    fields:
+    - name: b6-1
+      label: B6-1
+      type: image
+    - name: b6-2
+      label: B6-2
+      type: image
+    - name: b6-3
+      label: B6-3
+      type: image
+- name: awards
+  label: Awards and certificates
+  type: file
+  path: content/awards.yml
+  format: yaml
+  fields:
+  - name: competitions
+    label: Competitions
+    type: object
+    fields:
+    - name: rank
+      label: Rank
+      type: string
+    - name: event
+      label: Event
+      type: string
+    - name: organiser
+      label: Organiser
+      type: string
+    - name: date
+      label: Date (e.g. FEB 2023)
+      type: string
+    - name: key
+      label: Key
+      hidden: true
+      type: string
+    - name: certificate
+      label: Certificate
+      type: image
+    list: true
+  - name: scholarship
+    label: Scholarship
+    type: object
+    fields:
+    - name: when
+      label: When
+      type: string
+    - name: title
+      label: Title
+      type: string
+    - name: event
+      label: Event
+      type: string
+    - name: org
+      label: Org
+      type: string
+    - name: team
+      label: Team
+      type: string
+    - name: team_members
+      label: Team members
+      type: object
+      fields:
+      - name: name
+        label: Name
+        type: string
+      - name: url
+        label: Link
+        type: string
+      list: true
+    - name: post
+      label: Post
+      type: string
+    - name: poster
+      label: Poster
+      type: image
+    - name: tag_box
+      label: Tag box
+      hidden: true
+      type: number
+      list: true
+    - name: amount
+      label: Amount
+      type: string
+    - name: amount_note
+      label: Amount note
+      type: string
+  - name: certificate_groups
+    label: Certificate groups
+    type: object
+    fields:
+    - name: id
+      label: Id
+      hidden: true
+      type: string
+    - name: number
+      label: Number
+      hidden: true
+      type: string
+    - name: title
+      label: Title
+      type: string
+    - name: short
+      label: Short
+      type: string
+    - name: count
+      label: Count
+      hidden: true
+      type: number
+    - name: certificates
+      label: Certificates
+      type: object
+      fields:
+      - name: key
+        label: Key
+        hidden: true
+        type: string
+      - name: code
+        label: Code
+        type: string
+      - name: name
+        label: Name
+        type: string
+      - name: issuer
+        label: Issuer
+        type: string
+      - name: date
+        label: Date (e.g. FEB 2023)
+        type: string
+      - name: links
+        label: Links
+        type: object
+        fields:
+        - name: label
+          label: Label
+          type: string
+        - name: url
+          label: Link
+          type: string
+        list: true
+      - name: image
+        label: Picture
+        type: image
+      - name: note
+        label: Note
+        type: string
+      list: true
+    list: true
+  - name: other_images
+    label: Other images
+    hidden: true
+    type: object
+    fields:
+    - name: csca-post
+      label: Csca-post
+      type: image
+- name: research
+  label: Research
+  type: file
+  path: content/research.yml
+  format: yaml
+  fields:
+  - name: published
+    label: Published
+    type: object
+    fields:
+    - name: key
+      label: Key
+      hidden: true
+      type: string
+    - name: kind
+      label: Kind
+      hidden: true
+      type: string
+    - name: year
+      label: Year
+      type: string
+    - name: tags
+      label: Tags
+      type: string
+      list: true
+    - name: title
+      label: Title
+      type: text
+    - name: venue
+      label: Venue
+      type: string
+    - name: authors
+      label: Authors
+      type: string
+    - name: doi
+      label: DOI
+      type: string
+    - name: metric
+      label: Metric
+      type: object
+      fields:
+      - name: value
+        label: Value
+        type: string
+      - name: label
+        label: Label
+        type: string
+    - name: q
+      label: Q
+      hidden: true
+      type: text
+    - name: m
+      label: M
+      hidden: true
+      type: text
+    - name: f
+      label: F
+      hidden: true
+      type: text
+    - name: nums
+      label: Nums
+      type: object
+      fields:
+      - name: value
+        label: Value
+        type: string
+      - name: label
+        label: Label
+        type: string
+      list: true
+    - name: video
+      label: Video
+      type: string
+    - name: vidcap
+      label: Vidcap
+      type: string
+    - name: how
+      label: How
+      type: string
+    - name: howcap
+      label: Howcap
+      type: string
+    - name: fig
+      label: Fig
+      type: string
+    - name: figcap
+      label: Figcap
+      type: string
+    - name: look
+      label: Look
+      hidden: true
+      type: string
+    - name: abstract
+      label: Abstract
+      type: text
+    - name: pdf
+      label: Paper PDF
+      type: string
+    list: true
+  - name: in_progress
+    label: In progress
+    type: object
+    fields:
+    - name: tag
+      label: Label (CAPITALS)
+      type: string
+    - name: title
+      label: Title
+      type: text
+    - name: who
+      label: Who
+      type: string
+    - name: text
+      label: Text
+      type: text
+    - name: nums
+      label: Nums
+      type: object
+      fields:
+      - name: value
+        label: Value
+        type: string
+      - name: label
+        label: Label
+        type: string
+      list: true
+    - name: note
+      label: Note
+      type: text
+    list: true
+  - name: figures
+    label: Figures
+    type: object
+    fields:
+    - name: wmsd3
+      label: Wmsd3
+      type: image
+    - name: wmsd10
+      label: Wmsd10
+      type: image
+    - name: array5
+      label: Array5
+      type: image
+    - name: qpain6
+      label: Qpain6
+      type: image
+    - name: sop2
+      label: Sop2
+      type: image
+    - name: wmsd1
+      label: Wmsd1
+      type: image
+    - name: array1
+      label: Array1
+      type: image
+    - name: qpain1
+      label: Qpain1
+      type: image
+    - name: sop1
+      label: Sop1
+      type: image
+    - name: video
+      label: Video
+      type: file
+      list: true
+- name: experience
+  label: Experience
+  type: file
+  path: content/experience.yml
+  format: yaml
+  fields:
+  - name: roles
+    label: Roles
+    type: object
+    fields:
+    - name: key
+      label: Key
+      hidden: true
+      type: string
+    - name: start
+      label: Start
+      type: string
+    - name: end
+      label: End (empty = now)
+      type: string
+    - name: title
+      label: Title
+      type: string
+    - name: org
+      label: Org
+      type: string
+    - name: place
+      label: Place
+      type: string
+    - name: note
+      label: Note
+      type: text
+    - name: do
+      label: What I do
+      type: text
+      list: true
+    - name: tools
+      label: Tools
+      type: string
+    - name: links
+      label: Links
+      type: object
+      fields:
+      - name: label
+        label: Label
+        type: string
+      - name: url
+        label: Link
+        type: string
+      list: true
+    list: true
+  - name: client_jobs
+    label: Client jobs
+    type: object
+    fields:
+    - name: year
+      label: Year
+      type: string
+    - name: job
+      label: Job
+      type: string
+    - name: delivered
+      label: Delivered
+      type: string
+    list: true
+  - name: campus
+    label: Campus
+    type: object
+    fields:
+    - name: when
+      label: When
+      type: string
+    - name: title
+      label: Title
+      type: string
+    - name: org
+      label: Org
+      type: string
+    - name: text
+      label: Text
+      type: text
+    - name: cert
+      label: Cert
+      type: string
+    list: true
+  - name: training
+    label: Training
+    type: object
+    fields:
+    - name: when
+      label: When
+      type: string
+    - name: title
+      label: Title
+      type: string
+    - name: org
+      label: Org
+      type: string
+    - name: text
+      label: Text
+      type: text
+    - name: photos
+      label: Photos
+      type: string
+    list: true
+  - name: photos
+    label: Photos
+    type: object
+    fields:
+    - name: cnc
+      label: Cnc
+      type: object
+      fields:
+      - name: image
+        label: Picture
+        type: image
+      - name: step
+        label: Step
+        type: string
+      - name: caption
+        label: Caption
+        type: string
+      list: true
+    - name: bootcamp
+      label: Bootcamp
+      type: object
+      fields:
+      - name: image
+        label: Picture
+        type: image
+      - name: step
+        label: Step
+        type: string
+      - name: caption
+        label: Caption
+        type: string
+      list: true
+- name: site
+  label: Site settings
+  type: file
+  path: content/site.yml
+  format: yaml
+  fields:
+  - name: name
+    label: Name
+    type: string
+  - name: url
+    label: Link
+    type: string
+  - name: email
+    label: Email
+    type: string
+  - name: location
+    label: Location
+    type: string
+  - name: role
+    label: Role
+    type: text
+  - name: description
+    label: Description
+    type: text
+  - name: cv
+    label: CV (PDF)
+    type: file
+  - name: share_image
+    label: Share image
+    type: image
+  - name: profiles
+    label: Profiles
+    type: object
+    fields:
+    - name: label
+      label: Label
+      type: string
+    - name: url
+      label: Link
+      type: string
+    list: true

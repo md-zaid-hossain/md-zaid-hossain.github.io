@@ -1,0 +1,110 @@
+# Project page /projects/gear-pinion-phone-holder/ · part no. MZH-P-005
+# key: used by the build, keep it
+'no': 5
+slug: gear-pinion-phone-holder
+key: gear-holder
+title: Gear-pinion phone holder
+crumb: GEAR-PINION PHONE HOLDER
+tags:
+- 3D PRINTING
+- SOLIDWORKS · CREALITY PRINT
+- SEP 2023
+lead: A phone stand where a curved rack holder sits in a toothed base, so the phone can be set upright or tilted back. The idea comes from an
+  open design on Thingiverse; I modelled my own version in SOLIDWORKS, added my Z mark and a personalised version for a friend, sliced it in Creality
+  Print and printed it on an Ender-3 V2 Neo.
+card:
+  category: 3D PRINTING
+  filter: additive
+  title: Gear-Pinion Phone Holder
+  text: Designed for printing, sliced in Creality and printed on an Ender-3 V2 Neo.
+  tools:
+  - SOLIDWORKS
+  - Creality
+  - FDM
+  image: media/cards/gear-holder.webp
+hero:
+  turntable: media/proj_gearholder/turntable.webp
+  glb: GLB 0.04 MB
+  render: media/proj_gearholder/hero.webp
+  render_label: PRINT
+  render_alt: The printed gear-pinion phone holder on a desk
+  model: media/proj_gearholder/gh.glb
+spec:
+- label: TYPE
+  value: Personal 3D printing project
+- label: CONCEPT
+  value: Geared smartphone holder, Thingiverse 4982411 <a class="evl" href="https://www.thingiverse.com/thing:4982411" target="_blank" rel="noopener">ORIGINAL
+    ↗</a>
+- label: MY PART
+  value: Own SOLIDWORKS model, Z mark, personalised version, slicing and printing
+- label: PRINTER
+  value: Ender-3 V2 Neo <em>· 0.4 mm nozzle, PLA 1.75 mm</em>
+- label: PRINT TIME
+  value: Base 5 h 22 min <em>· personalised base 6 h 56 min</em>
+- label: DATE
+  value: Sep 2023
+stats:
+- value: '2'
+  label: printed parts
+- value: 6 h 56 min
+  label: longest print
+- value: '2'
+  label: printed versions
+- value: 0.04 MB
+  label: web 3D model
+sections:
+- kind: photos
+  tag: THE PRINTS
+  title: Printed and in use
+  gid: pg-pr
+  photos:
+  - image: media/proj_gearholder/print-1.webp
+    caption: The first print, pink and silver PLA
+  - image: media/proj_gearholder/print-2.webp
+    caption: Holding a phone upright
+  - image: media/proj_gearholder/print-3.webp
+    caption: Tilted back for a phone on its side
+  - image: media/proj_gearholder/print-4.webp
+    caption: 'In hand: the rack teeth on the holder'
+  - image: media/proj_gearholder/print-5.webp
+    caption: The personalised green version
+  - image: media/proj_gearholder/print-6.webp
+    caption: The green version from the back
+- kind: photos
+  tag: IN SOLIDWORKS
+  title: My model of the two parts
+  gid: pg-sw
+  photos:
+  - image: media/proj_gearholder/sw-1.webp
+    caption: Holder and base, plain
+  - image: media/proj_gearholder/sw-2.webp
+    caption: The rack teeth along the curved holder
+  - image: media/proj_gearholder/sw-3.webp
+    caption: With my Z mark cut through the holder
+  - image: media/proj_gearholder/sw-4.webp
+    caption: Z marks on the holder and the base
+- kind: photos
+  tag: SLICING
+  title: Ready for the printer
+  gid: pg-sl
+  photos:
+  - image: media/proj_gearholder/slice-1.webp
+    caption: 'Sliced in Creality Print: the layers'
+  - image: media/proj_gearholder/slice-2.webp
+    caption: 'Sliced in Creality Print: walls and infill'
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: MODEL
+    value: Assem1.SLDASM · Base.SLDPRT · Holder.SLDPRT
+  - label: EXCHANGE
+    value: STEP · 3.2 MB · STL for both parts
+  - label: SLICING
+    value: Creality Print projects · G-code for the Ender-3 V2 Neo
+  - label: VERSIONS
+    value: Plain, Z mark, personalised
+  - label: ORIGINAL
+    value: Thingiverse 4982411 files kept apart, for reference
+  - label: WEB MODEL
+    value: GLB · 0.04 MB

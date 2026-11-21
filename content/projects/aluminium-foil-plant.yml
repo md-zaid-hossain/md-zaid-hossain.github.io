@@ -1,0 +1,115 @@
+# Project page /projects/aluminium-foil-plant/ · part no. MZH-P-001
+# key: used by the build, keep it
+'no': 1
+slug: aluminium-foil-plant
+key: foil-plant
+title: Aluminium foil plant, 50 TPD
+crumb: ALUMINIUM FOIL PLANT
+tags:
+- CLIENT
+- SOLIDWORKS 2024 · C# API
+- NOV 2026
+lead: 'A full 3D layout of a 50-tonne-per-day aluminium foil plant for a client: the 2.3 ha site, 12 buildings, roads and utilities, and the 12-step
+  production line from melting to dispatch. The model was built through the SOLIDWORKS API by PlantBuilder, a C# tool in my SOLIDWORKS automation
+  workspace, from a written plant specification, then turned into renders and walk-through videos.'
+card:
+  category: CLIENT · 2026
+  filter: client
+  title: Aluminium Foil Plant (50 TPD)
+  text: 'Full 3D site layout of a 50-tonne-per-day foil plant: 12-step process line from melting to dispatch, utilities and material flow.'
+  tools:
+  - SOLIDWORKS
+  - Plant layout
+  - Walk-through video
+  image: media/cards/foil-plant.webp
+hero:
+  turntable: media/proj_foil/turntable.webp
+  glb: GLB 1.5 MB
+  render: media/proj_foil/pkg-01.webp
+  render_alt: Aluminium foil plant 3D layout, overview
+  model: media/proj_foil/foil.glb
+spec:
+- label: TYPE
+  value: Client project <em>· plant layout, client name kept private</em>
+- label: DATE
+  value: Oct to Nov 2026 <em>· delivered 1 Nov 2026</em>
+- label: SOFTWARE
+  value: SOLIDWORKS 2024 · C# on the SOLIDWORKS API · motion studies
+- label: SITE
+  value: 230 m × 100 m <em>· 2.3 ha, 12 buildings</em>
+- label: OUTPUT
+  value: CAD, coloured STEP, eDrawings, 7 images, 4 videos, README
+stats:
+- value: 50 TPD
+  label: plant capacity
+- value: '12'
+  label: process steps
+- value: 2.3 ha
+  label: site
+- value: '4'
+  label: videos
+sections:
+- kind: clip
+  tag: THE REEL
+  title: The plant in 30 seconds
+  text: 'The portfolio reel: in through the main gate, along the 12 process steps in order, past dispatch, then up and back over the whole site.
+    Cut from three longer videos made for the client: a 60 s overview, a 120 s drive-through and a 3 min site walk, all filmed in SOLIDWORKS with
+    motion studies.'
+  video: media/proj_foil/reel-30s.mp4
+  poster: media/proj_foil/reel-poster.jpg
+  cap: PORTFOLIO REEL · 30 S
+  wide: true
+- kind: steps
+  tag: PROCESS LINE
+  title: Twelve steps, melting to dispatch
+  note: 'Twelve machine cells in one 154 m production hall: steps 1 to 6 along the north row, 7 to 12 along the south row.'
+  steps:
+  - Melting and holding furnace
+  - Continuous casting machine
+  - Hot rolling mill
+  - Cold rolling mill
+  - Foil rolling mill
+  - Finished goods store
+  - Annealing furnace
+  - Foil nerving mill
+  - Slitting and rewinding
+  - Laminating and embossing
+  - Foil separation and inspection
+  - Packing and dispatch
+- kind: photos
+  tag: CLIENT IMAGES
+  title: What the client received
+  gid: pf-img
+  photos:
+  - image: media/proj_foil/pkg-01.webp
+    caption: Overview of the site
+  - image: media/proj_foil/pkg-02.webp
+    caption: Overview with the material flow
+  - image: media/proj_foil/pkg-03.webp
+    caption: Overview with labels and legend
+  - image: media/proj_foil/pkg-04.webp
+    caption: Production hall close-up
+  - image: media/proj_foil/pkg-05.webp
+    caption: Top view with labels
+  - image: media/proj_foil/pkg-06.webp
+    caption: Production hall from above
+- kind: files
+  tag: DELIVERED
+  title: What was in the package
+  rows:
+  - label: CAD
+    value: Plant part, three label layers, presentation assembly · SOLIDWORKS 2024
+  - label: EXCHANGE
+    value: Coloured STEP, clean and labelled · eDrawings EASM
+  - label: IMAGES
+    value: '7 stills: overviews, flow, hall, top views, legend'
+  - label: VIDEOS
+    value: 60 s overview · 120 s drive-through · 3 min site walk · 30 s highlights
+  - label: SPEC
+    value: 'Plant specification: site, buildings, machine cells, colours'
+  - label: TOOL
+    value: PlantBuilder · C# console app on the SOLIDWORKS API
+  - label: WEB MODEL
+    value: GLB · 1.5 MB · coloured, roofs see-through
+  - label: README
+    value: Client package guide · PDF

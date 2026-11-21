@@ -1,0 +1,78 @@
+# Project page /projects/lathe-headstock-gearbox/ · part no. MZH-P-004
+# key: used by the build, keep it
+'no': 4
+slug: lathe-headstock-gearbox
+key: headstock
+title: Lathe head-stock gearbox
+crumb: LATHE HEAD-STOCK GEARBOX
+tags:
+- ACADEMIC LAB · IPE 4126
+- SOLIDWORKS
+- FEB 2024
+lead: 'The speed gearbox in the head-stock of the lab lathe, modelled in SOLIDWORKS for the first 4-1 lab: the box, four shafts, eleven spur gears
+  and an internal gear with a 0.25 mm module, and the levers that shift the gears for each speed. A SOLIDWORKS motion study turns the whole gear
+  train.'
+card:
+  category: ACADEMIC LAB · IPE 4126
+  filter: academic
+  title: Lathe Head-stock Gearbox
+  text: 'Speed gearbox modelled from the lab lathe: gear train, shafts and housing.'
+  tools:
+  - SOLIDWORKS
+  - Gear design
+  image: media/cards/headstock.webp
+hero:
+  turntable: media/proj_headstock/turntable.webp
+  glb: GLB 0.2 MB
+  render: media/proj_headstock/hero.webp
+  render_label: SOLIDWORKS
+  render_alt: Lathe head-stock gearbox in SOLIDWORKS with a see-through box
+  model: media/proj_headstock/hs.glb
+spec:
+- label: TYPE
+  value: Academic lab <em>· 4-1 lab 01, KUET</em>
+- label: DATE
+  value: Feb 2024 <em>· modelled</em> · Jun 2024 <em>· motion study video</em>
+- label: SOFTWARE
+  value: SOLIDWORKS <em>· motion study</em>
+- label: GEARS
+  value: 11 spur gears, 72 to 25 teeth, and 1 internal gear <em>· module 0.25 mm</em>
+- label: PARTS
+  value: Box, four shafts, internal gear cap, two gear changers, motor belt holder, power transmission changer
+- label: OUTPUT
+  value: Parts, assembly, STEP, STL for every part, motion study video
+stats:
+- value: '12'
+  label: gears
+- value: 0.25 mm
+  label: gear module
+- value: '4'
+  label: shafts
+- value: 0.2 MB
+  label: web 3D model
+sections:
+- kind: clip
+  tag: MOTION STUDY
+  title: The gear train turning
+  text: A SOLIDWORKS motion study drives the input shaft and turns every gear in the box, with the box shown see-through. The clip is 20 seconds
+    from the 2 min 17 s motion study video.
+  video: media/proj_headstock/motion-study.mp4
+  poster: media/proj_headstock/motion-study-poster.jpg
+  cap: SOLIDWORKS · MOTION STUDY · 20 S
+  wide: true
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: MAIN ASSY
+    value: 1.Assem.SLDASM
+  - label: PARTS
+    value: Box · Shaft1 to Shaft4 · CapInternlGear · GearChanger01, 02 · Motor Belt Holder · Power Transmition Changer
+  - label: STANDARD
+    value: Metric spur gears 0.25M, 25T to 72T · internal spur gear 40T
+  - label: EXCHANGE
+    value: STEP · 5.5 MB · STL for every part
+  - label: WEB MODEL
+    value: GLB · 0.2 MB
+  - label: VIDEOS
+    value: Motion study 2 min 17 s · edited animation · two screen recordings

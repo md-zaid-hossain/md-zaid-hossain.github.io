@@ -1,0 +1,718 @@
+# Weekly routine of each B.Sc. term. Slot numbers count from 0; slot 6 = 2.30 to 5.00 sessional, slot 7 = 10.40 to 1.10 morning lab.
+# teachers: null means the sheet's initials were not on its key, so the course's own teachers are shown.
+slots:
+- start: '8.00'
+  end: '8.50'
+- start: '8.50'
+  end: '9.40'
+- start: '9.40'
+  end: '10.30'
+- start: '10.40'
+  end: '11.30'
+- start: '11.30'
+  end: '12.20'
+- start: '12.20'
+  end: '1.10'
+- start: '2.30'
+  end: '5.00'
+- start: '10.40'
+  end: '1.10'
+days:
+- SUN
+- MON
+- TUE
+- WED
+- THU
+short_titles:
+  IPE 4227: CAM and Robotics
+  IPE 4059: Project Management
+  IPE 4027: Computer Integrated Manufacturing
+  IPE 4225: Tool Engineering
+  IPE 4219: Human Factors and Safety
+  IPE 4228: CAM and Robotics
+  IPE 4226: Tool Engineering
+  IPE 4220: Human Factors
+routines:
+  1-1:
+    SUN:
+      1:
+        code: PHY 1111
+        teachers:
+        - sikder
+        - idris
+      2:
+        code: HUM 1111
+        teachers:
+        - razia
+      3:
+        code: CHEM 1111
+        teachers:
+        - yousuf
+        - saddam
+      4:
+        code: MATH 1111
+        teachers: null
+      5:
+        code: IPE 1101
+        teachers:
+        - habibur
+      6:
+        code: IPE 1102
+        teachers:
+        - rafiq
+    MON:
+      2:
+        code: CHEM 1111
+        teachers:
+        - yousuf
+        - saddam
+      3:
+        code: MATH 1111
+        teachers: null
+      4:
+        code: HUM 1111
+        teachers:
+        - roman
+      5:
+        code: IPE 1101
+        teachers:
+        - rafiq
+        - habibur
+    TUE:
+      0:
+        code: MATH 1111
+        teachers: null
+      2:
+        code: PHY 1111
+        teachers:
+        - sikder
+        - idris
+      7:
+        code: PHY 1112
+        teachers: []
+    WED:
+      2:
+        code: IPE 1101
+        teachers:
+        - rafiq
+      3:
+        code: CHEM 1111
+        teachers:
+        - yousuf
+        - saddam
+      4:
+        code: MATH 1111
+        teachers: null
+      5:
+        code: PHY 1111
+        teachers:
+        - sikder
+        - idris
+      6:
+        code: IPE 1102
+        teachers:
+        - rafiq
+    THU:
+      1:
+        code: HUM 1111
+        teachers:
+        - roman
+        - razia
+      2:
+        code: PHY 1111
+        teachers:
+        - sikder
+        - idris
+      7:
+        code: CHEM 1112
+        teachers: []
+  2-1:
+    SUN:
+      2:
+        code: CSE 2111
+        teachers:
+        - talapatra
+      3:
+        code: HUM 2111
+        teachers:
+        - tania
+      4:
+        code: ME 2111
+        teachers: null
+      5:
+        code: CSE 2111
+        teachers:
+        - saiful
+    MON:
+      2:
+        code: HUM 2111
+        teachers:
+        - amanullah
+      3:
+        code: CSE 2111
+        teachers:
+        - talapatra
+        - saiful
+      4:
+        code: ME 2111
+        teachers:
+        - msislam
+        - anik
+      5:
+        code: EEE 2111
+        teachers:
+        - shahabul
+        - ekabir
+      6:
+        code: CSE 2112
+        teachers: []
+    TUE:
+      1:
+        code: MATH 2111
+        teachers:
+        - selim
+      2:
+        code: EEE 2111
+        teachers:
+        - ekabir
+        - shahabul
+      7:
+        code: EEE 2112
+        teachers: []
+      6:
+        code: ME 2112
+        teachers: []
+    WED:
+      2:
+        code: HUM 2111
+        teachers:
+        - tania
+        - amanullah
+      3:
+        code: ME 2111
+        teachers:
+        - msislam
+        - anik
+      4:
+        code: MATH 2111
+        teachers:
+        - touhid
+      5:
+        code: EEE 2111
+        teachers:
+        - ekabir
+        - shahabul
+      6:
+        code: CSE 2112
+        teachers: []
+    THU:
+      0:
+        code: EEE 2111
+        teachers: null
+      1:
+        code: MATH 2111
+        teachers: null
+      2:
+        code: ME 2111
+        teachers:
+        - msislam
+        - anik
+      7:
+        code: EEE 2112
+        teachers: []
+  2-2:
+    SUN:
+      2:
+        code: ME 2213
+        teachers:
+        - shahidul
+        - raju
+      4:
+        code: EEE 2211
+        teachers:
+        - ekabir
+        - arefin
+      6:
+        code: ME 2216
+        teachers:
+        - msislam
+        - hasib
+    MON:
+      2:
+        code: EEE 2211
+        teachers:
+        - ekabir
+        - arefin
+      3:
+        code: ME 2215
+        teachers:
+        - faruk
+      4:
+        code: IPE 2229
+        teachers:
+        - hridoy
+        - nourin
+      5:
+        code: IPE 2207
+        teachers:
+        - saiful
+        - farjana
+      6:
+        code: IPE 2200
+        teachers:
+        - parvez
+        - palash
+    TUE:
+      1:
+        code: EEE 2211
+        teachers:
+        - ekabir
+        - arefin
+      2:
+        code: ME 2215
+        teachers:
+        - dipayan
+      3:
+        code: ME 2213
+        teachers:
+        - shahidul
+        - raju
+      5:
+        code: IPE 2229
+        teachers:
+        - hridoy
+        - nourin
+      6:
+        code: EEE 2212
+        teachers:
+        - ekabir
+        - tawabur
+    WED:
+      2:
+        code: ME 2213
+        teachers:
+        - shahidul
+        - raju
+      3:
+        code: ME 2215
+        teachers:
+        - faruk
+      4:
+        code: ME 2215
+        teachers:
+        - dipayan
+      5:
+        code: IPE 2207
+        teachers:
+        - saiful
+        - farjana
+      6:
+        code: ME 2214
+        teachers:
+        - shahidul
+        - ridwan
+    THU:
+      4:
+        code: IPE 2229
+        teachers:
+        - hridoy
+        - nourin
+      5:
+        code: IPE 2207
+        teachers:
+        - saiful
+        - farjana
+      6:
+        code: ME 2216
+        teachers:
+        - msislam
+        - hasib
+  3-1:
+    SUN:
+      1:
+        code: IPE 3115
+        teachers:
+        - ridwan
+      2:
+        code: ME 3111
+        teachers:
+        - wakil
+      4:
+        code: IPE 3105
+        teachers:
+        - farjana
+      5:
+        code: IPE 3103
+        teachers:
+        - farjana
+      6:
+        code: IPE 3100
+        teachers:
+        - saiful
+        - ismail
+    MON:
+      2:
+        code: ME 3111
+        teachers:
+        - zahir
+      3:
+        code: IPE 3115
+        teachers:
+        - nourin
+      4:
+        code: IPE 3119
+        teachers:
+        - palash
+      6:
+        code: IPE 3100
+        teachers:
+        - saiful
+        - ismail
+    TUE:
+      2:
+        code: ME 3111
+        teachers:
+        - zahir
+        - wakil
+      3:
+        code: IPE 3119
+        teachers:
+        - kibria
+      4:
+        code: IPE 3105
+        teachers:
+        - kibria
+        - farjana
+      5:
+        code: IPE 3103
+        teachers:
+        - rafiq
+      6:
+        code: IPE 3104
+        teachers:
+        - rafiq
+        - farjana
+    WED:
+      2:
+        code: IPE 3115
+        teachers:
+        - nourin
+        - ridwan
+      3:
+        code: IPE 3103
+        teachers:
+        - rafiq
+        - farjana
+      4:
+        code: IPE 3105
+        teachers:
+        - kibria
+      5:
+        code: IPE 3119
+        teachers:
+        - kibria
+        - palash
+      6:
+        code: IPE 3106
+        teachers:
+        - kibria
+        - farjana
+    THU:
+      7:
+        code: IPE 3106
+        teachers:
+        - kibria
+        - farjana
+      6:
+        code: ME 3112
+        teachers:
+        - zahir
+        - wakil
+  3-2:
+    SUN:
+      2:
+        code: IPE 3205
+        teachers:
+        - rafiq
+        - asef
+      3:
+        code: IPE 3217
+        teachers:
+        - saiful
+        - farjana
+      4:
+        code: IPE 3221
+        teachers:
+        - kibria
+        - farjana
+      5:
+        code: IPE 3219
+        teachers:
+        - kibria
+        - nsultana
+      6:
+        code: IPE 3206
+        teachers:
+        - rafiq
+        - asef
+    MON:
+      3:
+        code: IPE 3217
+        teachers:
+        - saiful
+        - farjana
+      4:
+        code: IPE 3219
+        teachers:
+        - kibria
+        - nsultana
+      5:
+        code: IPE 3205
+        teachers:
+        - rafiq
+        - asef
+      6:
+        code: IPE 3222
+        teachers:
+        - kibria
+        - farjana
+    TUE:
+      1:
+        code: IPE 3223
+        teachers:
+        - anzum
+        - zahid
+      4:
+        code: IPE 3217
+        teachers:
+        - saiful
+        - farjana
+      5:
+        code: IPE 3219
+        teachers:
+        - kibria
+        - nsultana
+      6:
+        code: IPE 3220
+        teachers:
+        - kibria
+        - nsultana
+    WED:
+      3:
+        code: IPE 3221
+        teachers:
+        - kibria
+        - farjana
+      4:
+        code: IPE 3223
+        teachers:
+        - anzum
+        - zahid
+      5:
+        code: IPE 3205
+        teachers:
+        - rafiq
+        - asef
+      6:
+        code: IPE 3218
+        teachers:
+        - saiful
+        - farjana
+    THU:
+      3:
+        code: IPE 3217
+        teachers:
+        - saiful
+        - farjana
+      4:
+        code: IPE 3223
+        teachers:
+        - anzum
+        - zahid
+      5:
+        code: IPE 3221
+        teachers:
+        - kibria
+        - farjana
+      6:
+        code: IPE 3200
+        teachers:
+        - palash
+        - anzum
+  4-1:
+    SUN:
+      2:
+        code: IPE 4129
+        teachers:
+        - zahid
+      3:
+        code: IPE 4019
+        teachers:
+        - ismail
+      4:
+        code: IPE 4109
+        teachers:
+        - saiful
+        - ridwan
+      5:
+        code: IPE 4029
+        teachers:
+        - zahid
+    MON:
+      3:
+        code: IPE 4129
+        teachers:
+        - zahid
+      4:
+        code: IPE 4125
+        teachers:
+        - farjana
+      5:
+        code: IPE 4109
+        teachers:
+        - saiful
+      6:
+        code: IPE 4126
+        teachers:
+        - talapatra
+        - hrashid
+    TUE:
+      3:
+        code: IPE 4125
+        teachers:
+        - talapatra
+        - farjana
+      4:
+        code: IPE 4029
+        teachers:
+        - irfan
+      5:
+        code: IPE 4109
+        teachers:
+        - ridwan
+      6:
+        code: IPE 4110
+        teachers:
+        - saiful
+        - ridwan
+    WED:
+      4:
+        code: IPE 4129
+        teachers:
+        - anzum
+      5:
+        code: IPE 4019
+        teachers:
+        - palash
+      6:
+        code: IPE 4126
+        teachers:
+        - talapatra
+        - hrashid
+    THU:
+      2:
+        code: IPE 4029
+        teachers:
+        - irfan
+        - zahid
+      3:
+        code: IPE 4125
+        teachers:
+        - talapatra
+      4:
+        code: IPE 4129
+        teachers:
+        - anzum
+      5:
+        code: IPE 4019
+        teachers:
+        - palash
+        - ismail
+  4-2:
+    SUN:
+      3:
+        code: IPE 4227
+        teachers:
+        - asef
+      5:
+        code: IPE 4059
+        teachers:
+        - palash
+    MON:
+      3:
+        code: IPE 4027
+        teachers:
+        - rafiq
+        - ashik
+      4:
+        code: IPE 4059
+        teachers:
+        - palash
+        - irfan
+      5:
+        code: IPE 4225
+        teachers:
+        - asef
+      6:
+        code: IPE 4228
+        teachers:
+        - asef
+        - ashik
+    TUE:
+      2:
+        code: IPE 4227
+        teachers:
+        - asef
+        - ashik
+      3:
+        code: IPE 4225
+        teachers:
+        - talapatra
+        - asef
+      4:
+        code: IPE 4219
+        teachers:
+        - palash
+      5:
+        code: IPE 4027
+        teachers:
+        - ashik
+    WED:
+      3:
+        code: IPE 4219
+        teachers:
+        - kibria
+      4:
+        code: IPE 4225
+        teachers:
+        - talapatra
+      5:
+        code: IPE 4059
+        teachers:
+        - irfan
+      6:
+        code: IPE 4226
+        teachers:
+        - talapatra
+        - asef
+    THU:
+      3:
+        code: IPE 4227
+        teachers:
+        - ashik
+      4:
+        code: IPE 4027
+        teachers:
+        - rafiq
+      5:
+        code: IPE 4219
+        teachers:
+        - kibria
+        - palash
+      6:
+        code: IPE 4220
+        teachers:
+        - kibria
+        - palash
+teachers_only:
+- 1-2

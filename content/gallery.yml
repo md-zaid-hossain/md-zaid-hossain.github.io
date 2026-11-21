@@ -1,0 +1,516 @@
+# Gallery: chapters, albums and photos. focus = which part of a photo the crop keeps.
+# other_images: pictures used elsewhere on the page, keep them.
+chapters:
+- chapter: pro
+  label: PROFESSIONAL
+  subtitle: Sessions and seminars
+  albums:
+  - key: d2
+    code: GAL-D1
+    title: Special session on BRACU FabLab
+    place: BRAC University Research Conference 2026 · Central Auditorium, Dhaka
+    date: 14 NOV 2026
+    story: The BRAC University Silver Jubilee Research Conference 2026 held a special session on BRACU FabLab, with the Project Director of the
+      HEAT Project, UGC, as chief guest. FabLab teams from the universities funded under HEAT talked about building a FabLab network across universities.
+      I attended with the BUET FabLab team, at the invitation of BRACU FabLab.
+    credit: 'Photos: BRACU FabLab'
+    photos:
+    - image: media/gallery/d2-1.webp
+      caption: Guests, speakers and panelists on stage
+      focus: 50% 45%
+      id: d2-1
+    - image: media/gallery/d2-2.webp
+      caption: 'BRACU FabLab: progress report'
+      focus: 50% 45%
+      id: d2-2
+    - image: media/gallery/d2-3.webp
+      caption: The BRACU FabLab booth
+      focus: 50% 45%
+      id: d2-3
+    - image: media/gallery/d2-4.webp
+      caption: 'Panel: building a FabLab network across universities'
+      focus: 50% 45%
+      id: d2-4
+    - image: media/gallery/d2-5.webp
+      caption: A token of appreciation
+      focus: 50% 45%
+      id: d2-5
+    - image: media/gallery/d2-6.webp
+      caption: 'Panel: FabLab collaboration'
+      focus: 50% 45%
+      id: d2-6
+    - image: media/gallery/d2-7.webp
+      caption: Attending the session with the BUET FabLab team
+      focus: 50% 45%
+      id: d2-7
+    - image: media/gallery/d2-8.webp
+      caption: Session discussion with the FabLab teams
+      focus: 50% 45%
+      id: d2-8
+    - image: media/gallery/d2-9.webp
+      caption: Networking after the session
+      focus: 50% 45%
+      id: d2-9
+    - image: media/gallery/d2-10.webp
+      caption: Guests at the BRACU FabLab booth
+      focus: 50% 45%
+      id: d2-10
+  - key: d1
+    code: GAL-D2
+    title: CAD and CAM for 4IR seminar
+    place: IAT, BUET
+    date: SEP 2026
+    story: '"CAD and CAM for 4IR: 3D Modelling and Smart Manufacturing", a seminar organised by IAT, BUET, where I now work as FabLab Program
+      Engineer. I attended the sessions.'
+    photos:
+    - image: media/gallery/d1-1.webp
+      caption: A talk at the seminar
+      focus: 50% 50%
+      id: d1-1
+    - image: media/gallery/d1-2.webp
+      caption: Speakers and guests
+      focus: 50% 50%
+      id: d1-2
+    - image: media/gallery/d1-3.webp
+      caption: Session in progress
+      focus: 50% 50%
+      id: d1-3
+    - image: media/gallery/d1-4.webp
+      caption: The audience
+      focus: 50% 50%
+      id: d1-4
+    - image: media/gallery/d1-5.webp
+      caption: The venue before the start
+      focus: 50% 50%
+      id: d1-5
+- chapter: making
+  label: MAKING
+  subtitle: Hands on the machines
+  albums:
+  - key: a1
+    code: GAL-A1
+    title: Bringing the CR-10 Smart back to life
+    place: FabLab KUET
+    date: MAY 2025
+    story: The lab's Creality CR-10 Smart had been down for a long time with a damaged thermistor and extruder. A compatible extruder set came
+      from China through KUET alumnus Nahid Al Mahmud. I replaced the parts, rewired the connectors, aligned the hotend with the Bowden tube and
+      tested it until it printed smoothly again.
+    photos:
+    - image: media/gallery/a1-1.webp
+      caption: The new extruder set, fan and wiring, unpacked
+      focus: 50% 35%
+      id: a1-1
+    - image: media/gallery/a1-2.webp
+      caption: The old wiring inside the printer, traced connector by connector
+      focus: 50% 35%
+      id: a1-2
+    - image: media/gallery/a1-3.webp
+      caption: Fitting the new extruder on the carriage
+      focus: 50% 35%
+      id: a1-3
+    - image: media/gallery/a1-4.webp
+      caption: Lining up the hotend with the Bowden tube
+      focus: 50% 35%
+      id: a1-4
+    - image: media/gallery/a1-5.webp
+      caption: Final checks before the first test print
+      focus: 50% 35%
+      id: a1-5
+  - key: a2
+    code: GAL-A2
+    title: From CAD to a printed part
+    place: FabLab KUET
+    date: 2024 TO 2025
+    story: 'Small parts I designed in SOLIDWORKS, sliced, printed on the lab''s Creality CR-10 Smart and Ultimaker 3 Extended, then finished by
+      hand: a quick acting knob, a vice for accurate alignment, a hand spinning top and a 3-2-1 pin locator.'
+    photos:
+    - image: media/gallery/a2-1.webp
+      caption: Quick acting knob, the finished part on its drawing
+      focus: 50% 50%
+      id: a2-1
+    - image: media/gallery/a2-2.webp
+      caption: The knob printing on the CR-10 Smart
+      focus: 50% 50%
+      id: a2-2
+    - image: media/gallery/a2-3.webp
+      caption: Breaking away the support material
+      focus: 50% 50%
+      id: a2-3
+    - image: media/gallery/a2-4.webp
+      caption: Knob and screw after post-processing
+      focus: 50% 50%
+      id: a2-4
+    - image: media/gallery/a2-5.webp
+      caption: Vice for accurate alignment, assembled
+      focus: 50% 50%
+      id: a2-5
+    - image: media/gallery/a2-6.webp
+      caption: 'The vice from above: screw, sliding jaw and handle'
+      focus: 50% 50%
+      id: a2-6
+    - image: media/gallery/a2-7.webp
+      caption: Hand spinning top, printed on the Ultimaker
+      focus: 50% 50%
+      id: a2-7
+    - image: media/gallery/a2-8.webp
+      caption: The top on the build plate, before the supports came off
+      focus: 50% 50%
+      id: a2-8
+    - image: media/gallery/a2-9.webp
+      caption: First layers going down
+      focus: 50% 50%
+      id: a2-9
+    - image: media/gallery/a2-10.webp
+      caption: 3-2-1 pin locator for the Tool Engineering sessional
+      focus: 50% 50%
+      id: a2-10
+  - key: a5
+    code: GAL-A3
+    title: First part on the HAAS VF-2
+    place: Dept. of IEM, KUET
+    date: SEP 2025
+    story: The department installed a HAAS VF-2 milling machine and a CNC table lathe, followed by a five-day hands-on training with HAAS, led
+      by Mr. Sunil Patil. I modelled a test part, planned its toolpaths in Fusion CAM, posted the NC program and, for the first time, saw my own
+      design cut in aluminium.
+    photos:
+    - image: media/exp/exp-cnc-01-fusion-machine.webp
+      caption: 'Plan: HAAS VF-2 set up as the machine in Fusion CAM'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-02-cam-simulation.webp
+      caption: 'Plan: Toolpath simulation: face, pockets, drills, adaptive clearing'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-03-nc-program.webp
+      caption: 'Plan: The posted NC program for the VF-2'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-04-vf2-vise.webp
+      caption: 'Set up: The VF-2 with the vise on the table'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-05-bt40-holder.webp
+      caption: 'Set up: BT40 tool holder'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-07-control-running.webp
+      caption: 'Run: The program running on the HAAS control'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-08-face-milling.webp
+      caption: 'Cut: Face milling the stock'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-09-coolant-cut.webp
+      caption: 'Cut: Pocketing with flood coolant'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-10-small-end-mill.webp
+      caption: 'Cut: Detail work with the small end mill'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-10b-unclamp-part.webp
+      caption: 'Result: Taking the cut part out of the vise'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-11-finished-part.webp
+      caption: 'Result: The finished aluminium part'
+      focus: 50% 50%
+    - image: media/exp/exp-cnc-12-with-part.webp
+      caption: 'Result: With the part at the machine'
+      focus: 50% 50%
+  - key: a3
+    code: GAL-A4
+    title: Certificate day at FabLab KUET
+    place: FabLab KUET
+    date: SEP 2025
+    story: FabLab KUET's farewell and certificate ceremony for its student operators. I received the Certificate of Achievement for my year as
+      a student operator (Mar 2024 to Mar 2025), and stayed on as a volunteer until Sep 2025.
+    photos:
+    - image: media/gallery/a3-1.webp
+      caption: Receiving the student operator certificate
+      focus: 50% 40%
+      id: a3-1
+    - image: media/gallery/a3-2.webp
+      caption: Certificate holders with the FabLab team
+      focus: 50% 40%
+      id: a3-2
+    - image: media/gallery/a3-3.webp
+      caption: Student operators of FabLab KUET
+      focus: 50% 40%
+      id: a3-3
+  - key: a4
+    code: GAL-A5
+    title: Setting up the CAD/CAM and Robotics Lab
+    place: Dept. of IEM, KUET
+    date: NOV 2024
+    story: The department's CAD/CAM and Robotics Lab got new computers. My teacher asked me to set them up and install and configure the CAD software
+      on each one, since installing and fixing engineering software is something I do well.
+    photos:
+    - image: media/gallery/a4-1.webp
+      caption: Bringing up a new workstation
+      focus: 50% 40%
+      id: a4-1
+    - image: media/gallery/a4-2.webp
+      caption: Installing and configuring the CAD software
+      focus: 50% 40%
+      id: a4-2
+    - image: media/gallery/a4-3.webp
+      caption: Testing beside the lab's robot work cell
+      focus: 50% 40%
+      id: a4-3
+- chapter: comp
+  label: COMPETITIONS
+  subtitle: Contest days
+  albums:
+  - key: b1
+    code: GAL-B1
+    title: 'Technomize 1.0: champions of the CAD contest'
+    place: National Tech Fest · IEM Robotics and CAD Club, KUET
+    date: 2 NOV 2024
+    story: Our team Isometric Illuminators 3.0, with Md. Shahriar Santo and Fazle Rabbi, won the CAD contest at Technomize 1.0, the national tech
+      fest of the Department of IEM, KUET.
+    photos:
+    - image: media/gallery/b1-1.webp
+      caption: On stage with the champion's board
+      focus: 50% 40%
+      id: b1-1
+    - image: media/gallery/b1-2.webp
+      caption: Prize-giving with the guests
+      focus: 50% 40%
+      id: b1-2
+    - image: media/gallery/b1-3.webp
+      caption: With a teammate after the final
+      focus: 50% 40%
+      id: b1-3
+    - image: media/gallery/b1-4.webp
+      caption: The champion's board, BDT 14,000
+      focus: 50% 40%
+      id: b1-4
+    - image: media/gallery/b1-5.webp
+      caption: The team selfie after the result
+      focus: 50% 40%
+      id: b1-5
+  - key: b2
+    code: GAL-B2
+    title: 'CAD Rush 1.0: champions'
+    place: CADers, KUET
+    date: 13 MAR 2024
+    story: Team Isometric Illuminators 1.0 won CAD Rush 1.0, the CAD contest of CADers at KUET.
+    photos:
+    - image: media/gallery/b2-1.webp
+      caption: Modelling against the clock
+      focus: 50% 45%
+      id: b2-1
+    - image: media/gallery/b2-2.webp
+      caption: Champions with the crest
+      focus: 50% 45%
+      id: b2-2
+  - key: b3
+    code: GAL-B3
+    title: 'MECHCELLENCE 1.0: champions'
+    place: AUST Mechanical Society, Dhaka
+    date: FEB 2023
+    story: Team Dimensionless won the CAD competition at Ispahani presents MECHCELLENCE 1.0, organised by the Department of Mechanical Engineering,
+      AUST.
+    photos:
+    - image: media/gallery/b3-1.webp
+      caption: Champions at the 12-year celebration of AUST Mechanical
+      focus: 50% 35%
+      id: b3-1
+    - image: media/gallery/b3-2.webp
+      caption: With the champion's board, BDT 12,000
+      focus: 50% 35%
+      id: b3-2
+  - key: b4
+    code: GAL-B4
+    title: 'IGNITION 2023: 2nd runner-up'
+    place: Dept. of ME, KUET
+    date: OCT 2023
+    story: Our team took 2nd runner-up in the CAD segment of IGNITION 2023, the national mechanical festival of the Department of Mechanical Engineering,
+      KUET.
+    photos:
+    - image: media/gallery/b4-1.webp
+      caption: 2nd runner-up in the CAD segment
+      focus: 50% 40%
+      id: b4-1
+  - key: b5
+    code: GAL-B5
+    title: 'KitCAD, AutoFest 2024: 2nd runner-up'
+    place: ME Building, BUET · BUET Automobile Club
+    date: 26 JAN 2024
+    story: KitCAD, the SOLIDWORKS-based CAD contest of AutoFest 2024 by BUET Automobile Club. Team Isometric Illuminators went deep into the modelling
+      tasks and took 2nd runner-up.
+    credit: 'Photos 01 and 02: BUET Automobile Club'
+    photos:
+    - image: media/gallery/b5-3.webp
+      caption: KitCAD 2024 at the ME Building, BUET
+      focus: 50% 50%
+      id: b5-3
+    - image: media/gallery/b5-2.webp
+      caption: Deep in the contest tasks
+      focus: 50% 45%
+      id: b5-2
+    - image: media/gallery/b5-1.webp
+      caption: 2nd runner-up at KitCAD
+      focus: 50% 40%
+      id: b5-1
+  - key: b6
+    code: GAL-B6
+    title: MindSparks 24 at AUST
+    place: AUST, Dhaka
+    date: 14 DEC 2024
+    story: The grand inter-university tech-biz competition at AUST. Our team took part in the CAD segment. No prize this time, but a good day
+      of modelling and meeting other teams.
+    photos:
+    - image: media/gallery/b6-4.webp
+      caption: Our team in the AUSTIDC frame
+      focus: 50% 45%
+      id: b6-4
+    - image: media/gallery/b6-5.webp
+      caption: Our team at the MindSparks 24 wall
+      focus: 50% 40%
+      id: b6-5
+- chapter: campus
+  label: CAMPUS
+  subtitle: KUET moments
+  albums:
+  - key: c4
+    code: GAL-C1
+    title: B.Sc. thesis defence day
+    place: Dept. of IEM, KUET
+    date: FEB 2025
+    story: The day I defended my B.Sc. thesis, supervised by <a class="zgl" href="https://www.kuet.ac.bd/iem/kibria" target="_blank" rel="noopener">Md.
+      Golam Kibria</a>. Classmates and friends from 2K19 came by for a photo, among them <a class="zgl" href="https://www.linkedin.com/in/md-saiful-islam-seam/"
+      target="_blank" rel="noopener">Md. Saiful Islam Seam</a> and <a class="zgl" href="https://www.linkedin.com/in/nasif-morshed-889766206/"
+      target="_blank" rel="noopener">Nasif Morshed</a>.
+    ratio: 3/4
+    featured: 3
+    rest_label: CLASSMATES AND FRIENDS
+    rest_caption: Defence day, with classmates and friends from 2K19
+    photos:
+    - image: media/gallery/c4-1.webp
+      caption: With my supervisor, Md. Golam Kibria
+      focus: 50% 30%
+      id: c4-1
+    - image: media/gallery/c4-2.webp
+      caption: On defence day
+      focus: 50% 30%
+      id: c4-2
+    - image: media/gallery/c4-3.webp
+      caption: With Seam and Nasif, toppers of our batch
+      focus: 50% 35%
+      id: c4-3
+    - image: media/gallery/c4-4.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-4
+    - image: media/gallery/c4-5.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-5
+    - image: media/gallery/c4-6.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-6
+    - image: media/gallery/c4-7.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-7
+    - image: media/gallery/c4-8.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-8
+    - image: media/gallery/c4-9.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-9
+    - image: media/gallery/c4-10.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-10
+    - image: media/gallery/c4-11.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-11
+    - image: media/gallery/c4-12.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-12
+    - image: media/gallery/c4-13.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-13
+    - image: media/gallery/c4-14.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-14
+    - image: media/gallery/c4-15.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-15
+    - image: media/gallery/c4-16.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-16
+    - image: media/gallery/c4-17.webp
+      caption: ''
+      focus: 50% 30%
+      id: c4-17
+  - key: c1
+    code: GAL-C2
+    title: Award of Excellence from DSW
+    place: KUET
+    date: AUG 2025
+    story: The Directorate of Students' Welfare, KUET honoured 51 students of the 2K19 batch for their contribution to extracurricular activities.
+      I received the Award of Excellence and a Certificate of Contribution.
+    photos:
+    - image: media/gallery/c1-1.webp
+      caption: Receiving the award on stage
+      focus: 50% 50%
+      id: c1-1
+    - image: media/gallery/c1-2.webp
+      caption: A handshake with the guests
+      focus: 50% 50%
+      id: c1-2
+    - image: media/gallery/c1-3.webp
+      caption: The Award of Excellence crest
+      focus: 50% 50%
+      id: c1-3
+    - image: media/gallery/c1-4.webp
+      caption: The award-giving ceremony
+      focus: 50% 50%
+      id: c1-4
+  - key: c2
+    code: GAL-C3
+    title: Farewell of 2K19
+    place: Dept. of IEM, KUET
+    date: AUG 2025
+    story: 'Farewell of 2K19 and reception of 2K23 and 2K24. Walked in as a dreamer, walked out as an engineer: the first graduate in my family
+      line.'
+    photos:
+    - image: media/gallery/c2-1.webp
+      caption: Receiving the farewell crest
+      focus: 50% 40%
+      id: c2-1
+    - image: media/gallery/c2-2.webp
+      caption: On stage at the farewell
+      focus: 50% 40%
+      id: c2-2
+    - image: media/gallery/c2-3.webp
+      caption: The 2K19 graduation crest
+      focus: 50% 40%
+      id: c2-3
+  - key: c3
+    code: GAL-C4
+    title: Term project presentation
+    place: Dept. of IEM, KUET
+    date: JUN 2024
+    story: Presenting our weight-based sorting machine (IPE 4002), built with Md. Shahriar Islam under the supervision of Md. Golam Kibria.
+    photos:
+    - image: media/gallery/c3-1.webp
+      caption: Presenting the design and the test results
+      focus: 50% 45%
+      id: c3-1
+    - image: media/gallery/c3-2.webp
+      caption: With the working model after the presentation
+      focus: 50% 45%
+      id: c3-2
+    - image: media/gallery/c3-3.webp
+      caption: With my project partner
+      focus: 50% 45%
+      id: c3-3
+other_images:
+  b6-1: media/gallery/b6-1.webp
+  b6-2: media/gallery/b6-2.webp
+  b6-3: media/gallery/b6-3.webp

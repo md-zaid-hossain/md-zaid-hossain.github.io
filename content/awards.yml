@@ -1,0 +1,334 @@
+# Awards page. Certificate pictures must have roll, registration and serial numbers covered before upload.
+competitions:
+- rank: Champion
+  event: Technomize 1.0 · National Tech Fest
+  organiser: IEM Robotics and CAD Club, KUET
+  date: 2 NOV 2024
+  key: technomize
+  certificate: media/edu/edu-cad-technomize.webp
+- rank: Champion
+  event: CAD Rush 1.0
+  organiser: CADers, KUET
+  date: 13 MAR 2024
+  key: cadrush
+  certificate: media/edu/edu-cad-cadrush.webp
+- rank: Champion
+  event: MECHCELLENCE 1.0 · CAD competition
+  organiser: AUST Mechanical Society
+  date: FEB 2023
+  key: mechcellence
+  certificate: media/edu/edu-cad-mechcellence.webp
+- rank: 2nd runner-up
+  event: KitCAD · Autofest 2024
+  organiser: BUET Automobile Club
+  date: 25 JAN 2024
+  key: kitcad
+  certificate: media/edu/edu-cad-kitcad.webp
+- rank: 2nd runner-up
+  event: IGNITION 2023 · CAD segment
+  organiser: Dept. of ME, KUET
+  date: OCT 2023
+  key: ignition
+  certificate: media/edu/edu-cad-ignition.webp
+- rank: Top 20 finalist
+  event: Energy Fest 1.0 · CAD competition
+  organiser: Dept. of ESE, KUET
+  date: DEC 2024
+  key: ''
+scholarship:
+  when: OCT 2024
+  title: 70 % scholarship winner
+  event: ISCEA Prize · Global Supply Chain Case Competition 2024
+  org: International Supply Chain Education Alliance (ISCEA)
+  team: KUET 0101-24
+  team_members:
+  - name: Md. Zaid Hossain
+    url: https://www.linkedin.com/in/md-zaid-hossain
+  - name: Meer Al Amin Islam
+    url: https://www.linkedin.com/in/meer-alamin-islam/
+  - name: Saleh Akram Naife
+    url: https://www.linkedin.com/in/saleh-akram-naife-97b3ab227/
+  - name: Sadman Sadik
+    url: https://www.linkedin.com/in/sadman-sadik-csca%E2%84%A2-83433a1b1/
+  post: https://lnkd.in/p/g-_VaCJH
+  poster: media/awards/aw-iscea-70.webp
+  tag_box:
+  - 10.2
+  - 67.1
+  - 25.0
+  - 4.8
+  amount: US$ 770
+  amount_note: per person, toward ISCEA's global CSCA certification
+certificate_groups:
+- id: --y21
+  number: '2.1'
+  title: CAD · SOLIDWORKS
+  short: CAD
+  count: 4
+  certificates:
+  - key: cswp
+    code: CSWP
+    name: SOLIDWORKS CAD Design Professional
+    issuer: Dassault Systèmes
+    date: 20 APR 2025
+    links:
+    - label: VERIFY ↗
+      url: https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-3WTCQ4G7A5
+    image: media/awards/aw-cswp.webp
+  - key: cswa
+    code: CSWA
+    name: SOLIDWORKS Mechanical Design Associate
+    issuer: Dassault Systèmes · exam score 225 / 240
+    date: 1 MAR 2023
+    links:
+    - label: VERIFY ↗
+      url: https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-W3TXBEQKF8
+    image: media/awards/aw-cswa.webp
+  - key: cswa-am
+    code: CSWA-AM
+    name: Additive Manufacturing Associate
+    issuer: Dassault Systèmes
+    date: 22 JUN 2025
+    links:
+    - label: VERIFY ↗
+      url: https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-5H3EULBY96
+    image: media/awards/aw-cswa-am.webp
+  - key: cswa-s
+    code: CSWA-S
+    name: Simulation Associate
+    issuer: Dassault Systèmes
+    date: 22 JUN 2025
+    links:
+    - label: VERIFY ↗
+      url: https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-ZPU2EHY9AK
+    image: media/awards/aw-cswa-s.webp
+  - key: cswa-sd
+    code: CSWA-SD
+    name: Sustainability Associate
+    issuer: Dassault Systèmes
+    date: 22 JUN 2025
+    links:
+    - label: VERIFY ↗
+      url: https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-W9RDH3MULK
+    image: media/awards/aw-cswa-sd.webp
+  - key: 3dx-creator
+    code: 3DEXPERIENCE
+    name: 3D Creator Associate
+    issuer: Dassault Systèmes
+    date: 22 JUN 2025
+    links:
+    - label: VERIFY ↗
+      url: https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-65KWQAXSMB
+    image: media/awards/aw-3dx-creator.webp
+  - key: 3dx-mold
+    code: 3DEXPERIENCE
+    name: 3D Mold Creator Associate
+    issuer: Dassault Systèmes
+    date: 22 JUN 2025
+    links:
+    - label: VERIFY ↗
+      url: https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-4EL3NBZ52Q
+    image: media/awards/aw-3dx-mold.webp
+  - key: 3dx-swymer
+    code: 3DEXPERIENCE
+    name: 3DSwymer Associate
+    issuer: Dassault Systèmes
+    date: 22 JUN 2025
+    links:
+    - label: VERIFY ↗
+      url: https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-9HVTP3E8GX
+    image: media/awards/aw-3dx-swymer.webp
+- id: --y22
+  number: '2.2'
+  title: SUPPLY CHAIN
+  short: Supply chain
+  count: 4
+  certificates:
+  - key: csca
+    code: CSCA™
+    name: Certified Supply Chain Analyst
+    issuer: International Supply Chain Education Alliance (ISCEA)
+    date: 10 JAN 2025
+    links:
+    - label: VERIFY ↗
+      url: https://www.iscea.org/verify-certification
+    - label: LINKEDIN POST ↗
+      url: https://lnkd.in/p/gbXxUrnR
+    note: Conferred in Cleveland, Ohio, USA · valid to 31 Jan 2028
+    image: media/awards/aw-csca.webp
+  - key: lh-basic
+    code: LOG-HUB
+    name: Supply Chain Apps · Basic
+    issuer: Log-hub
+    date: 25 JUN 2026
+    links: []
+    image: media/awards/aw-lh-basic.webp
+  - key: lh-advanced
+    code: LOG-HUB
+    name: Supply Chain Apps · Advanced
+    issuer: Log-hub
+    date: 26 JUN 2026
+    links: []
+    image: media/awards/aw-lh-advanced.webp
+  - key: lh-network
+    code: LOG-HUB
+    name: Network Design
+    issuer: Log-hub
+    date: 26 JUN 2026
+    links: []
+    image: media/awards/aw-lh-network.webp
+  - key: lh-transport
+    code: LOG-HUB
+    name: Transport and Route Optimization
+    issuer: Log-hub
+    date: 28 JUN 2026
+    links: []
+    image: media/awards/aw-lh-transport.webp
+  - key: lh-inventory
+    code: LOG-HUB
+    name: Inventory Optimization
+    issuer: Log-hub
+    date: 30 JUN 2026
+    links: []
+    image: media/awards/aw-lh-inventory.webp
+  - key: lh-expert
+    code: LOG-HUB
+    name: Supply Chain Apps · Expert
+    issuer: Log-hub
+    date: 30 JUN 2026
+    links: []
+    image: media/awards/aw-lh-expert.webp
+- id: --y23
+  number: '2.3'
+  title: DATA AND QUALITY
+  short: Data &amp; quality
+  count: 3
+  certificates:
+  - key: rm-ml
+    code: RAPIDMINER
+    name: Machine Learning Professional
+    issuer: RapidMiner · Altair
+    date: APR 2025
+    links:
+    - label: VERIFY ↗
+      url: https://openbadgepassport.com/app/badge/info/917735
+    image: media/awards/aw-rm-ml.webp
+  - key: rm-apps
+    code: RAPIDMINER
+    name: Applications &amp; Use Cases Professional
+    issuer: RapidMiner · Altair
+    date: APR 2025
+    links:
+    - label: VERIFY ↗
+      url: https://openbadgepassport.com/app/badge/info/912646
+    image: media/awards/aw-rm-apps.webp
+  - key: rm-data
+    code: RAPIDMINER
+    name: Data Engineering Professional
+    issuer: RapidMiner · Altair
+    date: APR 2025
+    links:
+    - label: VERIFY ↗
+      url: https://openbadgepassport.com/app/badge/info/913202
+    image: media/awards/aw-rm-data.webp
+  - key: ibm-ml
+    code: IBM
+    name: Machine Learning with Python
+    issuer: IBM · Coursera
+    date: 2 APR 2024
+    links:
+    - label: VERIFY ↗
+      url: https://www.coursera.org/account/accomplishments/verify/HMNDY4ECTDGK
+    image: media/awards/aw-ibm-ml.webp
+  - key: lss-white
+    code: CSSC
+    name: Lean Six Sigma White Belt
+    issuer: The Council for Six Sigma Certification
+    date: 24 MAR 2025
+    links: []
+    image: media/awards/aw-lss-white.webp
+  - key: ss-white
+    code: CSSC
+    name: Six Sigma White Belt
+    issuer: The Council for Six Sigma Certification
+    date: 9 MAR 2025
+    links: []
+    image: media/awards/aw-ss-white.webp
+- id: --y24
+  number: '2.4'
+  title: COURSES
+  short: Courses
+  count: 4
+  certificates:
+  - key: udemy-sw
+    code: UDEMY
+    name: 'SolidWorks Essentials: A Beginner''s Guide to 3D Design'
+    issuer: Udemy · 4.5 hours
+    date: 10 MAY 2025
+    links:
+    - label: VERIFY ↗
+      url: https://www.udemy.com/certificate/UC-a4d9fa8a-1fce-4763-91d9-cbcda0fe4f37/
+    image: media/awards/aw-udemy-sw.webp
+  - key: philosophy
+    code: PHI101
+    name: Introduction to Philosophy · passed with distinction
+    issuer: Mahtab Academy
+    date: DEC 2024
+    links:
+    - label: LINKEDIN POST ↗
+      url: https://lnkd.in/p/gJkt_YUN
+    image: media/awards/aw-philosophy.webp
+  - key: ibm-py
+    code: IBM
+    name: Python for Data Science, AI &amp; Development
+    issuer: IBM · Coursera
+    date: 9 MAR 2024
+    links:
+    - label: VERIFY ↗
+      url: https://www.coursera.org/account/accomplishments/verify/FYMYU6ZXFVAZ
+    image: media/awards/aw-ibm-py.webp
+  - key: sl-python
+    code: SIMPLILEARN
+    name: Python for Beginners
+    issuer: Simplilearn SkillUp
+    date: 5 MAR 2024
+    links: []
+    image: media/awards/aw-sl-python.webp
+  - key: cp-python
+    code: PROJECT
+    name: Create Your First Python Program
+    issuer: UST · Coursera Project Network
+    date: 21 FEB 2024
+    links:
+    - label: VERIFY ↗
+      url: https://www.coursera.org/account/accomplishments/verify/ZXWNP7RTD5K7
+    image: media/awards/aw-cp-python.webp
+  - key: ms-excel
+    code: MICROSOFT
+    name: Work Smarter with Microsoft Excel
+    issuer: Microsoft · Coursera
+    date: 30 JAN 2024
+    links:
+    - label: VERIFY ↗
+      url: https://www.coursera.org/account/accomplishments/verify/HNXDLTRZMWM3
+    image: media/awards/aw-ms-excel.webp
+  - key: cp-excel
+    code: PROJECT
+    name: Introduction to Data Analysis using Microsoft Excel
+    issuer: Coursera Project Network
+    date: 30 AUG 2023
+    links:
+    - label: VERIFY ↗
+      url: https://www.coursera.org/account/accomplishments/verify/4NRQWNG3ZDBA
+    image: media/awards/aw-cp-excel.webp
+  - key: ostad-sw
+    code: OSTAD
+    name: Product Design with SolidWorks
+    issuer: Ostad
+    date: NOV 2022
+    links:
+    - label: VERIFY ↗
+      url: https://ostad.app/share/certificate/c22701-md.-zaid-hossain
+    image: media/awards/aw-ostad-sw.webp
+other_images:
+  csca-post: media/awards/aw-csca-post.webp

@@ -1,0 +1,106 @@
+# Project page /projects/car-differential/ · part no. MZH-P-010
+# key: used by the build, keep it
+'no': 10
+slug: car-differential
+key: differential
+title: Car differential gearbox
+crumb: CAR DIFFERENTIAL
+tags:
+- PERSONAL
+- SOLIDWORKS 2022 · KEYSHOT
+- APR 2022
+lead: 'An open differential modelled part by part in SOLIDWORKS: a two-piece housing, the bevel gear set, splined output shafts and a coupling,
+  put together with mates and animated in a motion study. Rendered in KeyShot in 2025.'
+card:
+  category: PERSONAL
+  filter: self
+  title: Car Differential Gearbox
+  text: Bevel-gear differential with a motion study of the gear train.
+  tools:
+  - SOLIDWORKS
+  - KeyShot
+  - Motion study
+  image: media/cards/differential.webp
+hero:
+  turntable: media/proj_differential/turntable.webp
+  glb: GLB 0.3 MB
+  render: media/proj_differential/render-closed.webp
+  render_alt: Car differential with the nickel housing closed, KeyShot render
+  model: media/proj_differential/car-differential.glb
+spec:
+- label: TYPE
+  value: Personal project <em>· practice in gear assemblies</em>
+- label: DATE
+  value: Apr 2022 <em>· modelled</em> · Mar 2025 <em>· rendered</em>
+- label: SOFTWARE
+  value: SOLIDWORKS Premium 2022 · KeyShot
+- label: PARTS
+  value: 6 modelled <em>· plus 2 ISO bevel gears and 6 ISO flange bolts</em>
+- label: OUTPUT
+  value: Parts, assembly, motion study, STEP, KeyShot renders and animation
+stats:
+- value: '14'
+  label: components
+- value: '6'
+  label: parts I modelled
+- value: 22 s
+  label: motion study
+- value: 0.3 MB
+  label: web 3D model
+sections:
+- kind: clip
+  tag: HOW IT WORKS
+  title: What a differential does
+  text: 'In a corner the outer wheel travels further than the inner one. The differential lets the two output shafts turn at different speeds
+    while both still get drive: the bevel gears inside the housing roll around each other instead of locking the shafts together. In the clip
+    the housing fades out so the gears inside can be seen.'
+  video: media/proj_differential/cover-fade.mp4
+  poster: media/proj_differential/cover-fade-poster.jpg
+  cap: KEYSHOT · HOUSING FADES OUT · 5.5 S
+  wide: true
+- kind: clip
+  tag: MOTION STUDY
+  title: Taken apart and put back
+  text: 'SOLIDWORKS Motion Study 1: the coupling, the housing and its six flange bolts move out along the shaft axis, then the assembly closes
+    again. A rotary motor is set up in the same study to turn the gears.'
+  video: media/proj_differential/motion-study.mp4
+  poster: media/proj_differential/motion-study-poster.jpg
+  cap: SOLIDWORKS · MOTION STUDY 1 · 22 S
+- kind: photos
+  tag: IN SOLIDWORKS
+  title: The assembly in SOLIDWORKS
+  gid: pd-sw
+  photos:
+  - image: media/proj_differential/sw-transparent.webp
+    caption: 'Housing shown transparent: the bevel gears and the cross shaft inside'
+  - image: media/proj_differential/sw-assembly.webp
+    caption: The closed assembly with its six flange bolts
+- kind: photos
+  tag: RENDERS
+  title: KeyShot renders
+  gid: pd-ks
+  photos:
+  - image: media/proj_differential/render-closed.webp
+    caption: 'Housing closed: nickel housing, brass splines, black coupling'
+  - image: media/proj_differential/render-open.webp
+    caption: 'Housing removed: the bevel gear set on the cross shaft'
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: MAIN ASSY
+    value: Assem1.SLDASM
+  - label: RENDER ASSY
+    value: Assem1, KeyShot copy · SLDASM
+  - label: PARTS
+    value: Cover1 · Cover2 · Shaft · Joint · Gear01 · Gear02
+  - label: STANDARD
+    value: Straight bevel gear (ISO) × 2 · hex flange bolt (ISO) × 6
+  - label: EXCHANGE
+    value: STEP · whole assembly · 9.8 MB
+  - label: WEB MODEL
+    value: GLB · 0.3 MB · 14 parts
+  - label: RENDERS
+    value: KeyShot · 2 stills · 5.5 s animation
+  - label: RECORDING
+    value: 6 min screen recording of the assembly work

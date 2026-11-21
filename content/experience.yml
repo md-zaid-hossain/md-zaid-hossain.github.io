@@ -1,0 +1,188 @@
+# Experience page. Client names are never shown: jobs are listed by year and type only.
+roles:
+- key: iat
+  start: JUL 2026
+  end: null
+  title: Fab Lab Program Engineer (Instrumentation)
+  org: Institute of Appropriate Technology (IAT), BUET
+  place: Dhaka
+  note: Under the HEAT project of the University Grants Commission (sub-project PIN 14011), an 18-month appointment.
+  do:
+  - 'Install, calibrate, maintain and troubleshoot lab equipment: 3D printers, CNC machines, laser cutters, PCB tools, oscilloscopes, and AI and
+    IoT kits.'
+  - Give technical support for prototyping, testing and product development.
+  - Keep the lab on its safety standards and standard operating procedures (SOPs).
+  - Run routine calibration, preventive maintenance and performance monitoring.
+  tools: 3D printers · CNC · laser cutter · PCB tools · oscilloscope · IoT kits
+  links: []
+- key: fab
+  start: MAR 2024
+  end: SEP 2025
+  title: FabLab Assistant · Student Operator
+  org: FabLab, Khulna University of Engineering &amp; Technology (KUET)
+  place: Khulna
+  note: Certified student operator from Mar 2024 to Mar 2025, then stayed on as a volunteer to Sep 2025.
+  do:
+  - Operated and calibrated the 3D printers and digital fabrication machines used for prototyping, course projects and research.
+  - Helped students improve their CAD models, prepare slicing and check whether a part could be made.
+  - Diagnosed machine and print faults to cut machine downtime and keep projects on time.
+  - Worked around the lab's 3D printers, CNC machines and laser cutter.
+  tools: FDM 3D printers · slicers · CNC · laser cutter · SOLIDWORKS · Fusion 360
+  links:
+  - label: Certificate of Achievement on the Education page
+    url: '#'
+- key: free
+  start: '2023'
+  end: null
+  title: Freelance CAD Designer
+  org: Independent · remote and local clients
+  place: Bangladesh
+  note: Part-time alongside study and work. Client names are left out; the jobs are listed below by type.
+  do:
+  - Model parts and full assemblies in SOLIDWORKS from sketches, photos or existing parts.
+  - Lay out process plants in 3D, from single machines to a complete 50 TPD line.
+  - Deliver STEP and IGES files, 2D drawings, renders and short walk-through videos.
+  - Prepare models for 3D printing (STL, slicing) when the client needs a physical part.
+  tools: SOLIDWORKS · KeyShot · Fusion 360 · Photoshop
+  links:
+  - label: Selected client work on the Projects page
+    url: '#'
+client_jobs:
+- year: '2026'
+  job: Aluminium foil plant, 50 TPD
+  delivered: Full 3D site layout of the process line, utilities and material flow; walk-through video
+- year: '2026'
+  job: Perforated brick wall study
+  delivered: 15 wall variants (brick gap and angle), each with STEP export and views
+- year: '2026'
+  job: Layered cell models
+  delivered: Two layered stack assemblies with wiring, parts and images
+- year: '2025'
+  job: 'Mining machine: spiral and cutter'
+  delivered: Full assembly, pipe sections, 2D drawing set and motion videos
+- year: '2025'
+  job: Servo mechanism
+  delivered: Servo motor and connector assembly
+- year: '2025'
+  job: Pipe model
+  delivered: Parts delivered as IGES
+- year: '2024'
+  job: Soap process plant (distillation, cooling tower, filter press)
+  delivered: Plant section assemblies, layouts before and after, STEP files
+- year: '2024'
+  job: Dry-fruit product rendering
+  delivered: Product models, KeyShot renders and animated GIFs
+- year: '2024'
+  job: Waste-to-power plant model
+  delivered: Feedstock unit, tower and generator set in one assembly, STEP export
+- year: '2024'
+  job: Composite part designs
+  delivered: Four assemblies with STEP files and images
+- year: '2024'
+  job: Reactor vessel
+  delivered: Assembly of three parts with STEP files
+- year: '2024'
+  job: Hand tool part
+  delivered: Lever part modelled from photos of the tool
+- year: '2023'
+  job: 3D printer extruder (Prusa i3 MK2)
+  delivered: Full printer assembly of 150+ parts and printable STL files
+- year: '2023'
+  job: Mechanical parts for printing
+  delivered: Parts, assemblies, STL and G-code
+- year: '2023'
+  job: Gear and rack mechanism
+  delivered: Mechanism model
+- year: '2023'
+  job: Wooden aquarium stand
+  delivered: Assembly with STEP export and images
+campus:
+- when: OCT 2024
+  title: Dining Manager
+  org: Amar Ekushey Hall, KUET
+  text: 'Ran the hall dining: meal planning, purchasing and the budget, service, and keeping residents informed.'
+- when: '2024'
+  title: Hall Committee Member · Mosque Committee
+  org: Amar Ekushey Hall, KUET
+  text: Member of the Amar Ekushey Hall committee 2024, serving on the mosque committee and in student affairs; recognised with a Certificate
+    of Recognition (Sep 2025).
+  cert: Certificate of Recognition
+- when: MAR 2024 → SEP 2025
+  title: FabLab student operator and volunteer
+  org: FabLab, KUET
+  text: 'Beyond the operator role: helped run the lab as a volunteer after the certified year ended; recognised with a Certificate of Achievement.'
+  cert: Certificate of Achievement
+- when: AUG 2025
+  title: Award of Excellence and Certificate of Contribution
+  org: Directorate of Students' Welfare (DSW), KUET
+  text: The Award of Excellence crest, and a Certificate of Contribution for outstanding contribution and dedication to extracurricular activities.
+  cert: Certificate of Contribution
+training:
+- when: SEP 2025
+  title: CNC and CAM on a HAAS VF-2 milling machine
+  org: Department of IEM, KUET
+  text: 'Hands-on training when the department''s HAAS VF-2 and desktop lathe came in: machine operation, tool holders and offsets, graphical
+    simulation and shop-floor safety. I modelled a test part, planned its face, pocket, drill and adaptive toolpaths in Fusion CAM, posted the
+    NC program and cut it in aluminium.'
+  photos: cnc
+- when: APR 2025
+  title: International SOLIDWORKS Bootcamp 2025
+  org: ASME QUEST Chapter with the Islamabad SOLIDWORKS User Group (ISUG) and the SOLIDWORKS MUET Club · online
+  text: 'An international online bootcamp on advanced part and assembly modelling, simulation (FEA), surface and hybrid modelling, design for
+    manufacturing and engineering drawings. I completed all five graded tasks: sketching with draft angles and fillets, a stress and displacement
+    study, a flange with its 2D drawing, hybrid surface and solid modelling, and a multi-body part with mass checks.'
+  photos: bootcamp
+photos:
+  cnc:
+  - image: media/exp/exp-cnc-01-fusion-machine.webp
+    step: PLAN
+    caption: HAAS VF-2 set up as the machine in Fusion CAM
+  - image: media/exp/exp-cnc-02-cam-simulation.webp
+    step: PLAN
+    caption: 'Toolpath simulation: face, pockets, drills, adaptive clearing'
+  - image: media/exp/exp-cnc-03-nc-program.webp
+    step: PLAN
+    caption: The posted NC program for the VF-2
+  - image: media/exp/exp-cnc-04-vf2-vise.webp
+    step: SET UP
+    caption: The VF-2 with the vise on the table
+  - image: media/exp/exp-cnc-05-bt40-holder.webp
+    step: SET UP
+    caption: BT40 tool holder
+  - image: media/exp/exp-cnc-07-control-running.webp
+    step: RUN
+    caption: The program running on the HAAS control
+  - image: media/exp/exp-cnc-08-face-milling.webp
+    step: CUT
+    caption: Face milling the stock
+  - image: media/exp/exp-cnc-09-coolant-cut.webp
+    step: CUT
+    caption: Pocketing with flood coolant
+  - image: media/exp/exp-cnc-10-small-end-mill.webp
+    step: CUT
+    caption: Detail work with the small end mill
+  - image: media/exp/exp-cnc-10b-unclamp-part.webp
+    step: RESULT
+    caption: Taking the cut part out of the vise
+  - image: media/exp/exp-cnc-11-finished-part.webp
+    step: RESULT
+    caption: The finished aluminium part
+  - image: media/exp/exp-cnc-12-with-part.webp
+    step: RESULT
+    caption: With the part at the machine
+  bootcamp:
+  - image: media/exp/exp-bootcamp-certificate.webp
+    step: CERTIFICATE
+    caption: Certificate of Participation
+  - image: media/exp/exp-bootcamp-task1-part.webp
+    step: TASK 1
+    caption: Sketching, draft angles and fillets, with a mass check
+  - image: media/exp/exp-bootcamp-task2-stepped-part.webp
+    step: TASK 2
+    caption: Stepped part for the stress and displacement study
+  - image: media/exp/exp-bootcamp-task3-flange-drawing.webp
+    step: TASK 3
+    caption: Welding-neck flange with its 2D drawing
+  - image: media/exp/exp-bootcamp-task4-hybrid-surface.webp
+    step: TASK 4
+    caption: Hybrid surface and solid modelling

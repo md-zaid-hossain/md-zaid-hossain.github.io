@@ -1,0 +1,1106 @@
+# Education page: B.Sc. course map, teachers, M.Sc. courses, school subjects
+terms:
+- key: 1-1
+  label: YEAR 1 · TERM 1
+  period: FEB 2020 → MAR 2022 *
+- key: 1-2
+  label: YEAR 1 · TERM 2
+  period: FEB 2020 → MAR 2022 *
+- key: 2-1
+  label: YEAR 2 · TERM 1
+  period: MAR → AUG 2022
+- key: 2-2
+  label: YEAR 2 · TERM 2
+  period: SEP 2022 → JAN 2023
+- key: 3-1
+  label: YEAR 3 · TERM 1
+  period: FEB → AUG 2023
+- key: 3-2
+  label: YEAR 3 · TERM 2
+  period: AUG 2023 → JAN 2024
+- key: 4-1
+  label: YEAR 4 · TERM 1
+  period: JAN → OCT 2024
+- key: 4-2
+  label: YEAR 4 · TERM 2
+  period: OCT 2024 → AUG 2025
+areas:
+- key: mfg
+  label: Manufacturing &amp; materials
+- key: des
+  label: Product design &amp; CAD
+- key: ops
+  label: Operations, quality &amp; SCM
+- key: ora
+  label: OR &amp; statistics
+- key: hf
+  label: Human factors &amp; safety
+- key: mgt
+  label: Management &amp; economics
+- key: dat
+  label: Computing &amp; info systems
+- key: eng
+  label: Engineering science
+- key: sci
+  label: Math &amp; basic science
+- key: com
+  label: Communication
+- key: prj
+  label: Projects &amp; thesis
+courses:
+- term: 1-1
+  code: IPE 1101
+  title: Manufacturing Process I
+  area: mfg
+  kind: ''
+  topics:
+  - Casting
+  - Welding and joining
+  - Metal forming
+  - Plastic product processes
+- term: 1-1
+  code: CHEM 1111
+  title: Chemistry
+  area: sci
+  kind: ''
+  topics:
+  - Chemical bonding
+  - Kinetics
+  - Electrochemistry
+  - Phase diagrams
+- term: 1-1
+  code: HUM 1111
+  title: Economics
+  area: mgt
+  kind: ''
+  topics:
+  - Consumer behaviour
+  - Theory of the firm
+  - Cost functions
+  - Market equilibrium
+- term: 1-1
+  code: MATH 1111
+  title: Mathematics I
+  area: sci
+  kind: ''
+  topics:
+  - Differential calculus
+  - Partial differentiation
+  - Integral calculus
+- term: 1-1
+  code: PHY 1111
+  title: Modern and Solid State Physics
+  area: sci
+  kind: ''
+  topics:
+  - Atomic structure
+  - X-rays
+  - States of matter
+  - Solid state physics
+- term: 1-1
+  code: IPE 1102
+  title: Manufacturing Process I Sessional
+  area: mfg
+  kind: lab
+  topics: []
+- term: 1-1
+  code: CHEM 1112
+  title: Chemistry Sessional
+  area: sci
+  kind: lab
+  topics: []
+- term: 1-1
+  code: PHY 1112
+  title: Physics Sessional
+  area: sci
+  kind: lab
+  topics: []
+- term: 1-2
+  code: IPE 1201
+  title: Manufacturing Process II
+  area: mfg
+  kind: ''
+  topics:
+  - Theory of metal cutting
+  - Machining processes
+  - Modern machining
+- term: 1-2
+  code: IPE 1203
+  title: Engineering Materials
+  area: mfg
+  kind: ''
+  topics:
+  - Material behaviour in service
+  - Ceramics and glasses
+  - Polymers
+  - Composites
+- term: 1-2
+  code: IPE 1209
+  title: Computer Fundamentals and Programming Language
+  area: dat
+  kind: ''
+  topics:
+  - Hardware and software
+  - Flowcharts and algorithms
+  - Structured programming
+  - Functions
+- term: 1-2
+  code: HUM 1211
+  title: Professional English
+  area: com
+  kind: ''
+  topics:
+  - Grammar and usage
+  - Vocabulary
+  - Professional writing
+- term: 1-2
+  code: MATH 1211
+  title: Mathematics II
+  area: sci
+  kind: ''
+  topics:
+  - Matrices
+  - Linear algebra
+  - 2D and 3D coordinate geometry
+- term: 1-2
+  code: IPE 1202
+  title: Manufacturing Process II Sessional
+  area: mfg
+  kind: lab
+  topics: []
+- term: 1-2
+  code: IPE 1210
+  title: Computer Programming Sessional
+  area: dat
+  kind: lab
+  topics: []
+- term: 1-2
+  code: HUM 1212
+  title: English Language Sessional
+  area: com
+  kind: lab
+  topics: []
+- term: 1-2
+  code: IPE 1200
+  title: Engineering Drawing
+  area: des
+  kind: lab
+  topics:
+  - First and third angle projection
+  - Orthographic and isometric views
+  - Sectional views
+  - Assembly drawing
+- term: 2-1
+  code: CSE 2111
+  title: Data Structures and Algorithms
+  area: dat
+  kind: ''
+  topics:
+  - Arrays, lists, stacks, queues
+  - Trees and graphs
+  - Searching and sorting
+  - Complexity
+- term: 2-1
+  code: EEE 2111
+  title: Electrical Circuits and Machines
+  area: eng
+  kind: ''
+  topics:
+  - AC circuits
+  - DC machines
+  - Transformers
+  - Induction and servo motors
+- term: 2-1
+  code: HUM 2111
+  title: Financial, Cost and Management Accounting
+  area: mgt
+  kind: ''
+  topics:
+  - Final accounts
+  - Depreciation
+  - Process costing
+  - Standard costing
+- term: 2-1
+  code: MATH 2111
+  title: Mathematics III
+  area: sci
+  kind: ''
+  topics:
+  - Differential equations
+  - Laplace transform
+  - Complex variables
+- term: 2-1
+  code: ME 2111
+  title: Engineering Mechanics and Theory of Machines
+  area: eng
+  kind: ''
+  topics:
+  - Equilibrium
+  - Trusses and frames
+  - Friction
+  - Mechanisms
+- term: 2-1
+  code: CSE 2112
+  title: Data Structures and Algorithms Sessional
+  area: dat
+  kind: lab
+  topics: []
+- term: 2-1
+  code: EEE 2112
+  title: Electrical Circuits and Machines Sessional
+  area: eng
+  kind: lab
+  topics: []
+- term: 2-1
+  code: ME 2112
+  title: Engineering Mechanics and Theory of Machines Sessional
+  area: eng
+  kind: lab
+  topics: []
+- term: 2-2
+  code: IPE 2207
+  title: Probability and Statistical Analysis
+  area: ora
+  kind: ''
+  topics:
+  - Distributions
+  - Expectation and moments
+  - Central limit theorem
+  - Confidence intervals
+- term: 2-2
+  code: IPE 2229
+  title: Industrial Psychology and Law
+  area: hf
+  kind: ''
+  topics:
+  - Individual and group psychology
+  - Attitudes and cognition
+  - Industrial law
+  - Factory Act
+- term: 2-2
+  code: EEE 2211
+  title: Electronics
+  area: eng
+  kind: ''
+  topics:
+  - Diodes and transistors
+  - Op-amps
+  - Logic and digital circuits
+  - Industrial electronics
+- term: 2-2
+  code: ME 2213
+  title: Mechanics of Solids
+  area: eng
+  kind: ''
+  topics:
+  - Beams
+  - Torsion
+  - Combined stresses
+  - Columns
+  - Riveted and welded joints
+- term: 2-2
+  code: ME 2215
+  title: Thermal Engineering and Heat Transfer
+  area: eng
+  kind: ''
+  topics:
+  - Thermodynamics
+  - Engines and turbines
+  - Refrigeration
+  - Heat transfer
+- term: 2-2
+  code: IPE 2200
+  title: Computer Aided Design Sessional I
+  area: des
+  kind: lab
+  topics:
+  - 2D drafting in AutoCAD
+  - Layers and blocks
+  - Dimensioning
+  - Plotting
+- term: 2-2
+  code: EEE 2212
+  title: Electronics Sessional
+  area: eng
+  kind: lab
+  topics: []
+- term: 2-2
+  code: ME 2214
+  title: Mechanics of Solids Sessional
+  area: eng
+  kind: lab
+  topics: []
+- term: 2-2
+  code: ME 2216
+  title: Thermal Engineering and Heat Transfer Sessional
+  area: eng
+  kind: lab
+  topics: []
+- term: 3-1
+  code: IPE 3103
+  title: Engineering Metallurgy
+  area: mfg
+  kind: ''
+  topics:
+  - Crystal structure
+  - Metallography
+  - Fe-C phase diagram
+  - Heat treatment
+- term: 3-1
+  code: IPE 3105
+  title: Product Design I
+  area: des
+  kind: ''
+  topics:
+  - Product planning and specs
+  - Concept generation and selection
+  - Prototyping
+  - Product architecture
+- term: 3-1
+  code: IPE 3115
+  title: Engineering Economy
+  area: mgt
+  kind: ''
+  topics:
+  - Present worth
+  - Rate of return
+  - Depreciation
+  - Inflation
+- term: 3-1
+  code: IPE 3119
+  title: Operations Management
+  area: ops
+  kind: ''
+  topics:
+  - Demand forecasting
+  - Aggregate planning
+  - Inventory models
+  - Scheduling
+- term: 3-1
+  code: ME 3111
+  title: Fluid Mechanics and Machinery
+  area: eng
+  kind: ''
+  topics:
+  - Fluid statics
+  - Fluid dynamics
+  - Pipe flow
+  - Pumps and turbines
+- term: 3-1
+  code: IPE 3100
+  title: Computer Aided Design Sessional II
+  area: des
+  kind: lab
+  topics:
+  - 3D modelling
+  - Rendering
+  - Animation
+  - SOLIDWORKS
+- term: 3-1
+  code: IPE 3104
+  title: Engineering Metallurgy Sessional
+  area: mfg
+  kind: lab
+  topics: []
+- term: 3-1
+  code: IPE 3106
+  title: Product Design I Sessional
+  area: des
+  kind: lab
+  topics: []
+- term: 3-1
+  code: ME 3112
+  title: Fluid Mechanics and Machinery Sessional
+  area: eng
+  kind: lab
+  topics: []
+- term: 3-2
+  code: IPE 3205
+  title: Product Design II
+  area: des
+  kind: ''
+  topics:
+  - Stress and strain analysis
+  - Shafts, springs, bearings
+  - Gears
+  - Belt, rope and chain drives
+- term: 3-2
+  code: IPE 3217
+  title: Operations Research
+  area: ora
+  kind: ''
+  topics:
+  - Linear programming
+  - Simplex and duality
+  - Transportation and assignment
+  - Dynamic programming
+- term: 3-2
+  code: IPE 3219
+  title: Production Systems Design
+  area: ops
+  kind: ''
+  topics:
+  - Capacity planning
+  - Method and motion study
+  - Work measurement
+  - Facility layout and location
+- term: 3-2
+  code: IPE 3221
+  title: Quality Management
+  area: ops
+  kind: ''
+  topics:
+  - Statistical quality control
+  - Six Sigma
+  - Design of experiments
+  - Acceptance sampling
+- term: 3-2
+  code: IPE 3223
+  title: Material Handling and Maintenance Management
+  area: ops
+  kind: ''
+  topics:
+  - Handling systems
+  - Cranes and forklifts
+  - Packaging tests
+  - Maintenance
+- term: 3-2
+  code: IPE 3200
+  title: Business Communication Seminar
+  area: com
+  kind: lab
+  topics: []
+- term: 3-2
+  code: IPE 3206
+  title: Product Design II Sessional
+  area: des
+  kind: lab
+  topics: []
+- term: 3-2
+  code: IPE 3218
+  title: Operations Research Sessional
+  area: ora
+  kind: lab
+  topics: []
+- term: 3-2
+  code: IPE 3220
+  title: Production Systems Design Sessional
+  area: ops
+  kind: lab
+  topics: []
+- term: 3-2
+  code: IPE 3222
+  title: Quality Management Sessional
+  area: ops
+  kind: lab
+  topics: []
+- term: 4-1
+  code: IPE 4109
+  title: Management Information System Analysis and Design
+  area: dat
+  kind: ''
+  topics:
+  - Information needs
+  - System development life cycle
+  - Requirements and planning
+- term: 4-1
+  code: IPE 4125
+  title: Machine Tools
+  area: mfg
+  kind: ''
+  topics:
+  - Drive systems
+  - Speed and feed gearboxes
+  - Machine tool design
+- term: 4-1
+  code: IPE 4129
+  title: Industrial Management and Entrepreneurship Development
+  area: mgt
+  kind: ''
+  topics:
+  - Human resource management
+  - Strategic management
+  - Entrepreneurship
+- term: 4-1
+  code: IPE 4019
+  title: Logistics and Supply Chain Management
+  area: ops
+  kind: ''
+  topics:
+  - Supply chain planning
+  - Transportation
+  - IT in the supply chain
+  - Coordination
+- term: 4-1
+  code: IPE 4029
+  title: Marketing Management
+  area: mgt
+  kind: ''
+  topics:
+  - Market segmentation
+  - Buyer behaviour
+  - Marketing planning
+- term: 4-1
+  code: IPE 4110
+  title: MIS Sessional
+  area: dat
+  kind: lab
+  topics: []
+- term: 4-1
+  code: IPE 4126
+  title: Machine Tools Sessional
+  area: mfg
+  kind: lab
+  topics: []
+- term: 4-1
+  code: IPE 4002
+  title: Term Project
+  area: prj
+  kind: prj
+  topics:
+  - Weight-based sorting machine
+  - Arduino and load cell
+  - Servo sorting arms
+- term: 4-2
+  code: IPE 4219
+  title: Human Factors Engineering and Safety Management
+  area: hf
+  kind: ''
+  topics:
+  - Workplace design
+  - Anthropometry
+  - Biomechanics and manual lifting
+  - Safety management
+- term: 4-2
+  code: IPE 4225
+  title: Tool Engineering
+  area: mfg
+  kind: ''
+  topics:
+  - Locating and clamping
+  - Jigs and fixtures
+  - Die design
+  - Gauges
+- term: 4-2
+  code: IPE 4227
+  title: CAM and Robotics
+  area: mfg
+  kind: ''
+  topics:
+  - NC and CNC
+  - CNC part programming
+  - CAPP
+  - Industrial robots
+- term: 4-2
+  code: IPE 4027
+  title: Computer Integrated Manufacturing
+  area: mfg
+  kind: ''
+  topics:
+  - Automation
+  - Group technology
+  - Automated handling
+  - AS/RS
+- term: 4-2
+  code: IPE 4059
+  title: Project Management
+  area: mgt
+  kind: ''
+  topics:
+  - Project life cycle
+  - Scope and planning
+  - Cost and time estimating
+- term: 4-2
+  code: IPE 4000
+  title: Project and Thesis
+  area: prj
+  kind: prj
+  topics:
+  - ML risk prediction for WMSD
+  - RULA posture scores
+  - Video data
+- term: 4-2
+  code: IPE 4220
+  title: Human Factors Engineering Sessional
+  area: hf
+  kind: lab
+  topics: []
+- term: 4-2
+  code: IPE 4226
+  title: Tool Engineering Sessional
+  area: mfg
+  kind: lab
+  topics: []
+- term: 4-2
+  code: IPE 4228
+  title: CAM and Robotics Sessional
+  area: mfg
+  kind: lab
+  topics: []
+teachers:
+  habibur:
+    name: Dr. Md. Habibur Rahman
+    profile: https://kuet.ac.bd/iem/habibur091
+    active: true
+  rafiq:
+    name: Dr. Md. Rafiquzzaman
+    profile: https://kuet.ac.bd/iem/rafiq123
+    active: true
+  alamin:
+    name: Dr. Md. Al Amin
+    profile: https://kuet.ac.bd/iem/m.alamin
+    active: true
+  saiful:
+    name: Dr. Md. Saiful Islam
+    profile: https://kuet.ac.bd/iem/saifuliem
+    active: true
+  kibria:
+    name: Md. Golam Kibria
+    profile: https://kuet.ac.bd/iem/kibria
+    active: true
+  farjana:
+    name: Farjana Parvin
+    profile: https://kuet.ac.bd/iem/farjanamousumi17
+    active: true
+  tamanna:
+    name: Tamanna Kamal
+    profile: https://kuet.ac.bd/iem/tamanna
+    active: true
+  parvez:
+    name: Md. Shohel Parvez
+    profile: https://kuet.ac.bd/iem/msp.ipe
+    active: true
+  nsultana:
+    name: Dr. Mst. Nazma Sultana
+    profile: https://kuet.ac.bd/iem/n.sultana
+    active: true
+  palash:
+    name: Palash Saha
+    profile: https://kuet.ac.bd/iem/palash
+    active: true
+  ridwan:
+    name: Ridwan Mustofa
+    profile: https://kuet.ac.bd/iem/ridwanmustofa
+    active: true
+  zahid:
+    name: S M Julfiker Zahid
+    profile: https://kuet.ac.bd/iem/julfiker
+    active: true
+  anzum:
+    name: Kazi Md. Tanvir Anzum
+    profile: https://kuet.ac.bd/iem/tanvir
+    active: true
+  ismail:
+    name: Md. Ismail Hossain
+    profile: https://kuet.ac.bd/iem/ismail
+    active: true
+  irfan:
+    name: Md. Tanjid Hossen Irfan
+    profile: https://kuet.ac.bd/iem/irfan
+    active: true
+  talapatra:
+    name: Dr. Subrata Talapatra
+    profile: https://kuet.ac.bd/iem/subrata
+    active: true
+  asef:
+    name: Asef Shahriar
+    profile: https://kuet.ac.bd/iem/asef
+    active: true
+  ashik:
+    name: Jahid Hasan Ashik
+    profile: https://kuet.ac.bd/iem/jhashik
+    active: true
+  saddam:
+    name: Dr. Md. Saddam Hossain
+    profile: https://kuet.ac.bd/chem/saddam
+    active: true
+  yousuf:
+    name: Dr. Mohammad Abu Yousuf
+    profile: https://kuet.ac.bd/chem/yousuf
+    active: true
+  razia:
+    name: Dr. Razia Khatun
+    profile: https://kuet.ac.bd/hum/rkhatun
+    active: true
+  shahin:
+    name: Dr. Md. Shahinur Alam Sarker
+    profile: https://kuet.ac.bd/hum/shahin
+    active: true
+  tauhid:
+    name: Munshi Tauhiduzzaman
+    profile: https://kuet.ac.bd/hum/mtzaman
+    active: true
+  amanullah:
+    name: Md. Amanullah
+    profile: https://kuet.ac.bd/hum/maaman
+    active: true
+  tania:
+    name: Tania Haque
+    profile: https://kuet.ac.bd/hum/tania438834
+    active: true
+  arif:
+    name: S.M. Arif Hossen
+    profile: https://kuet.ac.bd/math/smarif
+    active: true
+  asraful:
+    name: Dr. Md. Asraful Alom
+    profile: https://kuet.ac.bd/math/asraful
+    active: true
+  jamali:
+    name: Dr. A. R. M. Jalal Uddin Jamali
+    profile: https://kuet.ac.bd/math/jamali
+    active: true
+  idris:
+    name: Md. Idris Ali
+    profile: https://kuet.ac.bd/phy/idrisali
+    active: true
+  ekabir:
+    name: A. N. M. Enamul Kabir
+    profile: https://kuet.ac.bd/eee/ekabir
+    active: true
+  shahabul:
+    name: Md. Shahabul Alam
+    profile: https://kuet.ac.bd/eee/shahabul
+    active: true
+  arefin:
+    name: Arefin Ahamed Shuvo
+    profile: https://kuet.ac.bd/eee/arefin
+    active: true
+  anik:
+    name: Fahim Islam Anik
+    profile: https://kuet.ac.bd/me/anik
+    active: true
+  raju:
+    name: Raju Ahammad
+    profile: https://kuet.ac.bd/me/rajuahammad
+    active: true
+  shahidul:
+    name: Dr. Md. Shahidul Islam
+    profile: https://kuet.ac.bd/me/shahidulbitk
+    active: true
+  faruk:
+    name: Dr. Abdullah Al-Faruk
+    profile: https://kuet.ac.bd/me/alfaruk
+    active: true
+  dipayan:
+    name: Dr. Dipayan Mondal
+    profile: https://kuet.ac.bd/me/dipkuet
+    active: true
+  zahir:
+    name: Dr. Zahir Uddin Ahmed
+    profile: https://kuet.ac.bd/me/zuahmed
+    active: true
+  shakil:
+    name: Md. Shakil Hossain
+    profile: https://kuet.ac.bd/math/shakil
+    active: true
+  touhid:
+    name: Dr. M. M. Touhid Hossain
+    profile: https://kuet.ac.bd/math/mthosain
+    active: true
+  selim:
+    name: A.K.M. Selim Reza
+    profile: https://kuet.ac.bd/math/selim_1992
+    active: true
+  wakil:
+    name: Dr. Md. Abdul Wakil
+    profile: https://kuet.ac.bd/me/wakil
+    active: true
+  roman:
+    name: Shahrear Roman
+    profile: https://www.linkedin.com/in/shahrear-roman-a63089b7/
+    active: true
+  sikder:
+    name: Dr. Shibendra Shekher Sikder
+    profile: https://www.kuet.ac.bd/phy/sssikder
+    active: true
+  msislam:
+    name: Dr. Md. Shariful Islam
+    profile: https://kuet.ac.bd/me/msislam
+    active: true
+  nourin:
+    name: Nourin Mohsin
+    profile: https://www.linkedin.com/in/nourinmohsin/
+    active: true
+  hridoy:
+    name: Rafat Mahmud Hridoy
+    profile: https://kuet.ac.bd/iem/rafathridoy
+    active: true
+  mahbub:
+    name: Dr. Md. Mahbubur Rahman
+    profile: https://www.linkedin.com/in/md-rahman-robotics/
+    active: true
+  hasib:
+    name: Dr. Md. Abdul Hasib
+    profile: https://www.kuet.ac.bd/me/ahasib
+    active: true
+  tawabur:
+    name: Dr. Md. Tawabur Rahman
+    profile: https://www.kuet.ac.bd/eee/tawabur
+    active: true
+  hrashid:
+    name: Md. Harun-Or-Rashid Mollah
+    profile: https://kuet.ac.bd/me/hrashid
+    active: true
+taught_by:
+  IPE 1101:
+  - habibur
+  - rafiq
+  CHEM 1111:
+  - saddam
+  - yousuf
+  HUM 1111:
+  - razia
+  - roman
+  MATH 1111:
+  - arif
+  - shakil
+  PHY 1111:
+  - idris
+  - sikder
+  IPE 1201:
+  - alamin
+  - rafiq
+  IPE 1203:
+  - alamin
+  - mahbub
+  IPE 1209:
+  - mahbub
+  - saiful
+  HUM 1211:
+  - shahin
+  - tauhid
+  MATH 1211:
+  - asraful
+  - jamali
+  CSE 2111:
+  - saiful
+  - talapatra
+  EEE 2111:
+  - ekabir
+  - shahabul
+  HUM 2111:
+  - amanullah
+  - tania
+  ME 2111:
+  - anik
+  - msislam
+  IPE 2207:
+  - farjana
+  - saiful
+  IPE 2229:
+  - hridoy
+  - nourin
+  EEE 2211:
+  - arefin
+  - ekabir
+  ME 2213:
+  - raju
+  - shahidul
+  ME 2215:
+  - dipayan
+  - faruk
+  IPE 3103:
+  - farjana
+  - rafiq
+  IPE 3105:
+  - kibria
+  - farjana
+  IPE 3115:
+  - nourin
+  - ridwan
+  IPE 3119:
+  - kibria
+  - palash
+  ME 3111:
+  - wakil
+  - zahir
+  IPE 3217:
+  - farjana
+  - saiful
+  IPE 3219:
+  - kibria
+  - nsultana
+  IPE 3221:
+  - farjana
+  - kibria
+  IPE 3223:
+  - zahid
+  - anzum
+  IPE 4109:
+  - ridwan
+  - saiful
+  IPE 4125:
+  - farjana
+  - talapatra
+  IPE 4129:
+  - zahid
+  - anzum
+  IPE 4019:
+  - ismail
+  - palash
+  IPE 4029:
+  - irfan
+  - zahid
+  IPE 4219:
+  - kibria
+  - palash
+  IPE 4225:
+  - asef
+  - talapatra
+  IPE 4227:
+  - asef
+  - ashik
+  IPE 4027:
+  - ashik
+  - rafiq
+  IPE 4059:
+  - irfan
+  - palash
+  MATH 2111:
+  - selim
+  - touhid
+  IPE 3205:
+  - asef
+  - rafiq
+  IPE 1200:
+  - shahidul
+  - mahbub
+  IPE 3100:
+  - saiful
+  - ismail
+  IPE 3200:
+  - palash
+  - anzum
+  IEM 6115:
+  - saiful
+  IEM 6123:
+  - anzum
+  IEM 6211:
+  - rafiq
+  IPE 4002:
+  - kibria
+  IPE 4000:
+  - kibria
+  IPE 2200:
+  - parvez
+  - palash
+  ME 2214:
+  - shahidul
+  - ridwan
+  ME 2216:
+  - msislam
+  - hasib
+  EEE 2212:
+  - ekabir
+  - tawabur
+  IPE 3104:
+  - rafiq
+  - farjana
+  IPE 3106:
+  - kibria
+  - farjana
+  ME 3112:
+  - zahir
+  - wakil
+  IPE 3206:
+  - rafiq
+  - asef
+  IPE 3218:
+  - saiful
+  - farjana
+  IPE 3220:
+  - kibria
+  - nsultana
+  IPE 3222:
+  - kibria
+  - farjana
+  IPE 4110:
+  - saiful
+  - ridwan
+  IPE 4126:
+  - talapatra
+  - hrashid
+  IPE 4220:
+  - kibria
+  - palash
+  IPE 4226:
+  - talapatra
+  - asef
+  IPE 4228:
+  - asef
+  - ashik
+msc_courses:
+- code: IEM 6115
+  title: Stochastic Decision Models
+  topics:
+  - Probability
+  - Conditional probability
+  - Mathematical expectation
+  - Poisson process
+  - Exponential distribution
+  - Simulation
+- code: IEM 6123
+  title: Numerical Methods for Optimization
+  topics: []
+- code: IEM 6211
+  title: Computer Integrated Manufacturing Systems
+  topics: []
+hsc:
+  groups:
+  - name: COMPULSORY
+    subjects:
+    - Bangla
+    - English
+    - ICT
+  - name: SCIENCE GROUP
+    subjects:
+    - Physics
+    - Chemistry
+    - Higher Mathematics
+  - name: 4TH SUBJECT
+    subjects:
+    - Biology
+  subjects:
+  - Bangla
+  - English
+  - Physics
+  - Chemistry
+  - Higher Mathematics
+  - ICT
+  extra:
+  - Biology
+ssc:
+  groups:
+  - name: COMPULSORY
+    subjects:
+    - Bangla
+    - English
+    - Mathematics
+    - ICT
+    - Bangladesh and Global Studies
+    - Islam and Moral Education
+    - Physical Education, Health and Sports
+    - Career Education
+  - name: SCIENCE GROUP
+    subjects:
+    - Physics
+    - Chemistry
+    - Higher Mathematics
+  - name: 4TH SUBJECT
+    subjects:
+    - Biology
+  subjects:
+  - Bangla
+  - English
+  - Mathematics
+  - Higher Mathematics
+  - Physics
+  - Chemistry
+  - Bangladesh and Global Studies
+  - Islam and Moral Education
+  - ICT
+  - Physical Education, Health and Sports
+  - Career Education
+  extra:
+  - Biology

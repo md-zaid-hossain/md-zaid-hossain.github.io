@@ -1,0 +1,110 @@
+# Project page /projects/distillation-plant/ · part no. MZH-P-002
+# key: used by the build, keep it
+'no': 2
+slug: distillation-plant
+key: distillation
+title: Distillation plant
+crumb: DISTILLATION PLANT
+tags:
+- CLIENT · SOAP PROCESS PLANT
+- SOLIDWORKS
+- OCT 2024
+lead: 'The distillation section of a soap manufacturer''s process plant, laid out in SOLIDWORKS to the client''s process requirements: vessels,
+  condensers, receivers and tanks on three floor levels, the pumps between them, every pipe run, two cooling towers, platforms and stairs. For
+  the same client I also modelled the evaporator plant and the lye treatment area.'
+card:
+  category: CLIENT · SOAP PROCESS PLANT
+  filter: client
+  title: Distillation Plant
+  text: Distillation section of a soap manufacturing plant, laid out to the client's process requirements.
+  tools:
+  - SOLIDWORKS
+  - Plant layout
+  image: media/cards/distillation.webp
+hero:
+  turntable: media/proj_distillation/turntable.webp
+  glb: GLB 1.5 MB
+  render: media/proj_distillation/hero.webp
+  render_label: STILL
+  render_alt: Distillation plant 3D layout on three floor levels with stainless vessels, pumps and two cooling towers
+  model: media/proj_distillation/plant.glb
+spec:
+- label: TYPE
+  value: Client project <em>· soap manufacturer, name kept private</em>
+- label: DATE
+  value: Oct to Nov 2024 <em>· modelled</em> · Mar 2025 <em>· revised</em>
+- label: SOFTWARE
+  value: SOLIDWORKS
+- label: SCOPE
+  value: Distillation plant layout <em>· plus the evaporator plant and the lye treatment area</em>
+- label: CONTENTS
+  value: Vessels, condensers, receivers, tanks, pumps, piping, cooling towers, platforms, stairs
+- label: OUTPUT
+  value: SOLIDWORKS part and assembly, STEP, STL, screenshots for the client
+stats:
+- value: '3'
+  label: plant areas
+- value: '3'
+  label: floor levels
+- value: '2'
+  label: cooling towers
+- value: 1.5 MB
+  label: web 3D model
+sections:
+- kind: photos
+  tag: DISTILLATION
+  title: The distillation plant in SOLIDWORKS
+  gid: pdi-d
+  photos:
+  - image: media/proj_distillation/dist-1.webp
+    caption: The whole plant on its three floor levels
+  - image: media/proj_distillation/dist-2.webp
+    caption: From above, with see-through floors
+  - image: media/proj_distillation/dist-3.webp
+    caption: Main vessel, condensers and receivers
+  - image: media/proj_distillation/dist-4.webp
+    caption: Cooling tower, stairs and the pipe runs
+  - image: media/proj_distillation/dist-5.webp
+    caption: Pumps and valves under the main vessel
+  - image: media/proj_distillation/dist-6.webp
+    caption: Top floor with the second cooling tower
+- kind: photos
+  tag: EVAPORATOR
+  title: 'Same client: the evaporator plant'
+  gid: pdi-e
+  photos:
+  - image: media/proj_distillation/evap-1.webp
+    caption: Evaporator plant with its cooling tower
+  - image: media/proj_distillation/evap-2.webp
+    caption: Effect vessels and heat exchangers
+  - image: media/proj_distillation/evap-3.webp
+    caption: Close view of the effect vessels and the salt side
+- kind: photos
+  tag: TREATMENT AREA
+  title: 'Same client: the lye treatment area'
+  gid: pdi-t
+  photos:
+  - image: media/proj_distillation/treat-1.webp
+    caption: Treatment tanks below, filter presses on the platform
+  - image: media/proj_distillation/treat-2.webp
+    caption: The treatment area from above
+  - image: media/proj_distillation/treat-3.webp
+    caption: Treatment tanks with their feed pumps
+  - image: media/proj_distillation/treat-4.webp
+    caption: Platform, lye storage tank and stairs
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: MAIN
+    value: Distilation Plant · SLDPRT and SLDASM
+  - label: EQUIPMENT
+    value: Vessel · Condenser · Receiver · drop tank · Seal Tank · Entrainment · Barometric Shower · Curde Tank 9, 10 · Salt Box · Stair
+  - label: EXCHANGE
+    value: STEP · 324 MB · STL
+  - label: OTHER AREAS
+    value: Evaporator Plant · SLDASM · Treatment Area Assembley · SLDASM
+  - label: WEB MODEL
+    value: GLB · 1.5 MB
+  - label: CLIENT
+    value: Name kept private

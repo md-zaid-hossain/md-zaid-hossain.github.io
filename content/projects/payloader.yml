@@ -1,0 +1,81 @@
+# Project page /projects/payloader/ · part no. MZH-P-013
+# key: used by the build, keep it
+'no': 13
+slug: payloader
+key: payloader
+title: Payloader
+crumb: PAYLOADER
+tags:
+- PERSONAL
+- SOLIDWORKS
+- JAN 2024 TO SEP 2025
+lead: 'A wheel loader modelled in SOLIDWORKS: the rear loader frame with its cab, the front body, the boom with two hydraulic cylinders, a rocker
+  arm linkage for the bucket, the bucket, two axles with differentials and four rims with lettered tyres. Started in January 2024 and finished
+  in September 2025.'
+card:
+  category: PERSONAL
+  filter: self
+  title: Payloader
+  text: 'Wheel loader assembly: chassis, cab, lift arms and bucket.'
+  tools:
+  - SOLIDWORKS
+  image: media/cards/payloader.webp
+hero:
+  turntable: media/proj_payloader/turntable.webp
+  glb: GLB 0.3 MB
+  render: media/proj_payloader/hero.webp
+  render_label: STILL
+  render_alt: Wheel loader 3D model with the bucket lowered
+  model: media/proj_payloader/pay.glb
+spec:
+- label: TYPE
+  value: Personal project <em>· practice in linkages and assemblies</em>
+- label: DATE
+  value: Jan 2024 <em>· first parts</em> · Sep 2025 <em>· final assembly</em>
+- label: SOFTWARE
+  value: SOLIDWORKS
+- label: PARTS
+  value: 15 modelled <em>· 48 components in the assembly, with 20 screws</em>
+- label: OUTPUT
+  value: Parts, sub-assembly, two assemblies, STEP
+stats:
+- value: '15'
+  label: parts I modelled
+- value: '48'
+  label: components
+- value: '2'
+  label: hydraulic linkages
+- value: 0.3 MB
+  label: web 3D model
+sections:
+- kind: photos
+  tag: VIEWS
+  title: Three views of the model
+  gid: pp-v
+  photos:
+  - image: media/proj_payloader/view-a.webp
+    caption: 'Front three-quarter: bucket, boom and rocker arms'
+  - image: media/proj_payloader/view-b.webp
+    caption: 'From the front: bucket, axle and differential'
+  - image: media/proj_payloader/view-c.webp
+    caption: 'Rear three-quarter: engine cover, cab and lift linkage'
+- kind: files
+  tag: MODEL FILES
+  title: What is in the folder
+  rows:
+  - label: MAIN ASSY
+    value: '2 Payloader Assem 2.SLDASM <em>· earlier: 1 Payloader Assem</em>'
+  - label: SUB-ASSY
+    value: SUP ASSEMPLY.SLDASM
+  - label: BODY
+    value: Loader · front body · bucket
+  - label: LINKAGE
+    value: Boom · boom cylinder and rod · rocker arm, its cylinder and rod · connecting rod
+  - label: RUNNING GEAR
+    value: Differential · axle rod · rim · tyre
+  - label: FASTENERS
+    value: Screw × 20
+  - label: EXCHANGE
+    value: STEP · whole assembly · 12.5 MB · Nov 2026
+  - label: WEB MODEL
+    value: GLB · 0.3 MB
