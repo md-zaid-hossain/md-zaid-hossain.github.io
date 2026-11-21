@@ -18,9 +18,11 @@ AVIF_Q = 55          # checked by eye on 21 Nov 2026: same look as the WebP at a
 
 
 def rel_files(sub=""):
-    root = os.path.join(MEDIA, sub)
+    # never walk into the copies themselves: os.walk(MEDIA + "/") gives "media/" with a slash, so compare clean paths
+    # (runs #9 to #11 made _thumbs/_thumbs/... copies of copies because a plain == never matched)
+    root = os.path.normpath(os.path.join(MEDIA, sub))
     for a, dirs, fs in os.walk(root):
-        dirs[:] = [d for d in dirs if not (sub == "" and a == MEDIA and d in ("_avif", "_thumbs"))]
+        dirs[:] = [d for d in dirs if d not in ("_avif", "_thumbs")]
         for f in fs:
             if f.lower().endswith(RASTER):
                 yield os.path.relpath(os.path.join(a, f), MEDIA).replace(os.sep, "/")
@@ -42,7 +44,19 @@ def _rgb(im):
     return im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB")
 
 
+def clean_nested():
+    """Remove the copies of copies left by the old walk (media/_thumbs/_thumbs, media/_avif/_avif and so on)."""
+    import shutil
+    # media/_avif/_thumbs is real (AVIF copies of the 800 px copies); everything listed here is not
+    for bad in ("_thumbs/_thumbs", "_thumbs/_avif", "_avif/_avif", "_avif/_thumbs/_thumbs", "_avif/_thumbs/_avif"):
+            p = os.path.join(MEDIA, bad)
+            if os.path.isdir(p):
+                shutil.rmtree(p)
+                print("  removed", os.path.relpath(p, REPO))
+
+
 def make_all(verbose=True):
+    clean_nested()
     made = 0
     for rel in list(rel_files()):
         src = os.path.join(MEDIA, rel)
@@ -54,7 +68,7 @@ def make_all(verbose=True):
                     os.makedirs(os.path.dirname(out), exist_ok=True)
                     _rgb(im).resize((THUMB_W, round(h * THUMB_W / w)), Image.LANCZOS).save(out, "WEBP", quality=82, method=5)
                     made += 1
-            if os.path.basename(rel).startswith("turntable") or rel.endswith("-turntable.webp"):
+            if (os.path.basename(rel).startswith("turntable") or rel.endswith("-turntable.webp")) and not rel.endswith("-frame0.webp"):
                 out = os.path.join(MEDIA, frame0_rel(rel))
                 if not os.path.exists(out):     # sprite is 9 x 8 frames; frame 0 is the top-left one
                     os.makedirs(os.path.dirname(out), exist_ok=True)

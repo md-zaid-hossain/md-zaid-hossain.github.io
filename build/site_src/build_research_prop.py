@@ -49,6 +49,7 @@ details.rzab p{margin:8px 0 4px;font-size:13.5px;line-height:1.65;color:var(--bo
 .rzf figcaption b{color:var(--body);font-weight:600}
 .rzo{border:1px solid var(--line2);border-radius:12px;background:var(--surface);padding:20px 24px 18px;margin-top:16px}
 .rzo+.rzo{margin-top:18px}
+.rzo{border-style:dashed}
 .rzo .rztg em{color:var(--acc-t)}
 .rzo p{margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--body);max-width:900px}
 .rzo p.rzn{color:var(--muted);font-size:13.5px}
@@ -170,24 +171,43 @@ def ongoing(o):
         <div class="rztg"><em>{o['tag']}</em></div>
         <h3 style="margin:8px 0 0;font:600 17px/1.4 'Space Grotesk',sans-serif;color:var(--strong)">{o['title']}</h3>
         <div class="rza">{authors(o['who'])}</div>
-        <p>{o['text']}</p>
+        <p>{o['text']}</p>{strip(o)}
         {nums(o['nums'])}
-        <p class="rzn">{o['note']}</p>
+        <p class="rzn">{o['note']}</p>{link(o)}
       </article>"""
+
+
+def strip(o):
+    if not o.get("strip"):
+        return ""
+    return ('<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 4px">'
+            + "".join(f'<img src="{s}" alt="{c}" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block">'
+                      for s, c in o["strip"]) + "</div>")
+
+
+def link(o):
+    if not o.get("link"):
+        return ""
+    return (f'<div style="margin-top:14px"><a class="bkb" href="#"><s></s><s></s><s></s><s></s>'
+            f'<span>{o["link"]}</span><i>→</i></a></div>')
 
 
 def page_body():
     LB.clear()
     jr = "".join(card(p) for p in R.PAPERS if p["kind"] == "j")
     cf = "".join(card(p) for p in R.PAPERS if p["kind"] == "c")
-    pub = (P.head("01", "PUBLISHED", "Four papers, 2025 to 2026", "pub")
-           + P.sub("--r11", "1.1", "JOURNAL PAPERS · 2", jr)
-           + P.sub("--r12", "1.2", "CONFERENCE PAPERS · 2", cf)
+    nj, no = sum(p["kind"] == "j" for p in R.PAPERS), len(R.ONGOING)
+    W = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five"}
+    # Zaid 21 Nov: 01 journal papers (published, then in progress), 02 conference papers
+    pub = (P.head("01", "JOURNAL PAPERS", f"{W[nj]} published, {W[no].lower()} in progress", "pub")
+           + P.sub("--r11", "1.1", f"PUBLISHED · {nj}", jr)
+           + P.sub("--r12", "1.2", f"IN PROGRESS · {no}", "".join(ongoing(o) for o in R.ONGOING))
            + f'<p class="rzth">IF · Journal Impact Factor (JCR) &nbsp;·&nbsp; CITESCORE · Scopus &nbsp;·&nbsp; <b>2026 releases</b></p>')
-    ong = (P.head("02", "IN PROGRESS", "Work in progress", "ong")
-           + P.sub("--r21", "2.1", "STUDY IN PREPARATION · 1", "".join(ongoing(o) for o in R.ONGOING)))
-    nav = [("--q1", "pub", "01", "PUBLISHED", [("--r11", "1.1", "Journal papers"), ("--r12", "1.2", "Conference papers")]),
-           ("--q2", "ong", "02", "IN PROGRESS", [("--r21", "2.1", "Study in preparation")])]
+    nc = sum(p["kind"] == "c" for p in R.PAPERS)
+    ong = (P.head("02", "CONFERENCE PAPERS", f"{W[nc]} papers, 2025", "ong")
+           + P.sub("--r21", "2.1", f"PUBLISHED · {nc}", cf))
+    nav = [("--q1", "pub", "01", "JOURNAL PAPERS", [("--r11", "1.1", "Published"), ("--r12", "1.2", "In progress")]),
+           ("--q2", "ong", "02", "CONFERENCE PAPERS", [("--r21", "2.1", "Published")])]
     idx = '<nav class="eix" aria-label="On this page"><span class="ixh">ON THIS PAGE</span>'
     for k, (tl, hid, n, lab, subs) in enumerate(nav):
         on = " ion" if k == 0 else ""
@@ -203,7 +223,7 @@ def page_body():
       <div class="eph"><div class="crumb">HOME / RESEARCH</div><h1 class="h1">Research</h1>
         <p>Ergonomics and worker safety in garment factories, operations on RMG sewing lines, and machine learning for industrial decisions. Each study below says what was asked, how it was done and what was found.</p></div>
       <div class="est"><div><b>4</b><span>published papers</span></div><div><b>2</b><span>Q1 journal papers</span></div>
-        <div><b>2</b><span>as first author</span></div><div><b>1</b><span>in progress</span></div></div>
+        <div><b>2</b><span>as first author</span></div><div><b>{len(R.ONGOING)}</b><span>in progress</span></div></div>
       <div class="rzl" style="margin-top:14px"><a href="https://orcid.org/0009-0003-3301-3609" target="_blank" rel="noopener">ORCID ↗</a><a href="https://scholar.google.com/citations?user=Fu6JmxIAAAAJ" target="_blank" rel="noopener">GOOGLE SCHOLAR ↗</a><a href="https://www.researchgate.net/profile/Md-Zaid-Hossain" target="_blank" rel="noopener">RESEARCHGATE ↗</a></div>
       <div class="edw rzw">{idx}<div>{secs}</div></div>
       {"".join(LB)}

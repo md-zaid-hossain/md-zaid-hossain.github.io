@@ -48,12 +48,13 @@ def render_all():
     H.clock_sample = lambda: fixed
     import type_scale as TS, slideshow as S
     import build_projects as BP, build_education as BE, build_research as BR, build_ev as EV, build_experience as BX
-    import build_awards as BA, build_gallery as BG, build_notfound as BN, project_pages as PP
+    import build_awards as BA, build_gallery as BG, build_notfound as BN, project_pages as PP, research_am as RA
     pages = {
         "/": ("Md. Zaid Hossain · Industrial engineer", lambda t: TS.apply(H.page(t, "x"))),
         "/projects/": ("Projects", lambda t: TS.apply(BP.projects_page(t, "x"))),
         "/projects/ev-charging-station/": ("EV charging station", lambda t: TS.apply(EV.ev_page(t, "x"))),
         "/research/": ("Research", lambda t: TS.apply(S.from_lightboxes(BR.research_page(t, "x"), BR.GROUPS))),
+        "/research/fdm-pla-study/": ("FDM print settings study", lambda t: TS.apply(RA.page(t, "x"))),
         "/experience/": ("Experience", lambda t: TS.apply(BX.experience_page(t, "x"))),
         "/education/": ("Education", lambda t: TS.apply(S.from_lightboxes(BE.education_page(t, "x"), BE.GROUPS))),
         "/awards/": ("Awards and certificates", lambda t: TS.apply(S.from_lightboxes(BA.awards_page(t, "x"), BA.GROUPS))),
@@ -247,11 +248,12 @@ def link_for(text, route, ctx):
     cv = "/" + SITE["cv"]
     rules = [
         (r"^(\d\d )?(Research|Projects|Experience|Awards|Gallery|Education|Contact)( →)?$", lambda m: NAV[m.group(2)]),
-        (r"^(HOME|ZH Md\. Zaid Hossain)$", "/"), (r"^PROJECTS$", "/projects/"),
+        (r"^(HOME|ZH Md\. Zaid Hossain|Md\. Zaid Hossain)$", "/"), (r"^PROJECTS$", "/projects/"), (r"^RESEARCH$", "/research/"),
         (r"^(CV|DOWNLOAD CV ↓|DOWNLOAD CV)$", cv),
         (r"^ALL REVISIONS →$", "https://github.com/md-zaid-hossain/md-zaid-hossain.github.io/commits/main"),
         (r"^All projects →$|^Projects page →$|^Selected client work", "/projects/"),
-        (r"^All publications →$|^RESEARCH PAGE →$|^→ 04 PUBLICATIONS", "/research/"),
+        (r"^All publications →$|^RESEARCH PAGE →$|^→ 04 PUBLICATIONS|^← BACK TO Research$", "/research/"),
+        (r"^STUDY PAGE →$", "/research/fdm-pla-study/"),
         (r"^Full timeline →$|^Roles and recognition", "/experience/"),
         (r"^Results & certificates →$|^Certificate of Achievement", "/education/"),
         (r"^→ 21 CERTIFICATIONS|^4× CSWA|^3× CHAMPION|^CAD competition results", "/awards/"),
@@ -307,8 +309,8 @@ FONT_CSS = "".join(f"@font-face{{font-family:'{f}';font-style:normal;font-weight
 
 # the canvas board scrolls inside .scr; the real page scrolls the document
 REAL_CSS = """
-/* phones: pause moving drawings while scrolling, and the home figure while off screen (site.js section 8) */
-.zscr *,.zscr *::before,.zscr *::after,.hfig.zoff *,.hfig.zoff *::before,.hfig.zoff *::after{animation-play-state:paused!important}
+/* home figure: the two figures not on show are not drawn at all (site.js section 8) */
+.hcy .sl.zhid{content-visibility:hidden}
 html{scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{margin:0}
 .zh{height:auto!important;min-height:100vh;overflow:visible!important;overflow-x:clip!important}
@@ -354,7 +356,10 @@ def head(title, route, desc, image):
 <title>{_html.escape(full)}</title>
 <meta name="description" content="{_html.escape(desc)}">
 <link rel="canonical" href="{canon}">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0C0F14">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Md. Zaid Hossain">
 <meta property="og:title" content="{_html.escape(full)}"><meta property="og:description" content="{_html.escape(desc)}">
@@ -692,6 +697,8 @@ def main():
     by_no = {p["no"]: f"/projects/{p['slug']}/" for p in projs}
     by_no[3] = "/projects/ev-charging-station/"
     desc = {f"/projects/{p['slug']}/": re.sub(r"<[^>]+>", "", p["lead"])[:155].rsplit(" ", 1)[0] + "…" for p in projs}
+    desc["/research/fdm-pla-study/"] = ("How PLA bending bars were printed with four changing print settings and tested for bending, surface "
+                                        "roughness and Shore D hardness. With Tonoy Chowdhury; results come with the paper.")
     status = (f'{SP.gear_icon()}<span><b>Working hours</b> · replies today</span>',
               '<span>○</span><span><b>Off hours</b> · replies after Fajr</span>')
     report, done = [], {}
@@ -709,8 +716,10 @@ def main():
         done[route] = html
     # static files
     shutil.copytree(os.path.join(REPO, "media"), os.path.join(DIST, "media"), ignore=shutil.ignore_patterns("blob_to_media.json"))
-    shutil.copytree(os.path.join(BUILD, "assets"), os.path.join(DIST, "assets"))
+    shutil.copytree(os.path.join(BUILD, "assets"), os.path.join(DIST, "assets"), ignore=shutil.ignore_patterns("icons"))
     shutil.copy2(os.path.join(BUILD, "assets", "favicon.svg"), os.path.join(DIST, "favicon.svg"))
+    for f in os.listdir(os.path.join(BUILD, "assets", "icons")):   # ZAID logo: browser tab and phone icons in the site root
+        shutil.copy2(os.path.join(BUILD, "assets", "icons", f), os.path.join(DIST, f))
     open(os.path.join(DIST, ".nojekyll"), "w").close()
     shrink_photos(os.path.join(DIST, "media"))
     for route, html in done.items():

@@ -13,6 +13,7 @@ import edu_gantt as EG
 import exp_list as XL
 import res_list as RL
 import skill_cards as SKC
+import logo_mark as LM            # Zaid's ZAID mark in the header box (21 Nov)
 from home_parts import THEMES, backdrop, gear3d, BACKDROP_CSS, GEAR3D_CSS
 
 HP.G3D_ASSETS.update({
@@ -38,15 +39,15 @@ body{margin:0;background:var(--bg)}
 .hdr .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
 .brand b{white-space:nowrap;min-width:0}
-/* the ZH mark keeps the same size on every screen */
+/* the brand box (ZAID mark since 21 Nov, see logo_mark.py) keeps the same size on every screen */
 .brand i{flex:none;width:34px;height:34px;border:1.5px solid var(--strong);border-radius:6px;display:flex;align-items:center;justify-content:center;font:600 14px 'IBM Plex Mono',monospace;font-style:normal;color:var(--strong)}
 .brand b{font:600 16px 'Space Grotesk',sans-serif;color:var(--strong)}
 /* review fixes 2026-11-20: small phones */
-@media (max-width:389px){.zh .brand b{display:none}}
+@media (max-width:359px){.zh .brand b{display:none}}   /* the name fits down to 360 px (checked 21 Nov) */
 @media (max-width:400px){.rev .rvp{display:none}}
 @media (max-width:380px){.zh .est span,.zh .etm span,.zh .sb2 span{white-space:normal}.zh .etm b{white-space:nowrap}}
 @media (max-width:340px){.zh .etm b{font-size:.8rem}.zh .etm div{padding:8px 7px}}
-.nav{display:flex;gap:30px}
+.nav{display:flex;gap:22px}   /* 7 links since 21 Nov (Education added), so 22 px instead of 30 */
 .nav a{font-size:14px;font-weight:500;color:var(--body);padding:6px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
 .nav a:hover{color:var(--strong);border-bottom-color:var(--acc)}
 .nav a.on{color:var(--strong);border-bottom-color:var(--acc)}
@@ -112,9 +113,8 @@ body{margin:0;background:var(--bg)}
 .tog.at-a .tgk{transform:translateX(64px) rotate(300deg)}
 .tgk .gd{display:none}
 @media (prefers-reduced-motion:reduce){.sw .rg svg,.tgk svg{animation:none}.sw .rg,.tgk,.tog button svg,.tog button svg *{transition:none}}
-@media (max-width:1120px){.nav{gap:22px}}
-@media (max-width:960px){.nav,.cvbtn{display:none}.menu{display:flex}}
 .menu{display:none;width:40px;height:40px;border:1px solid var(--line2);border-radius:8px;background:transparent;align-items:center;justify-content:center;cursor:pointer}
+@media (max-width:1179px){.nav,.cvbtn{display:none}.menu{display:flex}}   /* 7 links need about 1180 px (after the .menu base rule, so it wins) */
 
 /* hero: static page backdrop shows through; right column = live gear figure */
 .hero{position:relative}
@@ -353,6 +353,7 @@ body{margin:0;background:var(--bg)}
   .ftr .wrap{grid-template-columns:1fr;gap:16px}
 }
 """
+CSS += LM.CSS
 
 ICON_CV = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 ICON_MAIL = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
@@ -614,9 +615,9 @@ def page(theme, title, polish=True, scroll=None):  # readability polish approved
 
   <header class="hdr">
     <div class="wrap">
-      <a class="brand" href="#" aria-label="Home"><i>ZH</i><b>Md. Zaid Hossain</b></a>
+      <a class="brand" href="#" aria-label="Home"><i>{LM.mark()}</i><b>Md. Zaid Hossain</b></a>
       <nav class="nav" aria-label="Main">
-        <a href="#">Research</a><a href="#">Projects</a><a href="#">Experience</a><a href="#">Awards</a><a href="#">Gallery</a><a href="#">Contact</a>
+        <a href="#">Education</a><a href="#">Experience</a><a href="#">Research</a><a href="#">Projects</a><a href="#">Awards</a><a href="#">Gallery</a><a href="#">Contact</a>
       </nav>
       <div class="hact">
         <a class="cvbtn" href="#">{ICON_CV}CV</a>

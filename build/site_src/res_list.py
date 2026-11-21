@@ -18,7 +18,9 @@ PUBS = [  # year, kind, tier, first author?, title, venue, publisher, authors, d
      "IEEE QPAIN 2025 · BAUST, Saidpur", "IEEE", "Md. Zaid Hossain, N. Morshed, S. I. Seam",
      "10.1109/QPAIN66474.2025.11171883", None, None),
 ]
-ONGOING = "Explainable ML for cardiovascular disease prediction: a systematic multi-paradigm benchmark."
+# Zaid 21 Nov 2026 (option B): one NOW row with both studies; the FDM PLA study links to its study page
+ONGOING = [("FDM print settings and the bending, surface roughness and hardness of PLA, with Tonoy Chowdhury.", "#"),
+           ("Explainable ML for cardiovascular disease prediction: a systematic multi-paradigm benchmark.", None)]
 METRIC_NOTE = "IF · Journal Impact Factor (JCR) &nbsp;·&nbsp; CITESCORE · Scopus &nbsp;·&nbsp; 2026 RELEASES"
 
 CSS = """
@@ -46,6 +48,9 @@ CSS = """
 .rcl .rit:hover .ryr{color:var(--strong)}
 .rcl .rit.rgo{border-top:1px dashed var(--line2);margin-top:2px}
 .rcl .rit.rgo h3{font-size:15px;color:var(--body);font-weight:500}
+.rcl .rit.rgo h3+h3{margin-top:8px}
+.rcl .rsp{white-space:nowrap;margin-left:6px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--acc-t);border-bottom:1px dotted var(--acc-t);padding-bottom:1px}
+.rcl .rsp:hover{color:var(--strong);border-bottom-color:var(--strong)}
 .rcl .rgn{font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--muted)}
 .rcl .rgn b{color:var(--strong);font-weight:600}
 .rcl .rnt{padding:10px 12px 8px;border-top:1px solid var(--line);font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--muted)}
@@ -70,6 +75,7 @@ def html():
                  f'<div class="rrs">{metrics}<div class="rlk"><a href="https://doi.org/{doi}" target="_blank" rel="noopener">DOI ↗</a>'
                  f'<a href="https://doi.org/{doi}" target="_blank" rel="noopener">PDF</a>'
                  f'<a href="#" data-cite="{auth} ({year}). {title}. {venue}. https://doi.org/{doi}">CITE</a></div></div></div>')
-    rows += (f'<div class="rit rgo"><div class="ryr">NOW</div><div><div class="rtg">IN PROGRESS</div><h3>{ONGOING}</h3></div>'
+    now = "".join(f'<h3>{t}' + (f' <a class="rsp" href="{u}">STUDY PAGE →</a>' if u else "") + "</h3>" for t, u in ONGOING)
+    rows += (f'<div class="rit rgo"><div class="ryr">NOW</div><div><div class="rtg">IN PROGRESS · {len(ONGOING)}</div>{now}</div>'
              f'<div class="rrs"><div class="rgn">+ ICMERE 2025 · <b>full list</b></div></div></div>')
     return f'<div class="rcl">{rows}<div class="rnt">{METRIC_NOTE}</div></div>'

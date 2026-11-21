@@ -29,7 +29,8 @@ def education_page(theme, title):
     html = html.replace("<style>", "<style>" + P.EG.CSS + P.CSS + P.area_css() + P.R.CSS + P.R.LEG_CSS + P.COLLAPSE_CSS, 1)
     a = html.index("  <!-- Hero: static page backdrop")
     e = html.index("  </main>") + len("  </main>")
-    return P.R.inject(html[:a] + body() + html[e:], P.R.viewers())   # routine and teacher panels of the course map
+    html = P.R.inject(html[:a] + body() + html[e:], P.R.viewers())   # routine and teacher panels of the course map
+    return html.replace('<a href="#">Education</a>', '<a href="#" class="on" aria-current="page">Education</a>', 1)
 
 
 if __name__ == "__main__":

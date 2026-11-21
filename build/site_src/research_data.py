@@ -65,6 +65,19 @@ PAPERS = [
 ]
 
 ONGOING = [
+    # FDM PLA study with Tonoy Chowdhury (approved by Zaid 21 Nov 2026): first in the list, a photo strip and a link to its study page
+    dict(tag="MANUSCRIPT IN PREPARATION · TESTS DONE",
+         title="Effect of infill pattern, infill density, nozzle diameter and raster angle on the bending, surface roughness and hardness of FDM-printed PLA",
+         who="Md. Zaid Hossain, Tonoy Chowdhury · Tonoy is a lecturer at MIST",
+         text=("108 runs of ASTM D790 bars in white PLA, printed with three infill patterns, three infill densities, four nozzle "
+               "sizes and three raster angles, then tested by three-point bending on a Shimadzu UTM, surface roughness (Ra) "
+               "and Shore D hardness."),
+         nums=[("108", "printed runs"), ("4", "settings varied"), ("3", "kinds of test"), ("D790", "ASTM bending bar")],
+         note="Results stay off the site until the paper is out. The study page shows the printing, a printer repair and every test, with photos and clips.",
+         strip=[("/_blob/2d65eab0d3030230f4f08a28d42eb0be", "Printing three bars"),
+                ("/_blob/d6f768e9fea7047e80efcfb34895f8c3", "Three-point bending"),
+                ("/_blob/970d2f31b72265683f66f2676d750d43", "Shore D durometer")],
+         link="STUDY PAGE"),
     dict(tag="MANUSCRIPT IN PREPARATION", title="Explainable machine learning for cardiovascular disease prediction: a systematic multi-paradigm benchmark with cross-method feature importance analysis",
          who="Md. Shahriar Islam Ratul, Md. Zaid Hossain",
          text="Fifteen models from five families (classical ML, gradient boosting, stacking, tabular deep learning, self-supervised) trained on one cleaned cohort of 68,534 records, compared with bootstrap confidence intervals and DeLong tests, and explained with five feature-importance methods.",

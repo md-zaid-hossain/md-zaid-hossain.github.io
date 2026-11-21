@@ -321,6 +321,28 @@ details.ec-c summary span.esl,.enx .sm span.esl{display:block;margin-top:3px;fon
 .ego{position:absolute;left:0;top:-96px;width:1px;height:100vh;opacity:0;pointer-events:none;border:0;margin:0;padding:0}
 .esc,.ebk{position:relative}
 html{scroll-behavior:smooth}
+/* panels answer the cursor (Zaid, 22 Nov 2026): lift, accent edge, rows react */
+.etb,.eths,.epj,.ebx{position:relative;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.etb:before,.eths:before,.epj:before,.ebx:before{content:"";position:absolute;top:-1px;left:14px;right:14px;height:2px;border-radius:2px;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .45s ease;z-index:2;pointer-events:none}
+.etb .eth b,.etb .eth span{transition:color .3s ease}
+.ec-c code,.enx .sm code{transition:color .25s ease}
+details.ec-c summary>span,.enx .sm>span{transition:transform .25s ease}
+.enx .sm{border-radius:5px;transition:background .25s ease}
+.eths .evd video,.epj img{transition:transform .5s ease,filter .5s ease}
+.ebr{transition:background .25s ease}.ebr b{transition:color .25s ease}
+@media (hover:hover){
+  .etb:hover,.eths:hover,.epj:hover,.ebx:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--acc-t) 45%,var(--line2));box-shadow:0 1px 0 rgba(0,0,0,.06),0 16px 34px rgba(0,0,0,.22)}
+  .etb:hover:before,.eths:hover:before,.epj:hover:before,.ebx:hover:before{transform:scaleX(1)}
+  .etb:hover .eth b{color:var(--acc-t)}
+  details.ec-c summary:hover code,.enx .sm:hover code{color:var(--acc-t)}
+  details.ec-c summary:hover>span,.enx .sm:hover>span{transform:translateX(3px)}
+  .enx .sm:hover{background:var(--surface2)}
+  .eths:hover .evd video{transform:scale(1.02)}
+  .epj:hover img{transform:scale(1.02)}
+  .ebr:hover{background:var(--surface2)}.ebr:hover b{color:var(--acc-t)}
+}
+@media (prefers-reduced-motion:reduce){.etb,.eths,.epj,.ebx,.etb:before,.eths:before,.epj:before,.ebx:before,details.ec-c summary>span,.enx .sm>span,.eths .evd video,.epj img{transition:none}
+  .etb:hover,.eths:hover,.epj:hover,.ebx:hover,details.ec-c summary:hover>span,.enx .sm:hover>span,.eths:hover .evd video,.epj:hover img{transform:none}}
 """
 
 
@@ -569,11 +591,10 @@ def head(n, eb, h2, hid):
 def page_body():
     _LB.clear()
     # 01 M.Sc.
-    msc_courses = "".join(
-        (f'<details class="ec-c"><summary><code>{c}</code><span>{t}</span><i>+</i>{teachers(c)}</summary><div class="ect"><b>TOPICS</b>'
-         + "".join(f"<span>{x}</span>" for x in tp) + "</div></details>") if tp else
-        f'<div class="ec-c enx"><div class="sm"><code>{c}</code><span>{t}</span><i></i>{teachers(c)}</div></div>'
-        for c, t, tp in D.MSC_COURSES)
+    # M.Sc. courses in the same card as a B.Sc. term (Zaid, 22 Nov 2026): header, TEACHERS button, rows without TAUGHT BY
+    msc_rows = "".join(course_row(c, t, "ms", "", "", tp) for c, t, tp in D.MSC_COURSES)
+    msc_card = (f'<div class="etb emsc"><div class="eth rth2"><div><b>{R.MSC_LABEL}</b><span>{R.MSC_PER}</span></div>{R.msc_button()}</div>'
+                f'<div class="elst">{msc_rows}</div></div>')
     msc = f"""
       {head("01", "MASTER'S", "M.Sc. Eng. in Industrial Engineering &amp; Management", "msc")}
       {sub("--m1", "1.1", "RECORD", rec([
@@ -582,8 +603,7 @@ def page_body():
           ("STARTED", "July 2026 semester <em>· part-time</em>"),
           ("FOCUS", "Operations research · supply chain management · machine-learning integration"),
           ("CGPA", f'<em>Results pending</em>{vernier(None, 0, 4, 0.25, True)}')]))}
-      {sub("--m2", "1.2", "COURSES · JULY 2026 SEMESTER",
-           f'<div class="emcl"><div class="mh"><span>3 COURSES · <b>9 CREDITS</b></span><span>REGISTERED 25 AUG 2026</span></div>{msc_courses}</div>')}"""
+      {sub("--m2", "1.2", "COURSES · 9 CREDITS", msc_card)}"""
     # 02 B.Sc.
     bsc_rec = rec([
         ("UNIVERSITY", "Khulna University of Engineering &amp; Technology (KUET) <em>· Khulna</em>"),

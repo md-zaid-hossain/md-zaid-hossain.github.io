@@ -1,6 +1,6 @@
 """Site-wide pieces, approved by Zaid on 2026-11-20: phone menu (every page), favicon and share-image tags
 (every page head), and the 404 page body. Class prefixes: mn (phone menu), nf (404 page).
-Favicon: option A (filled ZH) for now; Zaid will send his own design later.
+Favicon: Zaid's own ZAID favicon since 21 Nov (logo_mark.FAVICON_SVG); before that option A (filled ZH).
 404 drawing: B (gear train, middle gear missing) and C (search leaves the feasible region) take turns, 8 s each (Zaid, 21 Nov: was 12 s)."""
 import build_home as H
 import site_parts as SP
@@ -8,7 +8,7 @@ import site_parts as SP
 BK = lambda t, a: f'<a class="bkb" href="#"><s></s><s></s><s></s><s></s><span>{t}</span><i>{a}</i></a>'
 
 SHARE = "/_blob/1965184231d6e891b19ccfa9b6d23376"   # photos/share_image.jpg (media_scripts/share_image.py)
-NAV = ["Research", "Projects", "Experience", "Awards", "Gallery", "Contact"]
+NAV = ["Education", "Experience", "Research", "Projects", "Awards", "Gallery", "Contact"]   # Zaid 21 Nov: same order as the Home sections
 PROF = [("https://github.com/md-zaid-hossain", "GitHub"), ("https://www.linkedin.com/in/md-zaid-hossain", "LinkedIn"),
         ("https://www.researchgate.net/profile/Md-Zaid-Hossain", "ResearchGate"), ("https://scholar.google.com/citations?user=Fu6JmxIAAAAJ", "Scholar"),
         ("https://orcid.org/0009-0003-3301-3609", "ORCID"), ("https://grabcad.com/md.zaid.hossain-1", "GrabCAD")]
@@ -22,20 +22,23 @@ MENU_CSS = """
 .mnu{display:none;position:absolute;left:0;right:0;top:100%;height:calc(100vh - 64px);overflow:auto;flex-direction:column;gap:22px;
   padding:14px 16px 28px;background:var(--bg);border-top:1px solid var(--line)}
 .mnl{display:flex;flex-direction:column}
-.mnl a{display:flex;align-items:center;gap:14px;padding:15px 4px 15px 12px;border-bottom:1px solid var(--line);font:600 22px/1.1 'Space Grotesk',sans-serif;color:var(--strong);position:relative}
-.mnl a i{font:600 12px 'IBM Plex Mono',monospace;font-style:normal;letter-spacing:.08em;color:var(--muted);width:22px}
-.mnl a b{margin-left:auto;font:500 16px 'IBM Plex Mono',monospace;color:var(--muted)}
-.mnl a.on:before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:2px;background:var(--acc)}
+.mnl a{display:flex;align-items:center;gap:14px;padding:13px 4px 13px 12px;border-bottom:1px solid var(--line);font:500 13.5px/1.1 'Space Grotesk',sans-serif;color:var(--strong);position:relative}
+.mnl a i{font:600 11px 'IBM Plex Mono',monospace;font-style:normal;letter-spacing:.08em;color:var(--muted);width:22px}
+.mnl a b{margin-left:auto;font:500 14px 'IBM Plex Mono',monospace;color:var(--muted)}
+.mnl a.on:before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:2px;background:var(--acc)}
 .mnl a.on i,.mnl a.on b{color:var(--acc-t)}
 .mnr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 4px 0 12px}
-.mnk{font:600 11.5px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--muted)}
+.mnk{font:600 9.5px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--muted)}
 .mnu .sw{display:block!important}
-.mnu .mncv{width:100%;justify-content:center;height:44px}
-.mnp{display:flex;flex-wrap:wrap;gap:8px 16px;padding:0 4px 0 12px;font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.08em}
-.mnp a{color:var(--body)}
+.mnu .mncv{width:100%;justify-content:center;height:42px;font-size:11px!important}   /* Zaid 22 Nov: menu text a step below the name */
+.mnp{display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:0;padding:0;font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:clamp(8px,2.45vw,11.5px);letter-spacing:0;white-space:nowrap}
+.mnp a{color:var(--body);display:inline-flex;align-items:center}
+.mnp a+a:before{content:"";flex:none;width:3px;height:3px;border-radius:50%;background:var(--muted);opacity:.6;margin:0 clamp(3px,.9vw,8px)}   /* Zaid 21 Nov: one line with dots, like the footer */
+@media (max-width:359px){.mnp a+a:before{margin:0 2.5px}}   /* Zaid 21 Nov: always one line, centred */
 .mnx:checked~.hdr .mnu{display:flex}
 .mnx:checked~.hdr .menu .mo{display:none}.mnx:checked~.hdr .menu .mc{display:flex}
-@media (min-width:961px){.hdr>.mnu{display:none!important}}
+@media (min-width:1180px){.hdr>.mnu{display:none!important}}
+@media (min-width:761px){.mnu .mnr{display:none}}   /* the header shows the accent buttons from 761 px, so not twice */
 @media (max-width:760px){.hdr .tog{zoom:.8}.hdr .menu{width:36px;height:36px}}
 """
 
@@ -248,7 +251,8 @@ SITE = "https://md-zaid-hossain.github.io"      # GitHub Pages user site (reposi
 
 def head_tags():
     import urllib.parse
-    icon = fav("a", 64).replace(' width="64" height="64"', ' xmlns="http://www.w3.org/2000/svg"').replace(' aria-hidden="true"', "")
+    import logo_mark as LM
+    icon = LM.FAVICON_SVG           # Zaid's own favicon (21 Nov); the old option A (filled ZH) is no longer used
     desc = "Industrial engineer: operations research and optimization, CAD and 3D printing, ergonomics. Projects, research, experience and awards."
     return (f'<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,{urllib.parse.quote(icon)}">\n'
             f'<meta name="description" content="{desc}">\n'

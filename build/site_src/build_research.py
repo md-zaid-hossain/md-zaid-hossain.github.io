@@ -34,4 +34,8 @@ if __name__ == "__main__":
                       ("light", "ResearchLight"), ("light_blue", "ResearchLightBlue"), ("light_green", "ResearchLightGreen"),
                       ("dark", "ResearchMobile")]:
         open(f"{out}/{name}.dc.html", "w").write(TS.apply(S.from_lightboxes(research_page(key, f"Research · {name}"), GROUPS)))
+    # FDM PLA study page (approved by Zaid 21 Nov 2026): dark, light and phone, like the project pages
+    import research_am as A
+    for theme, suf, tt in [("dark", "", "dark"), ("light", "Light", "light"), ("dark", "Mobile", "phone dark")]:
+        open(f"{out}/StudyFdm{suf}.dc.html", "w").write(TS.apply(A.page(theme, f"FDM PLA study · {tt}")))
     print("research written")

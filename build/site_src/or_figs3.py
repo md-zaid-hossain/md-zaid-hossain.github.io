@@ -350,8 +350,14 @@ LAND2_CSS = """
 .lsv .q3,.lsv .q3L,.lsv .q3D{fill:var(--strong);fill-opacity:.24}
 .lsv .q4,.lsv .q4L,.lsv .q4D{fill:var(--strong);fill-opacity:.18}
 .lsv .q5,.lsv .q5L,.lsv .q5D{fill:var(--strong);fill-opacity:.13}
-.lsv [class$="L"]{filter:brightness(1.18)}
-.lsv [class$="D"]{filter:brightness(.78)}
+/* light and shade of the surface: mixed colours instead of filter:brightness, which made phones repaint every facet
+   through its own filter on every frame (Zaid, 22 Nov 2026: smooth phone hero) */
+.lsv .q0L{fill:color-mix(in srgb,var(--acc) 84%,#fff)}.lsv .q0D{fill:color-mix(in srgb,var(--acc) 78%,#000)}
+.lsv .q1L{fill:color-mix(in srgb,var(--acc) 84%,#fff)}.lsv .q1D{fill:color-mix(in srgb,var(--acc) 78%,#000)}
+.lsv .q2L{fill:color-mix(in srgb,var(--acc) 84%,#fff)}.lsv .q2D{fill:color-mix(in srgb,var(--acc) 78%,#000)}
+.lsv .q3L{fill:color-mix(in srgb,var(--strong) 84%,#fff)}.lsv .q3D{fill:color-mix(in srgb,var(--strong) 78%,#000)}
+.lsv .q4L{fill:color-mix(in srgb,var(--strong) 84%,#fff)}.lsv .q4D{fill:color-mix(in srgb,var(--strong) 78%,#000)}
+.lsv .q5L{fill:color-mix(in srgb,var(--strong) 84%,#fff)}.lsv .q5D{fill:color-mix(in srgb,var(--strong) 78%,#000)}
 .lsv .ball{fill:var(--strong);stroke:var(--bg);stroke-width:2.5}
 .lsv .ball.g{fill:var(--acc-t)}
 .lsv .flag{stroke:var(--strong);stroke-width:1.4}
@@ -754,7 +760,8 @@ def hero_cycle2(gear_html, compact=False):
         css.append(f"@keyframes hc3S{i}{{{kf}}}.hcy .sl{i}{{z-index:{i+1};opacity:0;animation:hc3S{i} {T:.0f}s linear infinite}}")
         css.append(f"@keyframes hc3P{i}{{0%,{P(t0)}{{transform:scaleX(0)}}{P(t1-0.01)}{{transform:scaleX(1)}}{P(t1)},100%{{transform:scaleX(0)}}}}"
                    f".hcy .pg{i} i{{animation:hc3P{i} {T:.0f}s linear infinite}}")
-        slides.append(f'<div class="sl sl{i}">{html}</div>')
+        # data-w: when this figure shows (start, end, cycle, seconds); site.js uses it to stop drawing the hidden figures
+        slides.append(f'<div class="sl sl{i}" data-w="{t0:g},{t1:g},{T:g}">{html}</div>')
         prog.append(f'<div class="pg pg{i}"><span>FIG. {k} · {name}</span><em>{HERO_SLOT:.0f} s · {note}</em><b><i></i></b></div>')
     # the gear runs a little faster here so two pinion turns fit the same 24 s slot
     css.append(".hcy .g3d .r1{animation-duration:24s}.hcy .g3d .r2{animation-duration:12s}")

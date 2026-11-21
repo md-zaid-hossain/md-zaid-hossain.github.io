@@ -173,6 +173,32 @@ published:
   look: Look at the step up on the day SOPs started, and how it stays up.
   abstract: null
 in_progress:
+# FDM PLA study with Tonoy Chowdhury: no results until the paper is out. strip: three photos; link: button to the study page
+- tag: MANUSCRIPT IN PREPARATION · TESTS DONE
+  title: Effect of infill pattern, infill density, nozzle diameter and raster angle on the bending, surface roughness and hardness of FDM-printed
+    PLA
+  who: Md. Zaid Hossain, Tonoy Chowdhury · Tonoy is a lecturer at MIST
+  text: 108 runs of ASTM D790 bars in white PLA, printed with three infill patterns, three infill densities, four nozzle sizes and three raster
+    angles, then tested by three-point bending on a Shimadzu UTM, surface roughness (Ra) and Shore D hardness.
+  nums:
+  - value: '108'
+    label: printed runs
+  - value: '4'
+    label: settings varied
+  - value: '3'
+    label: kinds of test
+  - value: D790
+    label: ASTM bending bar
+  note: Results stay off the site until the paper is out. The study page shows the printing, a printer repair and every test, with photos and
+    clips.
+  strip:
+  - - media/research/fdm-pla-study/printing-three-bars.webp
+    - Printing three bars
+  - - media/research/fdm-pla-study/a-printed-pla-bar-bent-under-the-centre-nose-of-.webp
+    - Three-point bending
+  - - media/research/fdm-pla-study/insize-shore-d-durometer.webp
+    - Shore D durometer
+  link: STUDY PAGE
 - tag: MANUSCRIPT IN PREPARATION
   title: 'Explainable machine learning for cardiovascular disease prediction: a systematic multi-paradigm benchmark with cross-method feature
     importance analysis'

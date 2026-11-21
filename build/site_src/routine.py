@@ -118,7 +118,8 @@ CSS = """
 .rtb:hover i{transform:translate(2px,-2px)}
 .etb .eth.rth2{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
 .etb .eth.rth2>div{display:flex;flex-direction:column;gap:3px;min-width:0}
-@media (max-width:400px){.etb .eth.rth2{flex-wrap:wrap}}
+/* Zaid 21 Nov: the button never drops below the term name; on small phones the header text and button shrink */
+@media (max-width:400px){.etb .eth.rth2{flex-wrap:nowrap;gap:8px}.etb .eth.rth2 b{font-size:clamp(10.5px,3.3vw,12.5px)!important;letter-spacing:.06em!important;white-space:nowrap}.etb .eth.rth2 span{font-size:clamp(9.5px,2.95vw,11.5px)!important;letter-spacing:.03em!important}.etb .rtb{padding:0 7px!important;gap:5px!important;font-size:clamp(8.5px,2.55vw,10.5px)!important;letter-spacing:.06em!important;height:28px!important}}
 @media (max-width:760px){.eb .rtb{display:none!important}}
 .rtc{position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
 .rtv{display:none;position:fixed;inset:0;z-index:400;align-items:center;justify-content:center;padding:40px}
@@ -176,6 +177,20 @@ CSS = """
   .rtcl small{font-size:10.5px}
   .rtg>.rtd{padding-left:9px;font-size:10px}
 }
+/* M.Sc. teachers panel: one column, the teacher on the right (Zaid, 22 Nov 2026) */
+.rtml{margin-top:14px;display:flex;flex-direction:column}
+.rtm{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,.8fr);gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px dashed var(--line)}
+.rtm code{font:600 10.5px 'IBM Plex Mono',monospace;color:var(--muted);white-space:nowrap}
+.rtm span{font-size:14px;color:var(--strong);line-height:1.35}
+.rtm small{font-size:13px;color:var(--muted)}
+.rtm small a{color:var(--body);border-bottom:1px dotted var(--line2);transition:color .25s ease,border-color .25s ease}
+.rtm small a:hover{color:var(--acc-t);border-bottom-color:var(--acc-t)}
+.rtm.h{padding:0 0 8px;border-bottom:1px solid var(--line)}
+.rtm.h code,.rtm.h span,.rtm.h small{font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--muted)}
+.rtv .rtp:has(.rtml){width:min(860px,100%)}
+@media (max-width:560px){.rtm{grid-template-columns:72px minmax(0,1fr);row-gap:3px}
+.rtm small{grid-column:2}
+.rtm.h small{display:none}}
 .rtlg.only{margin-top:4px;border-top:0}
 """
 
@@ -300,9 +315,29 @@ def viewer(term, label, period):
             f'{panel(term, label, period) if term in ROUTINE else panel_teachers(term, label, period)}</div>')
 
 
+MSC_LABEL, MSC_PER = "M.SC. · JULY 2026", "REGISTERED 25 AUG 2026"
+
+
+def msc_button():
+    return ('<label class="bkb rtb" for="rt-msc" title="Show the teachers of this semester"><s></s><s></s><s></s><s></s>'
+            '<span>TEACHERS</span><i>↗</i></label>')
+
+
+def msc_viewer():
+    """M.Sc. semester: courses in one column with the teacher beside each (no class routine kept yet)."""
+    rows = "".join(f'<div class="rtm"><code>{c}</code><span>{t}</span><small>{_names(D.TEACH.get(c, []))}</small></div>'
+                   for c, t, _ in D.MSC_COURSES)
+    panel = (f'<div class="rtp"><div class="rth"><div><b>{MSC_LABEL} · TEACHERS</b><h3>Courses and teachers</h3>'
+             f'<p>3 courses · 9 credits · registered 25 Aug 2026</p></div><label class="rtx" for="rt-msc">CLOSE ×</label></div>'
+             f'<div class="rtml"><div class="rtm h"><code>CODE</code><span>COURSE</span><small>TEACHER</small></div>{rows}</div>'
+             f'<div class="rtf"><span>Teacher names open their KUET profile.</span></div></div>')
+    return (f'<input type="checkbox" class="rtc" id="rt-msc" tabindex="-1" aria-hidden="true">'
+            f'<div class="rtv" role="dialog" aria-label="M.Sc. teachers"><label class="rtk" for="rt-msc" aria-hidden="true"></label>{panel}</div>')
+
+
 def viewers():
-    """All viewers of the Education course map."""
-    return "".join(viewer(k, l, p) for k, l, p in D.TERMS if k in ROUTINE or k in TEACHERS_ONLY)
+    """All viewers of the Education page: the M.Sc. semester, then the terms of the course map."""
+    return msc_viewer() + "".join(viewer(k, l, p) for k, l, p in D.TERMS if k in ROUTINE or k in TEACHERS_ONLY)
 
 
 def inject(html, viewers):
