@@ -225,33 +225,90 @@
     if (lab) lab.click();
   }, { passive: true });
 
-  /* ---------- 8. smooth scrolling on phones ---------- */
-  // Moving drawings (the home figure FIG. A, B, C, belts, gears, the backdrop fade) cost a lot on a phone. While the
-  // page is being scrolled they all pause (CSS class "zscr" plus the SVGs' own animations); 250 ms after the scroll
-  // stops they go on. The home figure also pauses while it is off screen. A still page looks exactly as before.
-  var root = document.documentElement, hfig = document.querySelector(".hfig"), stopT = 0, offScreen = false;
-  var moving = [].filter.call(document.querySelectorAll("svg"), function (v) {
-    return !v.ownerSVGElement && v.querySelector("animate,animateMotion,animateTransform,set");
-  });
+  /* ---------- 8. smooth moving drawings on phones ---------- */
+  // Moving drawings (the home figure FIG. A, B, C, belts, gears, the factory) cost a lot on a phone. Three rules keep
+  // the page smooth without changing how it looks (Zaid, 22 Nov 2026):
+  //  a) the home figure draws only the figure on show; the other two are skipped (class "zhid" = content-visibility
+  //     hidden, their animations paused) and come back 1.2 s before their turn;
+  //  b) every block with moving parts stops while it is off screen;
+  //  c) while the page is being scrolled the blocks on screen pause, and go on 250 ms after the scroll stops.
+  // Pausing uses the animations themselves (Web Animations and the SVGs' own clocks), not a CSS class, so the browser
+  // never has to restyle thousands of shapes when a finger touches the screen.
+  var hcy = document.querySelector(".hcy");
+  var slides = hcy ? [].slice.call(hcy.querySelectorAll(".stg .sl[data-w]")) : [];
+  var scr = false, stopT = 0, canAnim = !!document.documentElement.getAnimations;
   function svgRun(v, run) { try { if (run) v.unpauseAnimations(); else v.pauseAnimations(); } catch (e) {} }
-  function inHero(v) { return hfig && hfig.contains(v); }
+  function hiddenSlide(t) { var sl = t && t.closest && t.closest(".sl[data-w]"); return sl && sl !== t && sl.classList.contains("zhid"); }
+  // the blocks that move: the home figure, and each section, header or footer with CSS or SVG animations
+  var boxEls = [];
+  function addBox(el) { if (el && boxEls.indexOf(el) < 0) boxEls.push(el); }
+  if (hcy) addBox(hcy.closest(".hfig") || hcy);
+  if (canAnim) document.getAnimations().forEach(function (a) {
+    var t = a.effect && a.effect.target;
+    if (t && t.closest) addBox(t.closest(".hfig") || t.closest("section,footer,header"));
+  });
+  [].forEach.call(document.querySelectorAll("svg"), function (v) {
+    if (!v.ownerSVGElement && v.querySelector("animate,animateMotion,animateTransform,set")) addBox(v.closest(".hfig") || v.closest("section,footer,header"));
+  });
+  var boxes = boxEls.filter(Boolean).map(function (el) {
+    return { el: el, on: true, svgs: [].filter.call(el.querySelectorAll("svg"), function (v) {
+      return !v.ownerSVGElement && v.querySelector("animate,animateMotion,animateTransform,set"); }) };
+  });
+  function apply(b) {
+    var run = b.on && !scr;
+    if (canAnim) b.el.getAnimations({ subtree: true }).forEach(function (a) {
+      var r = run && !hiddenSlide(a.effect && a.effect.target);
+      try { if (r && a.playState === "paused") a.play(); else if (!r && a.playState === "running") a.pause(); } catch (e) {}
+    });
+    b.svgs.forEach(function (v) { svgRun(v, run && !hiddenSlide(v)); });
+  }
+  // a) which home figure is on show: from the slide clock (data-w = start, end, cycle in seconds) or the FIG. button picked
+  function inWin(x, a, b, T) { return a < 0 ? (x >= a + T || x <= b) : b > T ? (x >= a || x <= b - T) : (x >= a && x <= b); }
+  function resync(sl, sec) {
+    if (canAnim) sl.getAnimations({ subtree: true }).forEach(function (a) {
+      if (a.effect && a.effect.target !== sl) try { a.currentTime = sec * 1000; } catch (e) {}
+    });
+    [].forEach.call(sl.querySelectorAll("svg"), function (v) { if (!v.ownerSVGElement) try { v.setCurrentTime(sec); } catch (e) {} });
+  }
+  function heroTick() {
+    if (!slides.length) return;
+    var pick = hcy.querySelector(".hfr:checked"), idx = pick && pick.id !== "hf-auto" ? +pick.id.slice(3) : -1;
+    var an = canAnim ? slides[0].getAnimations() : [], t = an.length && an[0].currentTime != null ? an[0].currentTime / 1000 : null;
+    var changed = false;
+    slides.forEach(function (sl, i) {
+      var w = sl.getAttribute("data-w").split(",").map(Number), T = w[2], show;
+      if (idx >= 0) show = i === idx;
+      else if (t === null) show = true;
+      else show = inWin(((t % T) + T) % T, w[0] - 1.2, w[1] + 0.3, T);
+      if (sl.classList.contains("zhid") === show) {
+        sl.classList.toggle("zhid", !show); changed = true;
+        if (show && t !== null) resync(sl, t);   // its drawings pick up where they would be had they never stopped
+      }
+    });
+    if (changed) boxes.forEach(function (b) { if (b.el.contains(hcy)) apply(b); });
+  }
+  if (slides.length) {
+    heroTick();
+    setInterval(function () { if (!document.hidden && boxes.some(function (b) { return b.on && b.el.contains(hcy); })) heroTick(); }, 300);
+    hcy.addEventListener("change", function () { setTimeout(heroTick, 30); });   // FIG. A, B, C or AUTO picked
+  }
+  // b) off screen: stop
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        boxes.forEach(function (b) { if (b.el === e.target && b.on !== e.isIntersecting) { b.on = e.isIntersecting; apply(b); } });
+      });
+    }, { rootMargin: "120px 0px" });
+    boxes.forEach(function (b) { io.observe(b.el); });
+  }
+  // c) while scrolling: pause what is on screen
   function scrolling() {
-    if (!stopT) { root.classList.add("zscr"); moving.forEach(function (v) { svgRun(v, false); }); }
+    if (!scr) { scr = true; boxes.forEach(function (b) { if (b.on) apply(b); }); }
     clearTimeout(stopT);
-    stopT = setTimeout(function () {
-      stopT = 0; root.classList.remove("zscr");
-      moving.forEach(function (v) { svgRun(v, !(offScreen && inHero(v))); });
-    }, 250);
+    stopT = setTimeout(function () { scr = false; boxes.forEach(function (b) { if (b.on) apply(b); }); }, 250);
   }
   window.addEventListener("scroll", scrolling, { passive: true });
   document.addEventListener("touchmove", scrolling, { passive: true });
-  if (hfig && "IntersectionObserver" in window) {
-    new IntersectionObserver(function (es) {
-      offScreen = !es[es.length - 1].isIntersecting;
-      hfig.classList.toggle("zoff", offScreen);
-      if (!stopT) moving.forEach(function (v) { if (inHero(v)) svgRun(v, !offScreen); });
-    }).observe(hfig);
-  }
 
   /* ---------- 5. copy buttons ---------- */
   function copy(text, el, label) {
