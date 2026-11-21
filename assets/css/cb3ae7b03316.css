@@ -1305,8 +1305,8 @@ body{margin:0;background:var(--bg)}
 .hcy #hf-2:checked~.pgs .pg2 i{transform:scaleX(1)}
 .hcy #hf-2:checked~.pgs .pg2 span{color:var(--acc-t)}
 .hcy #hf-2:checked~.pgs .pgauto{opacity:1}
-@keyframes hHand{from{transform:rotate(239.2deg)}to{transform:rotate(599.2deg)}}
-@keyframes mHand{from{transform:rotate(342.0deg)}to{transform:rotate(702.0deg)}}
+@keyframes hHand{from{transform:rotate(262.2deg)}to{transform:rotate(622.2deg)}}
+@keyframes mHand{from{transform:rotate(174.0deg)}to{transform:rotate(534.0deg)}}
 @keyframes sHand{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.dial g{animation:none!important}}
 html{scroll-padding-top:84px;-webkit-text-size-adjust:100%}
