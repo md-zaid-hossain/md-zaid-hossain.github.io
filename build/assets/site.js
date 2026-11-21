@@ -125,7 +125,7 @@
   /* ---------- 3. keyboard ---------- */
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
-      document.querySelectorAll("input.elbc:checked, input.vpc:checked, input.rtc:checked, input.ego:checked, #mnx:checked").forEach(function (c) {
+      document.querySelectorAll("input.elbc:checked, input.vpc:checked, input.rtc:checked, #mnx:checked").forEach(function (c) {
         c.checked = false; c.dispatchEvent(new Event("change", { bubbles: true }));
       });
       document.querySelectorAll("input.ssr:checked").forEach(function (r) {
@@ -187,6 +187,44 @@
       if (im) im.loading = "eager";
     });
   });
+  /* ---------- 7. phone: Back closes an open viewer, swipe moves through a slideshow ---------- */
+  var OVERLAY = "input.elbc:checked, input.vpc:checked, input.rtc:checked, #mnx:checked";
+  function openSlides() {
+    return Array.prototype.filter.call(document.querySelectorAll("input.ssr:checked"), function (r) { return !/-x$/.test(r.id); });
+  }
+  function anyOpen() { return !!document.querySelector(OVERLAY) || openSlides().length > 0; }
+  function closeAll() {
+    document.querySelectorAll(OVERLAY).forEach(function (c) { c.checked = false; c.dispatchEvent(new Event("change", { bubbles: true })); });
+    openSlides().forEach(function (r) { var x = document.getElementById(r.name + "-x"); if (x) { x.checked = true; x.dispatchEvent(new Event("change", { bubbles: true })); } });
+  }
+  var pushed = false, closingByBack = false;
+  document.addEventListener("change", function () {
+    setTimeout(function () {
+      var open = anyOpen();
+      if (open && !pushed) { history.pushState({ zhViewer: 1 }, ""); pushed = true; }
+      else if (!open && pushed && !closingByBack) { pushed = false; history.back(); }
+    }, 0);
+  });
+  window.addEventListener("popstate", function () {
+    if (!pushed) return;
+    pushed = false; closingByBack = true; closeAll();
+    setTimeout(function () { closingByBack = false; }, 0);
+  });
+  var tx = null, ty = 0;
+  document.addEventListener("touchstart", function (e) {
+    if (!e.target.closest || !e.target.closest(".sss") || e.touches.length !== 1) { tx = null; return; }
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener("touchend", function (e) {
+    if (tx === null) return;
+    var t = e.changedTouches[0], dx = t.clientX - tx, dy = t.clientY - ty; tx = null;
+    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    var open = openSlides()[0]; if (!open) return;
+    var slides = open.parentElement.querySelectorAll(".sss"), i = +open.id.split("-").pop();
+    var lab = slides[i] && slides[i].querySelector(dx < 0 ? ".ssn" : ".ssp");
+    if (lab) lab.click();
+  }, { passive: true });
+
   /* ---------- 5. copy buttons ---------- */
   function copy(text, el, label) {
     var done = function () { var o = el.textContent; el.textContent = label; setTimeout(function () { el.textContent = o; }, 1600); };
