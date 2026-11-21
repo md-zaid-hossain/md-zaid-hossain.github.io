@@ -504,6 +504,43 @@ def fast_loading(html):
     return html
 
 
+# GitHub Pages is very slow from Bangladesh (about 20 KB/s on 21 Nov 2026), while jsDelivr answers from Dhaka
+# (about 500 KB/s). So on GitHub Actions the pictures, clips, fonts and site.js are served by jsDelivr straight from
+# this repository at the commit being published; the pages themselves stay on github.io. Download links (<a href>)
+# stay on github.io so the file keeps its name. A local build keeps every path local.
+SHA = os.environ.get("GITHUB_SHA", "")
+CDN = f"https://cdn.jsdelivr.net/gh/{os.environ.get('GITHUB_REPOSITORY', 'md-zaid-hossain/md-zaid-hossain.github.io')}@{SHA}" if SHA else ""
+CDN_MAX = 20_000_000    # jsDelivr serves files up to 20 MB
+
+
+def via_cdn(html):
+    if not CDN:
+        return html
+
+    def same_in_repo(rel):
+        a, b = os.path.join(REPO, rel), os.path.join(DIST, rel)
+        return os.path.exists(a) and os.path.exists(b) and os.path.getsize(a) == os.path.getsize(b) and os.path.getsize(a) < CDN_MAX
+
+    def swap(m):
+        path = m.group(0)
+        if path.startswith("/media/") and same_in_repo(path.lstrip("/")):
+            return CDN + path
+        if path.startswith("/assets/") and os.path.exists(os.path.join(BUILD, path.lstrip("/"))):
+            return CDN + "/build" + path
+        return path
+    pat = re.compile(r"(?<=[\"'(\s,])/(?:media|assets)/[\w./%-]+\.(?:webp|jpe?g|png|gif|svg|mp4|webm|woff2|js)\b")
+    # keep <a href> download links on github.io: cut them out, swap the rest, put them back
+    links = []
+
+    def keep(m):
+        links.append(m.group(0))
+        return f"\x00{len(links) - 1}\x00"
+    html = re.sub(r"<a\b[^>]*>", keep, html)
+    html = pat.sub(swap, html)
+    html = re.sub(r"\x00(\d+)\x00", lambda m: links[int(m.group(1))], html)
+    return html.replace("<head>", f'<head>\n<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>', 1)
+
+
 # ------------------------------------------------------------------ 4. whole site
 def main():
     t0 = _dt.datetime.now()
@@ -532,14 +569,22 @@ def main():
         done[route] = html
     # static files
     shutil.copytree(os.path.join(REPO, "media"), os.path.join(DIST, "media"), ignore=shutil.ignore_patterns("blob_to_media.json"))
-    for route, html in done.items():
-        dst = os.path.join(DIST, route.lstrip("/"), "index.html") if route.endswith("/") else os.path.join(DIST, route.lstrip("/"))
-        os.makedirs(os.path.dirname(dst), exist_ok=True)
-        open(dst, "w", encoding="utf-8").write(fast_loading(html))
     shutil.copytree(os.path.join(BUILD, "assets"), os.path.join(DIST, "assets"))
     shutil.copy2(os.path.join(BUILD, "assets", "favicon.svg"), os.path.join(DIST, "favicon.svg"))
     open(os.path.join(DIST, ".nojekyll"), "w").close()
     shrink_photos(os.path.join(DIST, "media"))
+    for route, html in done.items():
+        dst = os.path.join(DIST, route.lstrip("/"), "index.html") if route.endswith("/") else os.path.join(DIST, route.lstrip("/"))
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        open(dst, "w", encoding="utf-8").write(via_cdn(fast_loading(html)))
+    new_thumbs = [os.path.relpath(os.path.join(a, f), os.path.join(DIST, "media")) for a, _, fs in os.walk(os.path.join(DIST, "media", "_thumbs")) for f in fs
+                  if not os.path.exists(os.path.join(REPO, "media", os.path.relpath(os.path.join(a, f), os.path.join(DIST, "media"))))]
+    if new_thumbs:
+        print(f"  {len(new_thumbs)} small copies are not in media/_thumbs yet (run: python3 build/build.py --keep-thumbs, then commit)")
+        if "--keep-thumbs" in sys.argv:
+            for r in new_thumbs:
+                os.makedirs(os.path.dirname(os.path.join(REPO, "media", r)), exist_ok=True)
+                shutil.copy2(os.path.join(DIST, "media", r), os.path.join(REPO, "media", r))
     routes = [r for r in pages if r != "/404.html"]
     day = BUILT.date().isoformat()
     open(os.path.join(DIST, "sitemap.xml"), "w").write(
