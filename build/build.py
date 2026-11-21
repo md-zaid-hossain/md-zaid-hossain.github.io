@@ -307,6 +307,8 @@ FONT_CSS = "".join(f"@font-face{{font-family:'{f}';font-style:normal;font-weight
 
 # the canvas board scrolls inside .scr; the real page scrolls the document
 REAL_CSS = """
+/* phones: pause moving drawings while scrolling, and the home figure while off screen (site.js section 8) */
+.zscr *,.zscr *::before,.zscr *::after,.hfig.zoff *,.hfig.zoff *::before,.hfig.zoff *::after{animation-play-state:paused!important}
 html{scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{margin:0}
 .zh{height:auto!important;min-height:100vh;overflow:visible!important;overflow-x:clip!important}
