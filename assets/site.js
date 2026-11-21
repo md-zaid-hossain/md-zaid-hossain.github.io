@@ -225,6 +225,34 @@
     if (lab) lab.click();
   }, { passive: true });
 
+  /* ---------- 8. smooth scrolling on phones ---------- */
+  // Moving drawings (the home figure FIG. A, B, C, belts, gears, the backdrop fade) cost a lot on a phone. While the
+  // page is being scrolled they all pause (CSS class "zscr" plus the SVGs' own animations); 250 ms after the scroll
+  // stops they go on. The home figure also pauses while it is off screen. A still page looks exactly as before.
+  var root = document.documentElement, hfig = document.querySelector(".hfig"), stopT = 0, offScreen = false;
+  var moving = [].filter.call(document.querySelectorAll("svg"), function (v) {
+    return !v.ownerSVGElement && v.querySelector("animate,animateMotion,animateTransform,set");
+  });
+  function svgRun(v, run) { try { if (run) v.unpauseAnimations(); else v.pauseAnimations(); } catch (e) {} }
+  function inHero(v) { return hfig && hfig.contains(v); }
+  function scrolling() {
+    if (!stopT) { root.classList.add("zscr"); moving.forEach(function (v) { svgRun(v, false); }); }
+    clearTimeout(stopT);
+    stopT = setTimeout(function () {
+      stopT = 0; root.classList.remove("zscr");
+      moving.forEach(function (v) { svgRun(v, !(offScreen && inHero(v))); });
+    }, 250);
+  }
+  window.addEventListener("scroll", scrolling, { passive: true });
+  document.addEventListener("touchmove", scrolling, { passive: true });
+  if (hfig && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) {
+      offScreen = !es[es.length - 1].isIntersecting;
+      hfig.classList.toggle("zoff", offScreen);
+      if (!stopT) moving.forEach(function (v) { if (inHero(v)) svgRun(v, !offScreen); });
+    }).observe(hfig);
+  }
+
   /* ---------- 5. copy buttons ---------- */
   function copy(text, el, label) {
     var done = function () { var o = el.textContent; el.textContent = label; setTimeout(function () { el.textContent = o; }, 1600); };
