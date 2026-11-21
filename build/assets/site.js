@@ -152,6 +152,19 @@
     else v.pause();
   });
 
+  // moving previews (data-autoplay) play only while they are on screen
+  var autoVids = document.querySelectorAll("video[data-autoplay]");
+  if (autoVids.length && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) { v.preload = "auto"; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { rootMargin: "200px" });
+    autoVids.forEach(function (v) { v.muted = true; io.observe(v); });
+  }
+
   /* ---------- 5. copy buttons ---------- */
   function copy(text, el, label) {
     var done = function () { var o = el.textContent; el.textContent = label; setTimeout(function () { el.textContent = o; }, 1600); };

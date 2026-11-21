@@ -414,6 +414,96 @@ def shrink_photos(folder, longest=2400):
             print("  made web size:", os.path.relpath(p, DIST))
 
 
+# ------------------------------------------------------------------ loading speed
+VIEWER_CLASSES = {"sss", "elb", "vpv", "ssg", "vpvs"}   # full-screen viewers: their pictures stay full size
+THUMB_W = 800
+
+
+class _ImgSpots(__import__("html.parser").parser.HTMLParser):
+    """Character offsets of every <img> and <video> tag, and whether it sits inside a full-screen viewer."""
+    VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
+
+    def __init__(self, text):
+        super().__init__(convert_charrefs=False)
+        self.lines = [0]
+        for ln in text.split("\n"):
+            self.lines.append(self.lines[-1] + len(ln) + 1)
+        self.stack, self.spots = [], []
+        self.feed(text)
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        cls = set((a.get("class") or "").split()) | ({"@zs"} if "data-zs" in a else set())
+        if tag in ("img", "video"):
+            line, col = self.getpos()
+            inside = set().union(*self.stack, cls) if self.stack else cls
+            # pieces whose attributes site.js swaps per theme (data-zs) are left exactly as built
+            if "@zs" not in inside:
+                self.spots.append((self.lines[line - 1] + col, tag, bool(inside & VIEWER_CLASSES)))
+        if tag not in self.VOID:
+            self.stack.append(cls)
+
+    def handle_endtag(self, tag):
+        if tag not in self.VOID and self.stack:
+            self.stack.pop()
+
+
+def thumb(src):
+    """A THUMB_W-wide copy of a big picture in dist/media/_thumbs/ (made once per build). Returns its path or None."""
+    from PIL import Image
+    if not re.match(r"^/media/[^?#]+\.(webp|jpe?g|png)$", src, re.I):
+        return None, 0
+    full = os.path.join(DIST, src.lstrip("/"))
+    if not os.path.exists(full):
+        return None, 0
+    with Image.open(full) as im:
+        w, h = im.size
+        if w <= THUMB_W + 100:
+            return None, w
+        rel = os.path.splitext(src[len("/media/"):])[0] + ".webp"
+        out = os.path.join(DIST, "media", "_thumbs", rel)
+        if not os.path.exists(out):
+            os.makedirs(os.path.dirname(out), exist_ok=True)
+            im2 = im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB").resize((THUMB_W, round(h * THUMB_W / w)), Image.LANCZOS)
+            im2.save(out, "WEBP", quality=82, method=5)
+        return "/media/_thumbs/" + rel, w
+
+
+def fast_loading(html):
+    """Pictures load when they come near the screen, grids get a smaller copy, moving videos start when seen,
+    and the hero's 3D sprite is fetched first."""
+    spots = _ImgSpots(html).spots
+    out, last = [], 0
+    for pos, tag, in_viewer in spots:
+        end = html.index(">", pos) + 1
+        t = html[pos:end]
+        if tag == "img":
+            add = ""
+            if "loading=" not in t:
+                add += ' loading="lazy"'
+            if "decoding=" not in t:
+                add += ' decoding="async"'
+            m = re.search(r'\ssrc="([^"]+)"', t)
+            if m and not in_viewer and "srcset=" not in t:
+                small, w = thumb(m.group(1))
+                if small:
+                    add += f' srcset="{small} {THUMB_W}w, {m.group(1)} {w}w" sizes="(max-width: 760px) 100vw, 50vw"'
+            t = t[:-1].rstrip("/") + add + ">"
+        elif tag == "video" and " autoplay" in t:
+            # a moving preview starts only when it is on screen (site.js), so it does not slow the page down
+            t = t.replace(" autoplay", " data-autoplay").replace(' preload="metadata"', "")
+            t = t[:-1] + ' preload="none">'
+        elif tag == "video" and 'preload="metadata"' in t:
+            t = t.replace('preload="metadata"', 'preload="none"')
+        out.append(html[last:pos] + t)
+        last = end
+    html = "".join(out) + html[last:]
+    m = re.search(r"url\((/media/[^)]*turntable[^)]*\.webp)\)", html)
+    if m:
+        html = html.replace("</head>", f'<link rel="preload" as="image" href="{m.group(1)}" fetchpriority="high">\n</head>', 1)
+    return html
+
+
 # ------------------------------------------------------------------ 4. whole site
 def main():
     t0 = _dt.datetime.now()
@@ -427,7 +517,7 @@ def main():
     desc = {f"/projects/{p['slug']}/": re.sub(r"<[^>]+>", "", p["lead"])[:155].rsplit(" ", 1)[0] + "…" for p in projs}
     status = (f'{SP.gear_icon()}<span><b>Working hours</b> · replies today</span>',
               '<span>○</span><span><b>Off hours</b> · replies after Fajr</span>')
-    report = []
+    report, done = [], {}
     for route, (title, variants) in pages.items():
         model = None
         for p in projs:
@@ -439,11 +529,13 @@ def main():
         html, missing = finish(route, title, variants, ctx, status)
         if missing:
             report.append((route, sorted(set(missing))))
-        dst = os.path.join(DIST, route.lstrip("/"), "index.html") if route.endswith("/") else os.path.join(DIST, route.lstrip("/"))
-        os.makedirs(os.path.dirname(dst), exist_ok=True)
-        open(dst, "w", encoding="utf-8").write(html)
+        done[route] = html
     # static files
     shutil.copytree(os.path.join(REPO, "media"), os.path.join(DIST, "media"), ignore=shutil.ignore_patterns("blob_to_media.json"))
+    for route, html in done.items():
+        dst = os.path.join(DIST, route.lstrip("/"), "index.html") if route.endswith("/") else os.path.join(DIST, route.lstrip("/"))
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        open(dst, "w", encoding="utf-8").write(fast_loading(html))
     shutil.copytree(os.path.join(BUILD, "assets"), os.path.join(DIST, "assets"))
     shutil.copy2(os.path.join(BUILD, "assets", "favicon.svg"), os.path.join(DIST, "favicon.svg"))
     open(os.path.join(DIST, ".nojekyll"), "w").close()
