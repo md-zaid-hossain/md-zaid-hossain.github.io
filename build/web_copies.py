@@ -58,17 +58,24 @@ def make_all(verbose=True):
                 out = os.path.join(MEDIA, frame0_rel(rel))
                 if not os.path.exists(out):     # sprite is 9 x 8 frames; frame 0 is the top-left one
                     os.makedirs(os.path.dirname(out), exist_ok=True)
-                    # cut the frame first, then convert: only 600 x 480 px in memory, not the whole 5400 x 3840 sprite
-                    # (run #9 on 21 Nov stopped here with "can't allocate picture frame"); one retry after freeing memory
-                    for attempt in (1, 2):
+                    # cut the frame first, then convert: only 600 x 480 px in memory, not the whole 5400 x 3840 sprite.
+                    # On GitHub (runs #9 and #10, 21 Nov) WebP sometimes answers "can't allocate picture frame" here,
+                    # although the same files and Pillow work on other machines. The first frame only makes the 3D view
+                    # appear sooner (build.py skips it when the file is missing), so a failure is reported and the
+                    # build goes on instead of stopping the whole site.
+                    frame = _rgb(im.crop((0, 0, w // 9, h // 8)))
+                    for kw in ({"quality": 85, "method": 5}, {"quality": 85, "method": 3}, {"lossless": False}):
                         try:
-                            _rgb(im.crop((0, 0, w // 9, h // 8))).save(out, "WEBP", quality=85, method=5)
+                            frame.save(out, "WEBP", **kw)
+                            made += 1
                             break
-                        except MemoryError:
-                            if attempt == 2:
-                                raise
+                        except (MemoryError, OSError) as e:
+                            err = e
                             gc.collect()
-                    made += 1
+                            if os.path.exists(out):
+                                os.remove(out)
+                    else:
+                        print(f"  note: first frame of {rel} skipped ({frame.size}, {frame.mode}): {err}")
     for rel in list(rel_files()) + [r for r in rel_files("_thumbs") if not r.endswith("-frame0.webp")]:
         out = os.path.join(MEDIA, avif_rel(rel))
         if os.path.exists(out):
