@@ -312,6 +312,13 @@ body{margin:0}
 .zh{height:auto!important;min-height:100vh;overflow:visible!important;overflow-x:clip!important}
 .zh .scr{position:relative!important;inset:auto!important;overflow:visible!important}
 .thv{display:contents}
+.zp{display:contents}
+.zp>source{display:none}
+.h3s .tt0{position:absolute;inset:0;background-size:100% 100%;background-repeat:no-repeat;display:none;transition:opacity .35s ease}
+.js .h3s .tt0{display:block}
+.js .h3s .tt0.gone{display:none}
+.h3w .v2:checked ~ .h3s .tt0{opacity:0}
+@media (max-width:760px){.h3w .h3s .tt0{inset:42px 0 auto 0;aspect-ratio:5/4}}
 .skip{position:absolute;left:-9999px;top:8px;z-index:100;padding:10px 14px;border-radius:6px;background:var(--acc,#C14B3C);color:#fff;font:600 14px 'Inter',sans-serif;text-decoration:none}
 .skip:focus{left:12px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
@@ -328,7 +335,7 @@ def theme_css(per_theme_css):
     return css
 
 
-INIT_JS = ("(function(){try{var m=localStorage.getItem('zh-mode')||'dark',a=localStorage.getItem('zh-accent')||'red';"
+INIT_JS = ("document.documentElement.classList.add('js');(function(){try{var m=localStorage.getItem('zh-mode')||'dark',a=localStorage.getItem('zh-accent')||'red';"
            "if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';"
            "document.documentElement.setAttribute('data-theme',m+(a==='red'?'':'_'+(a==='blue'?'blue':'green')));}catch(e){}})();")
 
@@ -448,35 +455,73 @@ class _ImgSpots(__import__("html.parser").parser.HTMLParser):
             self.stack.pop()
 
 
-def thumb(src):
-    """A THUMB_W-wide copy of a big picture in dist/media/_thumbs/ (made once per build). Returns its path or None."""
-    from PIL import Image
+import web_copies as WC   # noqa: E402
+
+_color_cache = {}
+
+
+def _local(src):
+    """/media/... path -> file in dist (None if it is not a local raster picture)"""
     if not re.match(r"^/media/[^?#]+\.(webp|jpe?g|png)$", src, re.I):
-        return None, 0
-    full = os.path.join(DIST, src.lstrip("/"))
-    if not os.path.exists(full):
+        return None
+    f = os.path.join(DIST, src.lstrip("/"))
+    return f if os.path.exists(f) else None
+
+
+def thumb(src):
+    """The 800 px copy of a big picture (made by web_copies.py, or here if it is missing). Returns (path, width)."""
+    from PIL import Image
+    full = _local(src)
+    if not full:
         return None, 0
     with Image.open(full) as im:
         w, h = im.size
         if w <= THUMB_W + 100:
             return None, w
-        rel = os.path.splitext(src[len("/media/"):])[0] + ".webp"
-        out = os.path.join(DIST, "media", "_thumbs", rel)
+        rel = WC.thumb_rel(src[len("/media/"):])
+        out = os.path.join(DIST, "media", rel)
         if not os.path.exists(out):
             os.makedirs(os.path.dirname(out), exist_ok=True)
-            im2 = im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB").resize((THUMB_W, round(h * THUMB_W / w)), Image.LANCZOS)
-            im2.save(out, "WEBP", quality=82, method=5)
-        return "/media/_thumbs/" + rel, w
+            WC._rgb(im).resize((THUMB_W, round(h * THUMB_W / w)), Image.LANCZOS).save(out, "WEBP", quality=82, method=5)
+        return "/media/" + rel, w
+
+
+def avif_of(src):
+    """/media/x.webp -> /media/_avif/x.avif when that copy exists"""
+    if not src.startswith("/media/") or src.startswith("/media/_avif/"):
+        return None
+    rel = WC.avif_rel(src[len("/media/"):])
+    return "/media/" + rel if os.path.exists(os.path.join(DIST, "media", rel)) else None
+
+
+def placeholder(src):
+    """Two colours from the picture (top and bottom) as a soft gradient behind it while it loads.
+    Pictures with transparent parts get none (the gradient would show through)."""
+    from PIL import Image
+    if src in _color_cache:
+        return _color_cache[src]
+    val = ""
+    f = _local(src)
+    if f:
+        with Image.open(f) as im:
+            if not (im.mode in ("RGBA", "LA", "P") and im.convert("RGBA").getchannel("A").getextrema()[0] < 250):
+                sm = im.convert("RGB").resize((1, 2), Image.BOX)
+                a, b = sm.getpixel((0, 0)), sm.getpixel((0, 1))
+                val = "background:linear-gradient(#%02x%02x%02x,#%02x%02x%02x)" % (a + b)
+    _color_cache[src] = val
+    return val
 
 
 def fast_loading(html):
-    """Pictures load when they come near the screen, grids get a smaller copy, moving videos start when seen,
-    and the hero's 3D sprite is fetched first."""
+    """Pictures load when they come near the screen, grids get a smaller copy, AVIF where the browser takes it,
+    a soft colour shows until a picture arrives, moving videos start when seen, and the hero's 3D sprite
+    shows its first frame at once while the whole sprite loads first."""
     spots = _ImgSpots(html).spots
     out, last = [], 0
     for pos, tag, in_viewer in spots:
         end = html.index(">", pos) + 1
         t = html[pos:end]
+        pre = post = ""
         if tag == "img":
             add = ""
             if "loading=" not in t:
@@ -484,11 +529,24 @@ def fast_loading(html):
             if "decoding=" not in t:
                 add += ' decoding="async"'
             m = re.search(r'\ssrc="([^"]+)"', t)
-            if m and not in_viewer and "srcset=" not in t:
-                small, w = thumb(m.group(1))
+            if m and "srcset=" not in t:
+                src = m.group(1)
+                small, w = (None, 0) if in_viewer else thumb(src)
+                sizes = ' sizes="(max-width: 760px) 100vw, 50vw"'
                 if small:
-                    add += f' srcset="{small} {THUMB_W}w, {m.group(1)} {w}w" sizes="(max-width: 760px) 100vw, 50vw"'
-            t = t[:-1].rstrip("/") + add + ">"
+                    add += f' srcset="{small} {THUMB_W}w, {src} {w}w"' + sizes
+                a_full, a_small = avif_of(src), (avif_of(small) if small else None)
+                if a_full:
+                    srcset = f"{a_small} {THUMB_W}w, {a_full} {w}w" if (small and a_small) else a_full
+                    pre = f'<picture class="zp"><source type="image/avif" srcset="{srcset}"{sizes if (small and a_small) else ""}>'
+                    post = "</picture>"
+                ph = "" if in_viewer else placeholder(src)
+                if ph:
+                    if ' style="' in t:
+                        t = t.replace(' style="', f' style="{ph};', 1)
+                    else:
+                        add += f' style="{ph}"'
+            t = pre + t[:-1].rstrip("/") + add + ">" + post
         elif tag == "video" and " autoplay" in t:
             # a moving preview starts only when it is on screen (site.js), so it does not slow the page down
             t = t.replace(" autoplay", " data-autoplay").replace(' preload="metadata"', "")
@@ -498,17 +556,87 @@ def fast_loading(html):
         out.append(html[last:pos] + t)
         last = end
     html = "".join(out) + html[last:]
-    m = re.search(r"url\((/media/[^)]*turntable[^)]*\.webp)\)", html)
+    # hero 3D: first frame at once, whole sprite fetched first (AVIF when the browser takes it)
+    m = re.search(r'<span class="tt3" style="background-image:url\((/media/[^)]+)\)"></span>', html)
     if m:
-        html = html.replace("</head>", f'<link rel="preload" as="image" href="{m.group(1)}" fetchpriority="high">\n</head>', 1)
+        sprite = m.group(1)
+        f0 = "/media/" + WC.frame0_rel(sprite[len("/media/"):])
+        if os.path.exists(os.path.join(DIST, f0.lstrip("/"))):
+            html = html.replace(m.group(0), f'<span class="tt0" style="background-image:url({f0})"></span>' + m.group(0), 1)
+            a0 = avif_of(f0)
+            pl = f'<link rel="preload" as="image" href="{a0}" type="image/avif" fetchpriority="high">' if a0 else f'<link rel="preload" as="image" href="{f0}" fetchpriority="high">'
+            html = html.replace("</head>", pl + "\n</head>", 1)
+        a = avif_of(sprite)
+        link = (f'<link rel="preload" as="image" href="{a}" type="image/avif" fetchpriority="high">' if a
+                else f'<link rel="preload" as="image" href="{sprite}" fetchpriority="high">')
+        html = html.replace("</head>", link + "\n</head>", 1)
     return html
 
 
+def _image_set(value):
+    """url(/media/x.webp) -> image-set(AVIF copy, WebP) inside one CSS value"""
+    def one(m):
+        a = avif_of(m.group(1))
+        return f"image-set(url({a}) type('image/avif'),url({m.group(1)}) type('image/webp'))" if a else m.group(0)
+    return re.sub(r"url\((/media/[^)]+\.(?:webp|jpe?g|png))\)", one, value)
+
+
+def avif_css(css):
+    """Each CSS declaration with a /media picture gets a second copy using image-set(), so browsers that take
+    AVIF fetch the smaller file and older ones keep the first line."""
+    def decl(m):
+        new = _image_set(m.group(2))
+        return m.group(0) if new == m.group(2) else f"{m.group(0)};{m.group(1)}:{new}"
+    return re.sub(r"([\w-]+)\s*:\s*([^;{}\"]*url\(/media/[^)]+\)[^;{}\"]*)", decl, css)
+
+
+def avif_everywhere(html):
+    html = re.sub(r"<style>(.*?)</style>", lambda m: "<style>" + avif_css(m.group(1)) + "</style>", html, flags=re.S)
+    html = re.sub(r' style="([^"]*url\(/media/[^"]*)"', lambda m: ' style="' + avif_css(m.group(1)) + '"', html)
+
+    def swaps(m):
+        d = json.loads(m.group(1))
+        for k in d:
+            for t in d[k]:
+                d[k][t] = {j: (avif_css(v) if "url(/media/" in v else v) for j, v in d[k][t].items()}
+        return "window.ZH_SWAP=" + json.dumps(d) + ";"
+    return re.sub(r"window\.ZH_SWAP=(\{.*?\});(?=</script>)", swaps, html, flags=re.S)
+
+
+CSS_KEEP = set()
+
+
+def external_css(html):
+    """Move the page's CSS into a file named by its content (pages with the same CSS share it, the browser keeps it)."""
+    m = re.search(r"<style>(.*?)</style>", html, flags=re.S)
+    if not m:
+        return html
+    css = m.group(1)
+    name = hashlib.sha1(css.encode()).hexdigest()[:12] + ".css"
+    for folder in (os.path.join(BUILD, "assets", "css"), os.path.join(DIST, "assets", "css")):
+        os.makedirs(folder, exist_ok=True)
+        f = os.path.join(folder, name)
+        if not os.path.exists(f):
+            open(f, "w", encoding="utf-8").write(css)
+    CSS_KEEP.add(name)
+    return html.replace(m.group(0), f'<link rel="stylesheet" href="/assets/css/{name}">', 1)
+
+
+SPECULATION = """<script type="speculationrules">{"prefetch":[{"urls":["/","/projects/","/research/","/experience/","/education/","/awards/","/gallery/"],"eagerness":"eager"}],"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}</script>"""
+
+
+def speculation(html):
+    """Chrome and Edge fetch the main pages in the background, and get a page ready while the pointer rests on its link."""
+    return html.replace("</body>", SPECULATION + "\n</body>", 1)
+
+
 # GitHub Pages is very slow from Bangladesh (about 20 KB/s on 21 Nov 2026), while jsDelivr answers from Dhaka
-# (about 500 KB/s). So on GitHub Actions the pictures, clips, fonts and site.js are served by jsDelivr straight from
-# this repository at the commit being published; the pages themselves stay on github.io. Download links (<a href>)
-# stay on github.io so the file keeps its name. A local build keeps every path local.
-SHA = os.environ.get("GITHUB_SHA", "")
+# (about 500 KB/s). So on GitHub Actions the pictures, clips, fonts, CSS and site.js are served by jsDelivr straight
+# from this repository; the pages themselves stay on github.io. Download links (<a href>) stay on github.io so the
+# file keeps its name. The commit is not known yet when the build runs (the workflow first commits the new picture
+# copies and CSS files), so the build writes @__SHA__ and the workflow puts the real commit in. A local build keeps
+# every path local.
+SHA = "__SHA__" if (os.environ.get("GITHUB_ACTIONS") or "--cdn" in sys.argv) else ""
 CDN = f"https://cdn.jsdelivr.net/gh/{os.environ.get('GITHUB_REPOSITORY', 'md-zaid-hossain/md-zaid-hossain.github.io')}@{SHA}" if SHA else ""
 CDN_MAX = 20_000_000    # jsDelivr serves files up to 20 MB
 
@@ -528,9 +656,8 @@ def via_cdn(html):
         if path.startswith("/assets/") and os.path.exists(os.path.join(BUILD, path.lstrip("/"))):
             return CDN + "/build" + path
         return path
-    pat = re.compile(r"(?<=[\"'(\s,])/(?:media|assets)/[\w./%-]+\.(?:webp|jpe?g|png|gif|svg|mp4|webm|woff2|js)\b")
-    # keep <a href> download links on github.io: cut them out, swap the rest, put them back
-    links = []
+    pat = re.compile(r"(?<=[\"'(\s,])/(?:media|assets)/[\w./%-]+\.(?:webp|jpe?g|png|gif|svg|avif|mp4|webm|woff2|js|css)\b")
+    links = []   # keep <a href> download links on github.io: cut them out, swap the rest, put them back
 
     def keep(m):
         links.append(m.group(0))
@@ -538,7 +665,8 @@ def via_cdn(html):
     html = re.sub(r"<a\b[^>]*>", keep, html)
     html = pat.sub(swap, html)
     html = re.sub(r"\x00(\d+)\x00", lambda m: links[int(m.group(1))], html)
-    return html.replace("<head>", f'<head>\n<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>', 1)
+    return html.replace("<head>", '<head>\n<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>'
+                        '<link rel="preconnect" href="https://cdn.jsdelivr.net">', 1)
 
 
 # ------------------------------------------------------------------ 4. whole site
@@ -576,7 +704,11 @@ def main():
     for route, html in done.items():
         dst = os.path.join(DIST, route.lstrip("/"), "index.html") if route.endswith("/") else os.path.join(DIST, route.lstrip("/"))
         os.makedirs(os.path.dirname(dst), exist_ok=True)
-        open(dst, "w", encoding="utf-8").write(via_cdn(fast_loading(html)))
+        open(dst, "w", encoding="utf-8").write(via_cdn(speculation(external_css(avif_everywhere(fast_loading(html))))))
+    css_dir = os.path.join(BUILD, "assets", "css")    # old CSS files no page uses any more
+    for f in os.listdir(css_dir):
+        if f not in CSS_KEEP:
+            os.remove(os.path.join(css_dir, f))
     new_thumbs = [os.path.relpath(os.path.join(a, f), os.path.join(DIST, "media")) for a, _, fs in os.walk(os.path.join(DIST, "media", "_thumbs")) for f in fs
                   if not os.path.exists(os.path.join(REPO, "media", os.path.relpath(os.path.join(a, f), os.path.join(DIST, "media"))))]
     if new_thumbs:

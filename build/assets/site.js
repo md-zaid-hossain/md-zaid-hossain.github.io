@@ -165,6 +165,28 @@
     autoVids.forEach(function (v) { v.muted = true; io.observe(v); });
   }
 
+  /* ---------- 6. loading helpers ---------- */
+  // hero 3D: the first frame (.tt0) shows until the turning sprite has arrived
+  var tt0 = document.querySelectorAll(".tt0");
+  if (tt0.length) {
+    var hide = function () { tt0.forEach(function (e) { e.classList.add("gone"); }); };
+    var spriteDone = function (list) { return list.some(function (r) { return /turntable[^\/]*\.(webp|avif)$/.test(r.name) && !/frame0/.test(r.name) && r.responseEnd > 0; }); };
+    if (spriteDone(performance.getEntriesByType("resource"))) setTimeout(hide, 150);
+    else if ("PerformanceObserver" in window) {
+      var po = new PerformanceObserver(function (l) { if (spriteDone(l.getEntries())) { setTimeout(hide, 150); po.disconnect(); } });
+      try { po.observe({ type: "resource", buffered: true }); } catch (e) { setTimeout(hide, 4000); }
+    } else setTimeout(hide, 4000);
+  }
+  // slideshow: when a photo opens, fetch it and its neighbours at once
+  document.addEventListener("change", function (e) {
+    var r = e.target;
+    if (!r.classList || !r.classList.contains("ssr") || /-x$/.test(r.id)) return;
+    var slides = r.parentElement.querySelectorAll(".sss"), i = +r.id.split("-").pop();
+    [i, i + 1, i - 1].forEach(function (k) {
+      var sl = slides[(k + slides.length) % slides.length], im = sl && sl.querySelector("img");
+      if (im) im.loading = "eager";
+    });
+  });
   /* ---------- 5. copy buttons ---------- */
   function copy(text, el, label) {
     var done = function () { var o = el.textContent; el.textContent = label; setTimeout(function () { el.textContent = o; }, 1600); };

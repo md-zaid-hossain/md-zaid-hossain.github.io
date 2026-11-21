@@ -12,6 +12,10 @@ The website = **text** (`content/*.yml`) + **pictures, clips, 3D models and the 
 
 ---
 
+## প্রতিবার শুরুতে · Every time, first
+
+নিজের কম্পিউটারে কিছু বদলানোর আগে `git pull` দিন (GitHub Desktop-এ **Fetch origin** → **Pull**)। GitHub Actions প্রতিটা publish-এ ছবির ছোট copy বানিয়ে repo-তে রাখে, তাই আপনার copy পিছিয়ে থাকে। · Before changing anything on your computer, run `git pull` (GitHub Desktop: Fetch origin → Pull). GitHub Actions adds picture copies to the repo on every publish.
+
 ## সবার আগে · First, always (privacy)
 
 - NID, পারিবারিক কাগজ, ফোন নম্বর, বাসার ঠিকানা কখনো না। · Never the NID, family papers, phone number or home address.

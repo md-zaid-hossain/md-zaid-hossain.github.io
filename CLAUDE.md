@@ -19,9 +19,12 @@ The pages are the approved design (Claude Design canvas v221), reproduced exactl
 - Each page is rendered in all 6 themes and merged: theme-only CSS is scoped to `:root[data-theme="…"]`; theme-only
   attribute values (backdrop photos, hero gear, footer factory colours) are swapped by `build/assets/site.js` (`window.ZH_SWAP`).
   Without JavaScript the page shows the dark red theme.
-- Speed: GitHub Pages is very slow from Bangladesh, so on GitHub Actions the pictures, clips, fonts and site.js are served by
-  jsDelivr from this repo at the published commit (`via_cdn` in build.py); pages stay on github.io. Pictures load lazily;
-  grids use 800 px copies in `media/_thumbs/`. After adding big pictures run `python3 build/build.py --keep-thumbs` and commit the new thumbs.
+- Speed: GitHub Pages is very slow from Bangladesh (about 20 KB/s), so on GitHub Actions the pictures, clips, fonts,
+  page CSS and site.js are served by jsDelivr from this repo (`via_cdn` in build.py); the pages stay on github.io.
+  `build/web_copies.py` makes 800 px copies (`media/_thumbs/`), AVIF copies (`media/_avif/`) and the first frame of
+  each 3D sprite; the workflow runs it and commits the new copies and `build/assets/css/` itself, so always
+  `git pull` before changing anything. Pictures load lazily, grids use the 800 px copy, browsers that take AVIF get it.
+  Check after any change to this: layout must match pixel for pixel with pictures blocked (see mockup-source tools).
 - `media/blob_to_media.json` maps the canvas picture ids still written in the builders (`/_blob/<id>`) to `media/` paths. Keep it.
 - Text that lives in builder code, not in content/: the Home page summaries (hero, research list in `res_list.py`,
   experience list `exp_list.py`, education chart `edu_gantt.py`, skills `skill_cards.py`), the Projects page brief, the EV page (`build_ev.py`).
